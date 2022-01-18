@@ -12,87 +12,85 @@
     <title>Login</title>
 
     <!-- Custom fonts for this template-->
-    <link rel="stylesheet" href="<?php echo base_url() ?>template/plugins/fontawesome-free/css/all.min.css">
-  <!-- Theme style -->
-  <link rel="stylesheet" href="<?php echo base_url() ?>template/dist/css/adminlte.min.css">
-    <link rel="stylesheet" href="<?php echo base_url() ?>template/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
-  <link rel="stylesheet" href="<?php echo base_url() ?>template/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
-  <link rel="stylesheet" href="<?php echo base_url() ?>template/plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
-  <link rel="stylesheet" href="<?php echo base_url() ?>template/dist/css/adminlte.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="<?php echo base_url()?>template/plugins/fontawesome-free/css/all.min.css">
+    <!-- icheck bootstrap -->
+    <link rel="stylesheet" href="<?php echo base_url()?>template/plugins/icheck-bootstrap/icheck-bootstrap.min.css">
+    <!-- Theme style -->
+    <link rel="stylesheet" href="<?php echo base_url()?>template/dist/css/adminlte.min.css">
 
 </head>
 
-<body class="bg-gradient-primary">
-
-    <div class="container">
-
-        <!-- Outer Row -->
-        <div class="row justify-content-center">
-
-            <div class="col-lg-5">
-
-                <div class="card shadow-lg my-5">
-                    <div class="card-body p-0">
-                        <!-- Nested Row within Card Body -->
-                        <div class="row">
-                            <div class="col-lg">
-                                <div class="p-5">
-                                    <div class="text-center">
-                                        <h1 class="h4 text-dark mb-4 " >Login Page</h1>
-                                    </div>
-                                    <?= $this->session->flashdata('message');?>
-                                    <form class="user" method="POST" action="<?=base_url('penduduk/auth');?>">
-                                        <div class="form-group">
-                                            <input type="text" class="form-control "
-                                                id="email" name="email" 
-                                                placeholder="Email" value="<?= set_value('email'); ?>">
-                                                 <?= form_error('email','<small class="text-danger pl-3">','</small>');?>
-                                        </div>
-                                        <div class="form-group">
-                                            <input type="password" class="form-control "
-                                                id="password" name="password" placeholder="Password">
-                                                <?= form_error('password','<small class="text-danger pl-3">','</small>');?>
-                                        </div>
-                                        <div class="row">
-                                        <div class="col-md-6 form-group">
-                                        <button type="submit" class="btn btn-success  btn-block">
-                                            Login
-                                        </button>
-                                            
-                                        </div>
-                                        <div class="col-md-6 form-group">
-                                        <a href="<?php echo  base_url() ?>home" class="btn btn-danger  btn-block">
+<body class="hold-transition login-page">
+    <div class="login-box">
+      <!-- /.login-logo -->
+      <div class="card card-outline card-primary">
+        <div class="card-header text-center">
+          <h1 ><b>Login</b>Page</h1>
+      </div>
+      <div class="card-body">
+          <p class="login-box-msg">Sign in to start your session</p>
+          <?= $this->session->flashdata('message');?>
+          <form method="POST" action="<?=base_url('penduduk/auth');?>">
+            <div class="input-group mb-3">
+             <input type="text" class="form-control "
+             id="email" name="email" 
+             placeholder="Email" value="<?= set_value('email'); ?>">
+             <?= form_error('email','<small class="text-danger pl-3">','</small>');?>
+             <div class="input-group-append">
+                <div class="input-group-text">
+                  <span class="fas fa-envelope"></span>
+              </div>
+          </div>
+      </div>
+      <div class="input-group mb-3">
+          <input type="password" class="form-control "
+          id="password" name="password" placeholder="Password">
+          <?= form_error('password','<small class="text-danger pl-3">','</small>');?>
+          <div class="input-group-append">
+            <div class="input-group-text">
+              <span class="fas fa-lock"></span>
+          </div>
+      </div>
+  </div>
+  <div class="row">
+          <div class="col-8">
+           <a href="<?php echo  base_url() ?>home" class="btn btn-danger  btn-block">
                                             Kembali
                                         </a>
-                                            
-                                            </div>
-                                            
-                                        </div>
-                                    </form>
-                                    <hr>
-                                    <div class="text-center">
-                                        <a class="small" href="forgot-password.html">Forgot Password?</a>
-                                    </div>
-                                <div class="text-center">
-                                        <a class="small" href="<?= base_url('auth/registration');?>">Create an Account!</a>
-                                    </div> 
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-
         </div>
-
+        <!-- /.col -->
+        <div class="col-4">
+            <button type="submit" class="btn btn-primary btn-block">Sign In</button>
+        </div>
+        <!-- /.col -->
     </div>
+</form>
 
-    <!-- Bootstrap core JavaScript-->
-    <script src="<?php echo base_url()?>assets/js/vendors.bundle.min.js" type="text/javascript"></script>
-        <script src="<?php echo base_url()?>assets/js/scripts.bundle.min.js" type="text/javascript"></script>
+
+<!-- /.social-auth-links -->
+
+<!--       <p class="mb-1">
+        <a href="forgot-password.html">I forgot my password</a>
+      </p>
+      <p class="mb-0">
+        <a href="register.html" class="text-center">Register a new membership</a>
+    </p> -->
+</div>
+<!-- /.card-body -->
+</div>
+<!-- /.card -->
+</div>
+<!-- /.login-box -->
+<!-- Bootstrap core JavaScript-->
+<script src="<?php echo base_url()?>template/plugins/jquery/jquery.min.js"></script>
+<!-- Bootstrap 4 -->
+<script src="<?php echo base_url()?>template/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!-- AdminLTE App -->
+<script src="<?php echo base_url()?>template/dist/js/adminlte.min.js"></script>
 <script type="text/javascript">
- 
+
 </script>
 </body>
 

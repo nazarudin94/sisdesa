@@ -11,14 +11,13 @@
 
     <title>Login</title>
 
-    <!-- Custom fonts for this template-->
-    <link rel="stylesheet" href="<?php echo base_url() ?>template/plugins/fontawesome-free/css/all.min.css">
+   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="<?php echo base_url()?>template/plugins/fontawesome-free/css/all.min.css">
+  <!-- icheck bootstrap -->
+  <link rel="stylesheet" href="<?php echo base_url()?>template/plugins/icheck-bootstrap/icheck-bootstrap.min.css">
   <!-- Theme style -->
-  <link rel="stylesheet" href="<?php echo base_url() ?>template/dist/css/adminlte.min.css">
-    <link rel="stylesheet" href="<?php echo base_url() ?>template/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
-  <link rel="stylesheet" href="<?php echo base_url() ?>template/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
-  <link rel="stylesheet" href="<?php echo base_url() ?>template/plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
-  <link rel="stylesheet" href="<?php echo base_url() ?>template/dist/css/adminlte.min.css">
+  <link rel="stylesheet" href="<?php echo base_url()?>template/dist/css/adminlte.min.css">
 
 </head>
 
@@ -70,12 +69,12 @@
                                         </div>
                                     </form>
                                     <hr>
-                                    <div class="text-center">
+                                  <!--   <div class="text-center">
                                         <a class="small" href="forgot-password.html">Forgot Password?</a>
-                                    </div>
-                                <div class="text-center">
+                                    </div> -->
+                            <!--     <div class="text-center">
                                         <a class="small" href="<?= base_url('auth/registration');?>">Create an Account!</a>
-                                    </div> 
+                                    </div>  -->
                                 </div>
                             </div>
                         </div>
@@ -89,8 +88,11 @@
     </div>
 
     <!-- Bootstrap core JavaScript-->
-    <script src="<?php echo base_url()?>assets/js/vendors.bundle.min.js" type="text/javascript"></script>
-        <script src="<?php echo base_url()?>assets/js/scripts.bundle.min.js" type="text/javascript"></script>
+  <script src="<?php echo base_url()?>template/plugins/jquery/jquery.min.js"></script>
+<!-- Bootstrap 4 -->
+<script src="<?php echo base_url()?>template/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!-- AdminLTE App -->
+<script src="<?php echo base_url()?>template/dist/js/adminlte.min.js"></script>
 <script type="text/javascript">
  
 </script>

@@ -3,8 +3,10 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>AdminLTE 3 | Blank Page</title>
-
+  <title>Input Data Penduduk</title>
+    <link rel="stylesheet" href="<?php echo base_url() ?>template/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
+  <link rel="stylesheet" href="<?php echo base_url() ?>template/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
+  <link rel="stylesheet" href="<?php echo base_url() ?>template/plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
   <!-- Font Awesome -->
@@ -73,9 +75,9 @@
                 <table id="example1" class="table table-bordered table-striped">
                   <thead>
                   <tr>
-                    <th>Nomor & tanggal surat</th>
-                    <th>Jenis Surat</th>
-                    <th>NIK & Nama</th>
+                    <th>Nama Kepala Keluarga</th>
+                    <th>Nomor KK</th>
+                    <th>NIK</th>
                     <th>Action</th>
                   </tr>
                   </thead>
@@ -501,7 +503,7 @@
 
 
 
-          
+
           <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
               <div class="modal-content">
@@ -1032,6 +1034,19 @@
 <script src="<?php echo base_url() ?>template/dist/js/adminlte.min.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="<?php echo base_url() ?>template/dist/js/demo.js"></script>
+
+<script src="<?php echo base_url() ?>template/plugins/datatables/jquery.dataTables.min.js"></script>
+<script src="<?php echo base_url() ?>template/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
+<script src="<?php echo base_url() ?>template/plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
+<script src="<?php echo base_url() ?>template/plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
+<script src="<?php echo base_url() ?>template/plugins/datatables-buttons/js/dataTables.buttons.min.js"></script>
+<script src="<?php echo base_url() ?>template/plugins/datatables-buttons/js/buttons.bootstrap4.min.js"></script>
+<script src="<?php echo base_url() ?>template/plugins/jszip/jszip.min.js"></script>
+<script src="<?php echo base_url() ?>template/plugins/pdfmake/pdfmake.min.js"></script>
+<script src="<?php echo base_url() ?>template/plugins/pdfmake/vfs_fonts.js"></script>
+<script src="<?php echo base_url() ?>template/plugins/datatables-buttons/js/buttons.html5.min.js"></script>
+<script src="<?php echo base_url() ?>template/plugins/datatables-buttons/js/buttons.print.min.js"></script>
+<script src="<?php echo base_url() ?>template/plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
 <!-- Page specific script -->
 <!-- <script src="https://code.jquery.com/jquery-3.4.1.js"></script> -->
 <script src="<?php echo base_url()?>assets/js/jquery.validate.min.js"></script>
