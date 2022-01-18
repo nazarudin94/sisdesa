@@ -23,8 +23,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | a PHP script and you can easily do that on your own.
 |
 */
-// $config['base_url'] = 'http://localhost/sistem-desa';
-$config['base_url'] = 'http://f57c-36-90-159-220.ngrok.io/sistem-desa';
+$config['base_url'] = 'http://localhost/sistem-desa';
+// 	$config['base_url'] = 'http://f57c-36-90-159-220.ngrok.io/sistem-desa';
 
 /*
 |--------------------------------------------------------------------------
