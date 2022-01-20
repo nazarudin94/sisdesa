@@ -1,43 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Input Data Penduduk</title>
-  <link rel="stylesheet" href="<?php echo base_url() ?>template/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
-  <link rel="stylesheet" href="<?php echo base_url() ?>template/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
-  <link rel="stylesheet" href="<?php echo base_url() ?>template/plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
-  <!-- Google Font: Source Sans Pro -->
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
-  <link rel="stylesheet" href="<?php echo base_url() ?>template/plugins/select2/css/select2.min.css">
-  <link rel="stylesheet" href="<?php echo base_url() ?>template/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css">
-  <!-- Bootstrap4 Duallistbox -->
-  <link rel="stylesheet" href="<?php echo base_url() ?>template/plugins/bootstrap4-duallistbox/bootstrap-duallistbox.min.css">
-  <!-- Font Awesome -->
-  <link rel="stylesheet" href="<?php echo base_url() ?>template/plugins/fontawesome-free/css/all.min.css">
-  <!-- Ionicons -->
-  <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
-  <!-- Tempusdominus Bootstrap 4 -->
-  <link rel="stylesheet" href="<?php echo base_url() ?>template/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css">
-  <!-- iCheck -->
-  <link rel="stylesheet" href="<?php echo base_url() ?>template/plugins/icheck-bootstrap/icheck-bootstrap.min.css">
-  <!-- JQVMap -->
-  <link rel="stylesheet" href="<?php echo base_url() ?>template/plugins/jqvmap/jqvmap.min.css">
-  <!-- Theme style -->
-  <link rel="stylesheet" href="<?php echo base_url() ?>template/dist/css/adminlte.min.css">
-  <!-- overlayScrollbars -->
-  <link rel="stylesheet" href="<?php echo base_url() ?>template/plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
-  <!-- Daterange picker -->
-  <link rel="stylesheet" href="<?php echo base_url() ?>template/plugins/daterangepicker/daterangepicker.css">
-  <!-- summernote -->
-  <link rel="stylesheet" href="<?php echo base_url() ?>template/plugins/summernote/summernote-bs4.min.css">
-<!--   <link href="https://cdn.jsdelivr.net/gh/bbbootstrap/libraries@main/smart_wizard.min.css" rel="stylesheet" type="text/css" />
-  <link href="https://cdn.jsdelivr.net/gh/bbbootstrap/libraries@main/smart_wizard_theme_dots.min.css" rel="stylesheet" type="text/css" /> -->
-  <link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>assets/css/multi-form.css?v2">
-  <style type="text/css">
+ 
+ <?php $this->load->view('template/templatecss'); ?>
 
-  </style>
-</head>
+
 <body class="hold-transition sidebar-mini">
   <!-- Site wrapper -->
   <div class="wrapper">
@@ -52,14 +16,14 @@
       <!-- Content Header (Page header) -->
       <section class="content-header">
         <div class="container-fluid">
-          <div class="row mb-2">
+          <div class="row">
             <div class="col-sm-6">
-              <h1><?= $title_page ?></h1>
+              <h1><?= $title_web ?></h1>
             </div>
             <div class="col-sm-6">
               <ol class="breadcrumb float-sm-right">
                 <li class="breadcrumb-item"><a href="#">Home</a></li>
-                <li class="breadcrumb-item active">Dashboard</li>
+                <li class="breadcrumb-item active">Data Penduduk</li>
               </ol>
             </div>
           </div>
@@ -75,6 +39,7 @@
           <div class="col-md-12 d-flex justify-content-end">
             <button type="button" class="btn btn-sm  btn-primary" data-toggle="modal" data-target="#exampleModal"> Tambah Data</button>
           </div> </div> <!-- Modal -->
+           <div class="card mt-2">
           <div class="card-body">
             <table id="example1" class="table table-bordered table-striped">
               <thead>
@@ -86,27 +51,19 @@
                 </tr>
               </thead>
               <tbody>
+                  <?php foreach ($penduduk as $key => $value) {?>
                 <tr>
-                  <td>Nazarudin Latif</td>
-                  <td>4235678198273562
-                  </td><td>3205171701940002</td>
+                    <td><?= $value['nama_kepala_keluarga']?></td>
+                    <td><?= $value['kk']?></td>
+                    <td><?= $value['nik']?></td>
+
                   <td><a href="#" class="btn btn-sm btn-success">Detail</a> <a href="#" class="btn btn-sm btn-warning">Edit</a> </td>
-
                 </tr>
-                <tr>
-                  <td>Nazarudin Latif</td>
-                  <td>4235678198273562
-                  </td><td>3205171701940002</td>
-                  <td> <a href="#" class="btn btn-sm btn-success">Detail</a> <a href="#" class="btn btn-sm btn-warning">Edit</a></td>
+                <?php  } ?>
+                  
+                 
 
-                </tr>
-                <tr>
-                  <td>Nazarudin Latif</td>
-                  <td>4235678198273562
-                  </td><td>3205171701940002</td>
-                  <td><a href="#" class="btn btn-sm btn-success">Detail</a> <a href="#" class="btn btn-sm btn-warning">Edit</a></td>
-
-                </tr>
+                
                
               
              
@@ -121,6 +78,8 @@
               </tfoot> -->
             </table>
           </div>
+             
+           </div>
 
 
 
@@ -706,49 +665,9 @@
 <!-- ./wrapper -->
 
 <!-- jQuery -->
-<script src="<?php echo base_url() ?>template/plugins/jquery/jquery.min.js"></script>
-<!-- Bootstrap 4 -->
-<script src="<?php echo base_url() ?>template/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-<!-- Select2 -->
-<script src="<?php echo base_url() ?>template/plugins/select2/js/select2.full.min.js"></script>
-<!-- Bootstrap4 Duallistbox -->
-<script src="<?php echo base_url() ?>template/plugins/bootstrap4-duallistbox/jquery.bootstrap-duallistbox.min.js"></script>
-<!-- InputMask -->
-<script src="<?php echo base_url() ?>template/plugins/moment/moment.min.js"></script>
-<script src="<?php echo base_url() ?>template/plugins/inputmask/jquery.inputmask.min.js"></script>
-<!-- date-range-picker -->
-<script src="<?php echo base_url() ?>template/plugins/daterangepicker/daterangepicker.js"></script>
-<!-- bootstrap color picker -->
-<script src="<?php echo base_url() ?>template/plugins/bootstrap-colorpicker/js/bootstrap-colorpicker.min.js"></script>
-<!-- Tempusdominus Bootstrap 4 -->
-<script src="<?php echo base_url() ?>template/plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js"></script>
-<!-- Bootstrap Switch -->
-<script src="<?php echo base_url() ?>template/plugins/bootstrap-switch/js/bootstrap-switch.min.js"></script>
-<!-- BS-Stepper -->
-<script src="<?php echo base_url() ?>template/plugins/bs-stepper/js/bs-stepper.min.js"></script>
-<!-- dropzonejs -->
-<script src="<?php echo base_url() ?>template/plugins/dropzone/min/dropzone.min.js"></script>
-<!-- AdminLTE App -->
-<script src="<?php echo base_url() ?>template/dist/js/adminlte.min.js"></script>
-<!-- AdminLTE for demo purposes -->
-<!-- <script src="<?php echo base_url() ?>template/dist/js/demo.js"></script> -->
+<?php $this->load->view('template/templatejs'); ?>
 
-<script src="<?php echo base_url() ?>template/plugins/datatables/jquery.dataTables.min.js"></script>
-<script src="<?php echo base_url() ?>template/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
-<script src="<?php echo base_url() ?>template/plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
-<script src="<?php echo base_url() ?>template/plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
-<script src="<?php echo base_url() ?>template/plugins/datatables-buttons/js/dataTables.buttons.min.js"></script>
-<script src="<?php echo base_url() ?>template/plugins/datatables-buttons/js/buttons.bootstrap4.min.js"></script>
-<script src="<?php echo base_url() ?>template/plugins/jszip/jszip.min.js"></script>
-<script src="<?php echo base_url() ?>template/plugins/pdfmake/pdfmake.min.js"></script>
-<script src="<?php echo base_url() ?>template/plugins/pdfmake/vfs_fonts.js"></script>
-<script src="<?php echo base_url() ?>template/plugins/datatables-buttons/js/buttons.html5.min.js"></script>
-<script src="<?php echo base_url() ?>template/plugins/datatables-buttons/js/buttons.print.min.js"></script>
-<script src="<?php echo base_url() ?>template/plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
-<!-- Page specific script -->
-<!-- <script src="https://code.jquery.com/jquery-3.4.1.js"></script> -->
-<script src="<?php echo base_url()?>assets/js/jquery.validate.min.js"></script>
-<script type="text/javascript" src="<?php echo base_url() ?>assets/js/multi-form.js?v2"></script>
+
 <script type="text/javascript">
   $(document).ready(function(){
 $(":input").inputmask();
