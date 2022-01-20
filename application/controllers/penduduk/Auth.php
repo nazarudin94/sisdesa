@@ -10,7 +10,7 @@ public function __construct (){
 	public function index()
 	{
 		// die('xx');
-		$this->form_validation->set_rules('email','Email','required|trim');
+		$this->form_validation->set_rules('nama','nama','required|trim');
 		$this->form_validation->set_rules('password','Password','required|trim');
 		if ($this->form_validation->run()==false) {
 			$this->load->view("penduduk/login/login");
@@ -20,17 +20,18 @@ public function __construct (){
 	}
 
 	private function  _login (){
-		$email =	$this->input->post('email');
+		$nama =	$this->input->post('nama');
 		$password =	$this->input->post('password');
 
-		$user = $this->db->get_where('user',['email'=>$email])->row_array();
+		$user = $this->db->get_where('user',['nama'=>$nama])->row_array();
+		// echo "<pre>";print_r($user);die('xx');
 		//jika user ada
 		if ($user != NULL) { 
 			// if ($user['is_active']==1) {
 			// print_r(password_verify($password, $user['password']));die();
 			if (password_verify($password, $user['password'])) {
 				$data = [
-					'email' => $user['email'],
+					'nama' => $user['nama'],
 					'role_id' => $user['role_id'],
 					'level' => $user['level'],
 					'sistem' => "penduduk",

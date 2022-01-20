@@ -4,11 +4,15 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Input Data Penduduk</title>
-    <link rel="stylesheet" href="<?php echo base_url() ?>template/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
+  <link rel="stylesheet" href="<?php echo base_url() ?>template/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
   <link rel="stylesheet" href="<?php echo base_url() ?>template/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
   <link rel="stylesheet" href="<?php echo base_url() ?>template/plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+  <link rel="stylesheet" href="<?php echo base_url() ?>template/plugins/select2/css/select2.min.css">
+  <link rel="stylesheet" href="<?php echo base_url() ?>template/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css">
+  <!-- Bootstrap4 Duallistbox -->
+  <link rel="stylesheet" href="<?php echo base_url() ?>template/plugins/bootstrap4-duallistbox/bootstrap-duallistbox.min.css">
   <!-- Font Awesome -->
   <link rel="stylesheet" href="<?php echo base_url() ?>template/plugins/fontawesome-free/css/all.min.css">
   <!-- Ionicons -->
@@ -36,7 +40,7 @@
 </head>
 <body class="hold-transition sidebar-mini">
   <!-- Site wrapper -->
-  <!-- <div class="wrapper"> -->
+  <div class="wrapper">
     <!-- Navbar -->
     <?php $this->load->view('template/header'); ?>
     <!-- /.navbar --> 
@@ -69,436 +73,54 @@
        <div class="container-fluid">
         <div class="row "> 
           <div class="col-md-12 d-flex justify-content-end">
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal"> Tambah Data</button>
+            <button type="button" class="btn btn-sm  btn-primary" data-toggle="modal" data-target="#exampleModal"> Tambah Data</button>
           </div> </div> <!-- Modal -->
-           <div class="card-body">
-                <table id="example1" class="table table-bordered table-striped">
-                  <thead>
-                  <tr>
-                    <th>Nama Kepala Keluarga</th>
-                    <th>Nomor KK</th>
-                    <th>NIK</th>
-                    <th>Action</th>
-                  </tr>
-                  </thead>
-                  <tbody>
-                  <tr>
-                    <td>Trident</td>
-                    <td>Internet
-                      Explorer 4.0
-                    </td>
-                    <td>Win 95+</td>
-                    <td> 4</td>
-                    
-                  </tr>
-                  <tr>
-                    <td>Trident</td>
-                    <td>Internet
-                      Explorer 5.0
-                    </td>
-                    <td>Win 95+</td>
-                    <td>5</td>
-                    
-                  </tr>
-                  <tr>
-                    <td>Trident</td>
-                    <td>Internet
-                      Explorer 5.5
-                    </td>
-                    <td>Win 95+</td>
-                    <td>5.5</td>
-                    
-                  </tr>
-                  <tr>
-                    <td>Trident</td>
-                    <td>Internet
-                      Explorer 6
-                    </td>
-                    <td>Win 98+</td>
-                    <td>6</td>
-                    
-                  </tr>
-                  <tr>
-                    <td>Trident</td>
-                    <td>Internet Explorer 7</td>
-                    <td>Win XP SP2+</td>
-                    <td>7</td>
-                    
-                  </tr>
-                  <tr>
-                    <td>Trident</td>
-                    <td>AOL browser (AOL desktop)</td>
-                    <td>Win XP</td>
-                    <td>6</td>
-                    
-                  </tr>
-                  <tr>
-                    <td>Gecko</td>
-                    <td>Firefox 1.0</td>
-                    <td>Win 98+ / OSX.2+</td>
-                    <td>1.7</td>
-                    
-                  </tr>
-                  <tr>
-                    <td>Gecko</td>
-                    <td>Firefox 1.5</td>
-                    <td>Win 98+ / OSX.2+</td>
-                    <td>1.8</td>
-                    
-                  </tr>
-                  <tr>
-                    <td>Gecko</td>
-                    <td>Firefox 2.0</td>
-                    <td>Win 98+ / OSX.2+</td>
-                    <td>1.8</td>
-                    
-                  </tr>
-                  <tr>
-                    <td>Gecko</td>
-                    <td>Firefox 3.0</td>
-                    <td>Win 2k+ / OSX.3+</td>
-                    <td>1.9</td>
-                    
-                  </tr>
-                  <tr>
-                    <td>Gecko</td>
-                    <td>Camino 1.0</td>
-                    <td>OSX.2+</td>
-                    <td>1.8</td>
-                    
-                  </tr>
-                  <tr>
-                    <td>Gecko</td>
-                    <td>Camino 1.5</td>
-                    <td>OSX.3+</td>
-                    <td>1.8</td>
-                    
-                  </tr>
-                  <tr>
-                    <td>Gecko</td>
-                    <td>Netscape 7.2</td>
-                    <td>Win 95+ / Mac OS 8.6-9.2</td>
-                    <td>1.7</td>
-                    
-                  </tr>
-                  <tr>
-                    <td>Gecko</td>
-                    <td>Netscape Browser 8</td>
-                    <td>Win 98SE+</td>
-                    <td>1.7</td>
-                    
-                  </tr>
-                  <tr>
-                    <td>Gecko</td>
-                    <td>Netscape Navigator 9</td>
-                    <td>Win 98+ / OSX.2+</td>
-                    <td>1.8</td>
-                    
-                  </tr>
-                  <tr>
-                    <td>Gecko</td>
-                    <td>Mozilla 1.0</td>
-                    <td>Win 95+ / OSX.1+</td>
-                    <td>1</td>
-                    
-                  </tr>
-                  <tr>
-                    <td>Gecko</td>
-                    <td>Mozilla 1.1</td>
-                    <td>Win 95+ / OSX.1+</td>
-                    <td>1.1</td>
-                    
-                  </tr>
-                  <tr>
-                    <td>Gecko</td>
-                    <td>Mozilla 1.2</td>
-                    <td>Win 95+ / OSX.1+</td>
-                    <td>1.2</td>
-                    
-                  </tr>
-                  <tr>
-                    <td>Gecko</td>
-                    <td>Mozilla 1.3</td>
-                    <td>Win 95+ / OSX.1+</td>
-                    <td>1.3</td>
-                    
-                  </tr>
-                  <tr>
-                    <td>Gecko</td>
-                    <td>Mozilla 1.4</td>
-                    <td>Win 95+ / OSX.1+</td>
-                    <td>1.4</td>
-                    
-                  </tr>
-                  <tr>
-                    <td>Gecko</td>
-                    <td>Mozilla 1.5</td>
-                    <td>Win 95+ / OSX.1+</td>
-                    <td>1.5</td>
-                    
-                  </tr>
-                  <tr>
-                    <td>Gecko</td>
-                    <td>Mozilla 1.6</td>
-                    <td>Win 95+ / OSX.1+</td>
-                    <td>1.6</td>
-                    
-                  </tr>
-                  <tr>
-                    <td>Gecko</td>
-                    <td>Mozilla 1.7</td>
-                    <td>Win 98+ / OSX.1+</td>
-                    <td>1.7</td>
-                    
-                  </tr>
-                  <tr>
-                    <td>Gecko</td>
-                    <td>Mozilla 1.8</td>
-                    <td>Win 98+ / OSX.1+</td>
-                    <td>1.8</td>
-                    
-                  </tr>
-                  <tr>
-                    <td>Gecko</td>
-                    <td>Seamonkey 1.1</td>
-                    <td>Win 98+ / OSX.2+</td>
-                    <td>1.8</td>
-                    
-                  </tr>
-                  <tr>
-                    <td>Gecko</td>
-                    <td>Epiphany 2.20</td>
-                    <td>Gnome</td>
-                    <td>1.8</td>
-                    
-                  </tr>
-                  <tr>
-                    <td>Webkit</td>
-                    <td>Safari 1.2</td>
-                    <td>OSX.3</td>
-                    <td>125.5</td>
-                    
-                  </tr>
-                  <tr>
-                    <td>Webkit</td>
-                    <td>Safari 1.3</td>
-                    <td>OSX.3</td>
-                    <td>312.8</td>
-                    
-                  </tr>
-                  <tr>
-                    <td>Webkit</td>
-                    <td>Safari 2.0</td>
-                    <td>OSX.4+</td>
-                    <td>419.3</td>
-                    
-                  </tr>
-                  <tr>
-                    <td>Webkit</td>
-                    <td>Safari 3.0</td>
-                    <td>OSX.4+</td>
-                    <td>522.1</td>
-                    
-                  </tr>
-                  <tr>
-                    <td>Webkit</td>
-                    <td>OmniWeb 5.5</td>
-                    <td>OSX.4+</td>
-                    <td>420</td>
-                    
-                  </tr>
-                  <tr>
-                    <td>Webkit</td>
-                    <td>iPod Touch / iPhone</td>
-                    <td>iPod</td>
-                    <td>420.1</td>
-                    
-                  </tr>
-                  <tr>
-                    <td>Webkit</td>
-                    <td>S60</td>
-                    <td>S60</td>
-                    <td>413</td>
-                    
-                  </tr>
-                  <tr>
-                    <td>Presto</td>
-                    <td>Opera 7.0</td>
-                    <td>Win 95+ / OSX.1+</td>
-                    <td>-</td>
-                    
-                  </tr>
-                  <tr>
-                    <td>Presto</td>
-                    <td>Opera 7.5</td>
-                    <td>Win 95+ / OSX.2+</td>
-                    <td>-</td>
-                    
-                  </tr>
-                  <tr>
-                    <td>Presto</td>
-                    <td>Opera 8.0</td>
-                    <td>Win 95+ / OSX.2+</td>
-                    <td>-</td>
-                    
-                  </tr>
-                  <tr>
-                    <td>Presto</td>
-                    <td>Opera 8.5</td>
-                    <td>Win 95+ / OSX.2+</td>
-                    <td>-</td>
-                    
-                  </tr>
-                  <tr>
-                    <td>Presto</td>
-                    <td>Opera 9.0</td>
-                    <td>Win 95+ / OSX.3+</td>
-                    <td>-</td>
-                    
-                  </tr>
-                  <tr>
-                    <td>Presto</td>
-                    <td>Opera 9.2</td>
-                    <td>Win 88+ / OSX.3+</td>
-                    <td>-</td>
-                    
-                  </tr>
-                  <tr>
-                    <td>Presto</td>
-                    <td>Opera 9.5</td>
-                    <td>Win 88+ / OSX.3+</td>
-                    <td>-</td>
-                    
-                  </tr>
-                  <tr>
-                    <td>Presto</td>
-                    <td>Opera for Wii</td>
-                    <td>Wii</td>
-                    <td>-</td>
-                    
-                  </tr>
-                  <tr>
-                    <td>Presto</td>
-                    <td>Nokia N800</td>
-                    <td>N800</td>
-                    <td>-</td>
-                    
-                  </tr>
-                  <tr>
-                    <td>Presto</td>
-                    <td>Nintendo DS browser</td>
-                    <td>Nintendo DS</td>
-                    <td>8.5</td>
-                    <td>C/A<sup>1</sup></td>
-                  </tr>
-                  <tr>
-                    <td>KHTML</td>
-                    <td>Konqureror 3.1</td>
-                    <td>KDE 3.1</td>
-                    <td>3.1</td>
-                    
-                  </tr>
-                  <tr>
-                    <td>KHTML</td>
-                    <td>Konqureror 3.3</td>
-                    <td>KDE 3.3</td>
-                    <td>3.3</td>
-                    
-                  </tr>
-                  <tr>
-                    <td>KHTML</td>
-                    <td>Konqureror 3.5</td>
-                    <td>KDE 3.5</td>
-                    <td>3.5</td>
-                    
-                  </tr>
-                  <tr>
-                    <td>Tasman</td>
-                    <td>Internet Explorer 4.5</td>
-                    <td>Mac OS 8-9</td>
-                    <td>-</td>
-                    
-                  </tr>
-                  <tr>
-                    <td>Tasman</td>
-                    <td>Internet Explorer 5.1</td>
-                    <td>Mac OS 7.6-9</td>
-                    <td>1</td>
-                    
-                  </tr>
-                  <tr>
-                    <td>Tasman</td>
-                    <td>Internet Explorer 5.2</td>
-                    <td>Mac OS 8-X</td>
-                    <td>1</td>
-                    
-                  </tr>
-                  <tr>
-                    <td>Misc</td>
-                    <td>NetFront 3.1</td>
-                    <td>Embedded devices</td>
-                    <td>-</td>
-                    
-                  </tr>
-                  <tr>
-                    <td>Misc</td>
-                    <td>NetFront 3.4</td>
-                    <td>Embedded devices</td>
-                    <td>-</td>
-                    
-                  </tr>
-                  <tr>
-                    <td>Misc</td>
-                    <td>Dillo 0.8</td>
-                    <td>Embedded devices</td>
-                    <td>-</td>
-                    
-                  </tr>
-                  <tr>
-                    <td>Misc</td>
-                    <td>Links</td>
-                    <td>Text only</td>
-                    <td>-</td>
-                    
-                  </tr>
-                  <tr>
-                    <td>Misc</td>
-                    <td>Lynx</td>
-                    <td>Text only</td>
-                    <td>-</td>
-                    
-                  </tr>
-                  <tr>
-                    <td>Misc</td>
-                    <td>IE Mobile</td>
-                    <td>Windows Mobile 6</td>
-                    <td>-</td>
-                    
-                  </tr>
-                  <tr>
-                    <td>Misc</td>
-                    <td>PSP browser</td>
-                    <td>PSP</td>
-                    <td>-</td>
-                    
-                  </tr>
-                  <tr>
-                    <td>Other browsers</td>
-                    <td>All others</td>
-                    <td>-</td>
-                    <td>-</td>
-                  </tr>
-                  </tbody>
-                  <tfoot>
-                  <tr>
-                    <th>Nomor & tanggal surat</th>
-                    <th>Jenis Surat</th>
-                    <th>NIK & Nama</th>
-                    <th>Action</th>
-                  </tr>
-                  </tfoot>
-                </table>
-              </div>
+          <div class="card-body">
+            <table id="example1" class="table table-bordered table-striped">
+              <thead>
+                <tr>
+                  <th>Nama Kepala Keluarga</th>
+                  <th>Nomor KK</th>
+                  <th>NIK</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Nazarudin Latif</td>
+                  <td>4235678198273562
+                  </td><td>3205171701940002</td>
+                  <td><a href="#" class="btn btn-sm btn-success">Detail</a> <a href="#" class="btn btn-sm btn-warning">Edit</a> </td>
+
+                </tr>
+                <tr>
+                  <td>Nazarudin Latif</td>
+                  <td>4235678198273562
+                  </td><td>3205171701940002</td>
+                  <td> <a href="#" class="btn btn-sm btn-success">Detail</a> <a href="#" class="btn btn-sm btn-warning">Edit</a></td>
+
+                </tr>
+                <tr>
+                  <td>Nazarudin Latif</td>
+                  <td>4235678198273562
+                  </td><td>3205171701940002</td>
+                  <td><a href="#" class="btn btn-sm btn-success">Detail</a> <a href="#" class="btn btn-sm btn-warning">Edit</a></td>
+
+                </tr>
+               
+              
+             
+              </tbody>
+           <!--    <tfoot>
+                <tr>
+                  <th>Nama Kepala Keluarga</th>
+                  <th>Nomor KK</th>
+                  <th>NIK</th>
+                  <th>Action</th>
+                </tr>
+              </tfoot> -->
+            </table>
+          </div>
 
 
 
@@ -527,13 +149,13 @@
                       <div class="col-sm-3">
                         <div class="form-group">
                           <label>No.KK</label>
-                          <input type="text" class="form-control-sm form-control" placeholder="No Kartu Keluarga" name="nokk" >
+                          <input type="text" class="form-control-sm form-control" placeholder="No Kartu Keluarga"  name="nokk" data-inputmask="'mask': '9999 9999 9999 9999'">
                         </div>
                       </div>
                       <div class="col-sm-3">
                         <div class="form-group">
                           <label>NIK</label>
-                          <input type="text" class="form-control-sm form-control" placeholder="No Induk Kependudukan" name="nik" >
+                          <input type="text" id="nik" class="form-control-sm form-control" placeholder="No Induk Kependudukan" name="nik" >
                         </div>
                       </div>
                     </div>
@@ -542,14 +164,14 @@
                         <!-- text input -->
                         <div class="form-group">
                           <label>Tempat Lahir</label>
-                          <input type="text" class="form-control-sm form-control" placeholder="Tempat Lahir" name="tempatlahir">
+                          <input type="text" class="form-control-sm form-control" placeholder="Contoh : Garut" name="tempatlahir">
                         </div>
                       </div>
                       <div class="col-sm-6">
                         <div class="form-group ">
                          <label>Tnggal Lahir</label>
                          <div class="input-group date  " id="datetimepicker1" data-target-input="nearest">
-                          <input type="text" class="form-control-sm form-control datetimepicker-input" data-target="#datetimepicker1"/>
+                          <input type="text" class="form-control-sm form-control datetimepicker-input" placeholder="dd/mm/yyyy" data-target="#datetimepicker1"/>
                           <div class="input-group-append" data-target="#datetimepicker1" data-toggle="datetimepicker">
                             <div class="input-group-text"><i class="fa fa-calendar"></i></div>
                           </div>
@@ -559,13 +181,25 @@
                     
                   </div>
                   <div class="row">
-                    <div class="col-sm-6">
+                    <div class="col-sm-5">
                       <div class=" form-group ">
                         <label>Alamat Keluarga</label>
-                        <input type="text" class="form-control-sm form-control" placeholder="Alamat Keluarga" name="alamatkel">
+                        <input type="text" class="form-control-sm form-control" placeholder="Contoh : Kp.Situgitrang" name="alamatkel">
                       </div>
                     </div>
-                    <div class="col-sm-6">
+                    <div class="col-sm-2">
+                      <div class=" form-group ">
+                        <label>RT</label>
+                        <input type="text" id="rt" class="form-control-sm form-control" placeholder="Contoh : 06" name="RT">
+                      </div>
+                    </div>
+                    <div class="col-sm-2">
+                      <div class=" form-group ">
+                        <label>RW</label>
+                        <input type="text" id="rw" class="form-control-sm form-control" placeholder="Contoh : 03" name="RW">
+                      </div>
+                    </div>
+                    <div class="col-sm-3">
                       <div class=" form-group ">
                         <label>Golongan Darah</label>
                         <select class=" form-control-sm form-control" name="goldarah">
@@ -579,23 +213,61 @@
                     </div>
                   </div>
                   <div class="row">
-                   <div class="col-sm-6">
+                   <div class="col-sm-4">
                     <!-- text input -->
                     <div class="form-group">
                       <label>Pendidikan Terakhir</label>
-                      <input type="text" class="form-control-sm form-control" placeholder="Pendidikan Terakhir" name="pendterakhir">
+                      <select class=" form-control-sm form-control" name="pendterakhir" >
+                        <option>Pilih..</option>
+                        <option value="Tidak Sekolah">Tidak Sekolah</option>
+                        <option value="SD">SD</option>
+                        <option value="SMP/Sederajat">SMP/Sederajat</option>
+                        <option value="SMA/Sederajat">SMA/Sederajat</option>
+                        <option value="D1">D1</option>
+                        <option value="D2">D2</option>
+                        <option value="D3">D3</option>
+                        <option value="S1">S1</option>
+                        <option value="S2">S2</option>
+                        <option value="S3">S3</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="col-sm-2">
+                    <div class=" form-group ">
+                      <label>Agama</label>
+                      <input type="text" class="form-control-sm form-control" placeholder="Contoh : Islam" name="agama">
                     </div>
                   </div>
                   <div class="col-sm-3">
-                    <div class="form-group">
+                    <div class="form-group" >
                       <label>Pekerjaan</label>
-                      <input type="text" class="form-control-sm form-control" placeholder="Pekerjaan" name="pekerjaan">
+                      <select class=" form-control-sm form-control" name="pekerjaan" id="pekerjaan" onchange="funcpekerjaan()" >
+                        <option>Pilih..</option>
+                        <option value="Tidak Bekerja">Tidak Bekerja</option>
+                        <option value="PNS">PNS</option>
+                        <option value="TNI/POLRI">TNI/POLRI</option>
+                        <option value="Pensiunan">Pensiunan</option>
+                        <option value="Karyawan Swasta">Karyawan Swasta</option>
+                        <option value="Wiraswasta">Wiraswasta</option>
+                        <option value="Petani">Petani</option>
+                        <option value="Sopir">Sopir</option>
+                        <option value="Buruh Harian Lepas">Buruh Harian Lepas</option>
+                        <option value="Buruh Tani">Buruh Tani</option>
+                        <option value="Tukang Banguna">Tukang Banguna</option>
+                        <option value="Pedagang">Pedagang</option>
+                        <option value="Pelajar">Pelajar</option>
+                        <option value="Ibu Rumah tangga">Ibu Rumah tangga</option>
+                        <option value="Lain-lain">Lain-lain</option>
+                      </select>
                     </div>
+                  </div>
+                  <div class="col-sm-3 d-none" id="idjenispekerjaan">
+
                   </div>
                   <div class="col-sm-3">
                     <div class="form-group">
                       <label>Tlp.WA</label>
-                      <input type="text" class="form-control-sm form-control Phone"  placeholder="Nomor tlp/wa" name="tlp">
+                      <input type="text" id="phone" class="form-control-sm form-control "  placeholder="Contoh : 081224207149" name="tlp">
                     </div>
                   </div>
                 </div>
@@ -639,7 +311,7 @@
                     <div class="form-group ">
                      <label>Tnggal Lahir</label>
                      <div class="input-group date datetimepicker2" id="datetimepicker2" data-target-input="nearest">
-                      <input type="text" class="form-control-sm form-control datetimepicker-input" data-target=".datetimepicker2"/>
+                      <input type="text" class="form-control-sm form-control datetimepicker-input" data-inputmask="'alias': 'datetime'" data-target=".datetimepicker2"/>
                       <div class="input-group-append" data-target="#datetimepicker2" data-toggle="datetimepicker">
                         <div class="input-group-text"><i class="fa fa-calendar"></i></div>
                       </div>
@@ -676,7 +348,7 @@
               <div class="col-sm-3">
                 <div class="form-group">
                   <label>Tlp.WA</label>
-                  <input type="text" class="form-control-sm form-control" placeholder="Enter ..." >
+                  <input type="text"  class="form-control-sm form-control" placeholder="Enter ..." >
                 </div>
               </div>
 
@@ -685,48 +357,40 @@
           <div class="tab">
 
             <div class="row">
-              <div class="col-sm-3">
-                <!-- text input -->
-                <div class="form-group">
-                  <label>Kepemilikan Rumah</label>
-                  <select class="form-control-sm form-control">
-                    <option>Pilih..</option>
-                    <option>Milik Sendiri</option>
-                    <option>Turut Orang Tua</option>
-                    <option>Kontrak/Sewa</option>
-                  </select>
-                </div>
+             <div class="col-sm-3">
+              <div class="form-group">
+                <label>Jenis Bantuan</label>
+                <select class="select2" multiple="multiple" data-placeholder="Pilih.." style="width: 100%;">
+                  <option value="Tidak Ada Bantuan">Tidak Ada Bantuan</option>
+                  <option value="PKH">PKH</option>
+                  <option value="BPNT">BPNT</option>
+                  <option value="BLTDD">BLTDD</option>
+                </select>
               </div>
-              <div class="col-sm-3">
-                <div class="form-group">
-                  <label>Jenis Rumah</label>
-                  <select class="form-control-sm form-control">
-                    <option>Pilih..</option>
-                    <option>Permanen</option>
-                    <option>Semi permanen</option>
-                    <option>Bilik</option>
-                    <option>Lainnya</option>
-                  </select>
-                </div>
-              </div>
-              <div class="col-sm-3">
-                <div class="form-group">
-                  <label>Pekarangan Rumah</label>
-                  <select class="form-control-sm form-control" id="pekarangan">
-                   <option >Pilih..</option>
-                   <option value="ada">Ada</option>
-                   <option value="tidak">Tidak</option>
-                 </select>
-               </div>
-             </div>
-             <div class="col-sm-3 d-none" id="demo">
-
-             </div>
-             <div class="col-sm-3 d-none"  id="demo2">
-             </div>
-             <div class="col-sm-3 d-none" id="jenstnman">
+            </div>
+            <div class="col-sm-3">
               <!-- text input -->
-
+              <div class="form-group">
+                <label>Kepemilikan Rumah</label>
+                <select class="form-control-sm form-control">
+                  <option>Pilih..</option>
+                  <option>Milik Sendiri</option>
+                  <option>Turut Orang Tua</option>
+                  <option>Kontrak/Sewa</option>
+                </select>
+              </div>
+            </div>
+            <div class="col-sm-3">
+              <div class="form-group">
+                <label>Jenis Rumah</label>
+                <select class="form-control-sm form-control">
+                  <option>Pilih..</option>
+                  <option>Permanen</option>
+                  <option>Semi permanen</option>
+                  <option>Bilik</option>
+                  <option>Lainnya</option>
+                </select>
+              </div>
             </div>
             <div class="col-sm-3">
               <div class="form-group">
@@ -741,6 +405,36 @@
            </div>
            <div class="col-sm-3">
             <div class="form-group">
+              <label>Pekarangan Rumah</label>
+              <select class="form-control-sm form-control" id="pekarangan">
+               <option >Pilih..</option>
+               <option value="ada">Ada</option>
+               <option value="tidak">Tidak</option>
+             </select>
+           </div>
+         </div>
+         <div class="col-sm-3 d-none" id="demo">
+
+         </div>
+         <div class="col-sm-3 d-none"  id="demo2">
+         </div>
+         <div class="col-sm-3 d-none" id="jenstnman">
+          <!-- text input -->
+
+        </div>
+          <!--   <div class="col-sm-3">
+              <div class="form-group">
+                <label>Bukti Kepemilikan</label>
+                <select class="form-control-sm form-control">
+                 <option >Pilih..</option>
+                 <option value="ada">Sertifikat Rumah</option>
+                 <option value="tidak">Akta Jual Beli</option>
+                 <option value="tidak">Lain-lain</option>
+               </select>
+             </div>
+           </div> -->
+           <div class="col-sm-3">
+            <div class="form-group">
               <label>Listrik dan Telepon</label>
               <select class="form-control-sm form-control">
                <option >Pilih..</option>
@@ -753,200 +447,204 @@
          <div class="col-sm-3">
           <div class="form-group">
             <label>Besar KWH</label>
-            <input type="text" class="form-control-sm form-control" placeholder="Enter ..." >
-          </div>
-        </div>
-        <div class="col-sm-3">
-          <div class="form-group">
-            <label>Listrik/Bulan</label>
-            <input type="text" class="form-control-sm form-control" placeholder="Enter ..." >
-          </div>
-        </div>
-        <div class="col-sm-3">
-          <div class="form-group">
-            <label><small>Kuota/pulsa keluarga / bulan</small></label>
-            <input type="text" class="form-control-sm form-control" placeholder="Enter ..." >
-          </div>
-        </div>
-        <div class="col-sm-3">
-          <div class="form-group">
-            <label><small>Sumber Air Bersih</small></label>
-            <select class="form-control-sm form-control"  onchange="pdam()" id="pdamid">
-              <option >Pilih..</option>
-              <option value="PDAM">PDAM</option>
-              <option value="Sumur">Sumur</option>
-              <option value="MCK Umum">MCK Umum</option>
-              <option value="Sumber Air Lain">Sumber Air Lain</option>
-            </select>
-          </div>
-        </div>
-        <div class="col-sm-3" id="byarpdam">
-
+            <select class="form-control-sm form-control">
+             <option >Pilih..</option>
+             <option value="450W">450W</option>
+             <option value="900W">900W</option>
+             <option value="1300W">1300W</option>
+             <option value="2200W">2200W</option>
+           </select>
+         </div>
+       </div>
+       <div class="col-sm-3">
+        <div class="form-group">
+          <label>Biaya Listrik/Bulan</label>
+          <input type="number" class="form-control-sm form-control" placeholder="Contoh : 300000" >
         </div>
       </div>
-
-
-
-    </div>
-    <div class="tab">
-     <div class="row">
-      <div class="col-sm-6">
-        <!-- text input -->
+      <div class="col-sm-3">
         <div class="form-group">
-          <label>Rata-rata Konsumsi Beras / Bulan</label>
-          <input type="text" class="form-control-sm form-control" placeholder="Nama Kepala Keluarga" name="namakk">
+          <label><small>Kuota/pulsa keluarga / bulan</small></label>
+          <input type="number" class="form-control-sm form-control" placeholder="Contoh : 500000" >
         </div>
       </div>
-      <div class="col-sm-6">
+      <div class="col-sm-3">
         <div class="form-group">
-          <label>Stok Beras</label>
-          <select class="form-control-sm form-control">
+          <label><small>Sumber Air Bersih</small></label>
+          <select class="form-control-sm form-control"  onchange="pdam()" id="pdamid">
             <option >Pilih..</option>
-            <option value="PDAM">Ada</option>
-            <option value="Sumur">Tidak</option>
+            <option value="PDAM">PDAM</option>
+            <option value="Sumur">Sumur</option>
+            <option value="MCK Umum">MCK Umum</option>
+            <option value="Sumber Air Lain">Sumber Air Lain</option>
           </select>
         </div>
       </div>
+      <div class="col-sm-3" id="byarpdam">
 
-    </div>
-    <div class="row">
-     <div class="col-sm-6">
-      <div class="form-group">
-        <label>Rata-rata Minyak Goreng / Bulan</label>
-        <input type="text" class="form-control-sm form-control" placeholder="No Induk Kependudukan" name="nik" >
       </div>
     </div>
+
+
+
+  </div>
+  <div class="tab">
+   <div class="row">
     <div class="col-sm-6">
       <!-- text input -->
       <div class="form-group">
-        <label>Jenis Minyak</label>
-        <select class="form-control-sm form-control">
-          <option >Pilih..</option>
-          <option value="PDAM">Kemasan</option>
-          <option value="Sumur">Curah</option>
-        </select>
-      </div>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-sm-6">
-      <div class="form-group">
-        <label>Rata-rata Gula Pasir / Bulan</label>
-        <input type="text" class="form-control-sm form-control" placeholder="No Kartu Keluarga" name="nokk" >
+        <label>Rata-rata Konsumsi Beras / Bulan</label>
+        <input type="number" class="form-control-sm form-control" placeholder="Contoh : 20" name="beras">
       </div>
     </div>
     <div class="col-sm-6">
       <div class="form-group">
-        <label>Stok Gula</label>
-        <select class="form-control-sm form-control">
+        <label>Stok Beras</label>
+        <select class="form-control-sm form-control" name="stok_beras">
           <option >Pilih..</option>
           <option value="PDAM">Ada</option>
           <option value="Sumur">Tidak</option>
         </select>
       </div>
     </div>
-  </div>
-  <div class="row">
-    <div class="col-sm-6">
-      <div class="form-group">
-        <label>Rata-rata Telur / Bulan</label>
-        <input type="text" class="form-control-sm form-control" placeholder="No Kartu Keluarga" name="nokk" >
-      </div>
-    </div>
-    <div class="col-sm-6">
-      <div class="form-group">
-        <label>Stok Gula</label>
-        <select class="form-control-sm form-control">
-          <option >Pilih..</option>
-          <option value="PDAM">Ada</option>
-          <option value="Sumur">Tidak</option>
-        </select>
-      </div>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-sm-6">
-      <div class="form-group">
-        <label>Rata-rata Daging/ Bulan</label>
-        <input type="text" class="form-control-sm form-control" placeholder="No Kartu Keluarga" name="nokk" >
-      </div>
-    </div>
-    <div class="col-sm-6">
-      <div class="form-group">
-        <label>Stok Daging<small></label>
-          <select class="form-control-sm form-control">
-            <option >Pilih..</option>
-            <option value="PDAM">Ada</option>
-            <option value="Sumur">Tidak</option>
-          </select>
-        </div>
-      </div>
 
-    </div>
-    <div class="row">
-      <div class="col-sm-6">
-        <div class="form-group">
-          <label>Rata-rata Daging/ Bulan</label>
-          <input type="text" class="form-control-sm form-control" placeholder="No Kartu Keluarga" name="nokk" >
-        </div>
-      </div>
-      <div class="col-sm-6">
-        <div class="form-group">
-          <label>Stok Daging</label>
-          <select class="form-control-sm form-control">
-            <option >Pilih..</option>
-            <option value="PDAM">Ada</option>
-            <option value="Sumur">Tidak</option>
-          </select>
-        </div>
-      </div>
-      
+  </div>
+  <div class="row">
+   <div class="col-sm-6">
+    <div class="form-group">
+      <label>Rata-rata Minyak Goreng / Bulan</label>
+      <input type="number" class="form-control-sm form-control" placeholder="Contoh : 30" name="minyak" >
     </div>
   </div>
-  <div class="tab">
-    <div class="row">
-      <div class="col-sm-3">
-        <div class="form-group">
-          <label>Jenis Lahan</label>
-          <select class="form-control-sm form-control">
-            <option >Pilih..</option>
-            <option value="PDAM">Sawah</option>
-            <option value="PDAM">Tegalan</option>
-            <option value="Sumur">Ladang</option>
-            <option value="Sumur">Kolam Ikan</option>
-          </select>
-        </div>
+  <div class="col-sm-6">
+    <!-- text input -->
+    <div class="form-group">
+      <label>Jenis Minyak</label>
+      <select class="form-control-sm form-control" name="jenis_minyak">
+        <option >Pilih..</option>
+        <option value="PDAM">Kemasan</option>
+        <option value="Sumur">Curah</option>
+      </select>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-sm-6">
+    <div class="form-group">
+      <label>Rata-rata Gula Pasir / Bulan</label>
+      <input type="number" class="form-control-sm form-control" placeholder="Contoh : 4" name="gula" >
+    </div>
+  </div>
+  <div class="col-sm-6">
+    <div class="form-group">
+      <label>Stok Gula</label>
+      <select class="form-control-sm form-control" name="stok_gula">
+        <option >Pilih..</option>
+        <option value="PDAM">Ada</option>
+        <option value="Sumur">Tidak</option>
+      </select>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-sm-6">
+    <div class="form-group">
+      <label>Rata-rata Telur / Bulan</label>
+      <input type="number" class="form-control-sm form-control" placeholder="Contoh : 5" name="telur" >
+    </div>
+  </div>
+  <div class="col-sm-6">
+    <div class="form-group" name>
+      <label>Stok Gula</label>
+      <select class="form-control-sm form-control" name="stok_telur">
+        <option >Pilih..</option>
+        <option value="PDAM">Ada</option>
+        <option value="Sumur">Tidak</option>
+      </select>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-sm-6">
+    <div class="form-group">
+      <label>Rata-rata Daging/ Bulan</label>
+      <input type="number" class="form-control-sm form-control" placeholder="Contoh : 6" name="daging" >
+    </div>
+  </div>
+  <div class="col-sm-6">
+    <div class="form-group">
+      <label>Stok Daging<small></label>
+        <select class="form-control-sm form-control" name="stok_daging">
+          <option >Pilih..</option>
+          <option value="PDAM">Ada</option>
+          <option value="Sumur">Tidak</option>
+        </select>
       </div>
+    </div>
+
+  </div>
+</div>
+<div class="tab">
+   <label>Jenis Lahan</label>
+ <div class="row">
+ <div class="col-sm-3">
+  <div class="form-group">
+    <label>Sawah</label>
+    <input type="text" class="form-control-sm form-control" placeholder="Contoh : " name="sawah">
+  </div>
+</div>
+ <div class="col-sm-3">
+  <div class="form-group">
+    <label>Ladang</label>
+    <input type="text" class="form-control-sm form-control" placeholder="Contoh : " >
+  </div>
+</div>
+ <div class="col-sm-3">
+  <div class="form-group">
+    <label>Tegalan</label>
+    <input type="text" class="form-control-sm form-control" placeholder="Contoh : " >
+  </div>
+</div>
+    <div class="col-sm-3">
+  <div class="form-group">
+    <label>Kolam Ikan</label>
+    <input type="text" class="form-control-sm form-control" placeholder="Contoh : " >
+  </div>
+</div>
+ </div>
+ <div class="row">
+   
       <div class="col-sm-4">
         <div class="form-group">
           <label>Jenis Tanaman yang dibudidayakan</label>
-          <input type="text" class="form-control-sm form-control" placeholder="Enter ..." >
+          <input type="text" class="form-control-sm form-control" placeholder="Contoh : Ubi" >
         </div>
       </div>
       <div class="col-sm-4">
         <div class="form-group">
           <label>Jenis Ternak yang dibudidayakan</label>
-          <input type="text" class="form-control-sm form-control" placeholder="Enter ..." >
+          <input type="text" class="form-control-sm form-control" placeholder="Contoh : Kambing" >
         </div>
       </div>
-    </div>
-    <label>Data UMKM</label>
-    <div class="row">
-      <div class="col-sm-3">
-        <div class="form-group">
-          <label>Kepemilikan Warung / Toko</label>
-          <select class="form-control-sm form-control" onchange="toko()" id="tokoid">
-            <option >Pilih..</option>
-            <option value="ada">Ada</option>
-            <option value="tidak">Tidak</option>
-          </select>
+ </div>
+
+      <label>Data UMKM/Industri Kreatif</label>
+      <div class="row">
+        <div class="col-sm-3">
+          <div class="form-group">
+            <label>UMKM/Industri Kreatif</label>
+            <select class="form-control-sm form-control" onchange="toko()" id="tokoid">
+              <option >Pilih..</option>
+              <option value="ada">Ada</option>
+              <option value="tidak">Tidak</option>
+            </select>
+          </div>
         </div>
-      </div>
-      <div class="row" id="idjenistoko">
-      
-    </div>
-     
-      <div class="col-sm-3">
+        <div class="row" id="idjenistoko">
+
+        </div>
+
+    <!--   <div class="col-sm-3">
         <div class="form-group">
           <label>Jenis Produksi Rumahan</label>
           <input type="text" class="form-control-sm form-control" placeholder="Enter ..." >
@@ -964,14 +662,14 @@
           <label>Bahan Baku Produksi</label>
           <input type="text" class="form-control-sm form-control" placeholder="Enter ..." >
         </div>
-      </div>
+      </div> -->
     </div>
   </div>
   <div style="overflow:auto;">
     <div style="float:right; margin-top: 5px;">
-      <button type="button" class="previous">Previous</button>
-      <button type="button" class="next">Next</button>
-      <button type="button" class="submit">Submit</button>
+      <button type="button" class="previous">Kembali</button>
+      <button type="button" class="next">Selanjutnya</button>
+      <button type="button" class="submit">Selesai</button>
     </div>
   </div>
   <!-- Circles which indicates the steps of the form: -->
@@ -1004,7 +702,7 @@
   <!-- Control sidebar content goes here -->
 </aside>
 <!-- /.control-sidebar -->
-<!-- </div> -->
+</div>
 <!-- ./wrapper -->
 
 <!-- jQuery -->
@@ -1033,7 +731,7 @@
 <!-- AdminLTE App -->
 <script src="<?php echo base_url() ?>template/dist/js/adminlte.min.js"></script>
 <!-- AdminLTE for demo purposes -->
-<script src="<?php echo base_url() ?>template/dist/js/demo.js"></script>
+<!-- <script src="<?php echo base_url() ?>template/dist/js/demo.js"></script> -->
 
 <script src="<?php echo base_url() ?>template/plugins/datatables/jquery.dataTables.min.js"></script>
 <script src="<?php echo base_url() ?>template/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
@@ -1053,6 +751,12 @@
 <script type="text/javascript" src="<?php echo base_url() ?>assets/js/multi-form.js?v2"></script>
 <script type="text/javascript">
   $(document).ready(function(){
+$(":input").inputmask();
+$("#nik").inputmask({"mask": "9999 9999 9999 9999"});
+$("#phone").inputmask({"mask": "9999 99 999 999"});
+$("#rt").inputmask({"mask": "99"});
+$("#rw").inputmask({"mask": "99"});
+
     $.validator.addMethod('date', function(value, element, param) {
       return (value != 0) && (value <= 31) && (value == parseInt(value, 10));
     }, 'Please enter a valid date!');
@@ -1078,12 +782,11 @@
             // goldarah:"required",
             // pendterakhir:"required",
             // pekerjaan:"required",
-            // tlp:"required",
+            // tlp:{
+            //    required:true,
+            // },
             // nik:{
             //   required:true,
-            //   minlength:16,
-            //   maxlength:16,
-            //   digits:true
 
             // },
             email: {
@@ -1092,8 +795,8 @@
             },
             phone: {
               required:true,
-              minlength:10,
-              maxlength:10,
+              minlength:12,
+              maxlength:12,
               digits:true
             },
             date:{
@@ -1141,15 +844,18 @@
             goldarah:"Wajib di isi !",
             pendterakhir:"Wajib di isi !",
             pekerjaan:"Wajib di isi !",
-            tlp:"Wajib di isi !",
+            
             nik:{
-              required:"Wajib di isi !",
+              required:   "Wajib diisi!",
+              minlength:  "masukan minimal 16 nomor",
+              maxlength:  "masukan maks 16 nomor",
+              digits:   "hanya masukan nomor"
             },
-            phone:{
-              required:   "Phone number is requied",
-              minlength:  "Please enter 10 digit mobile number",
-              maxlength:  "Please enter 10 digit mobile number",
-              digits:   "Only numbers are allowed in this field"
+            tlp:{
+              required:   "Wajib diisi!",
+              // minlength:  "masukan maks 12 nomor",
+              // maxlength:  "masukan maks 12 nomor",
+              // digits:   "Only numbers are allowed in this field"
             },
             date:{
               required:   "Date is required",
@@ -1197,7 +903,6 @@
     </script>
 
     <script type="text/javascript">
-
 
       function tambahform(){
 
@@ -1274,36 +979,22 @@
       console.log(idpdam);
     }
 
-        function toko(){
+    function toko(){
       let idtoko =document.getElementById('tokoid').value;
       var xxs = document.getElementById("idjenistoko");
       if (idtoko =="ada") {
         xxs.classList.remove("d-none");
         document.getElementById("idjenistoko").innerHTML = `  <div class="col-sm-6"> <div class="form-group">
-          <label>Jenis Warung/Toko</label>
-          <select class="form-control-sm form-control">
-            <option >Pilih..</option>
-            <option value="PDAM">Sembako</option>
-            <option value="PDAM">Warung Kopi</option>
-            <option value="PDAM">Gorengan</option>
-            <option value="PDAM">Pulsa</option>
-            <option value="PDAM">Toko Bangunan</option>
-            <option value="PDAM">Kuliner</option>
-            <option value="PDAM">Bengkel</option>
-            <option value="PDAM">Gas</option>
-            <option value="PDAM">Gas</option>
-            <option value="PDAM">BBM</option>
-            <option value="PDAM">Rumah Makan</option>
-            <option value="PDAM">Lain-lain</option>
-          </select>
+        <label>Jenis</label>
+        <input type="text" class="form-control-sm form-control" placeholder="Contoh : Rajut" >
         </div>
-      </div>
-      <div class="col-sm-6">
+        </div>
+        <div class="col-sm-6">
         <div class="form-group">
-          <label>Omset Perbulan</label>
-          <input type="text" class="form-control-sm form-control" placeholder="Enter ..." >
+        <label>Omset Perbulan</label>
+        <input type="text" class="form-control-sm form-control" placeholder="Contoh : 10000000" >
         </div>
-      </div>` ;
+        </div>` ;
       }else if(idtoko != "PDAM"){
         xxs.classList.add("d-none");
       }
@@ -1311,9 +1002,31 @@
       console.log(idtoko);
     }
 
-    $(function () {
 
-   $('#example1').DataTable({
+    function funcpekerjaan(){
+      let idpekerjaan =document.getElementById('pekerjaan').value;
+      var xxs = document.getElementById("idjenispekerjaan");
+      if (idpekerjaan =="Lain-lain") {
+        xxs.classList.remove("d-none");
+        document.getElementById("idjenispekerjaan").innerHTML = ` <div class="form-group">
+        <label><small>Masukan Nama Pekerjaan Anda</small></label>
+        <input type="text" class="form-control-sm form-control Phone"  placeholder="Contoh : Supir Angkot" name="pekerjaan">
+        </div>` ;
+      }else if(idpekerjaan != "Lain-lain"){
+        xxs.classList.add("d-none");
+      }
+
+      console.log(idpekerjaan);
+    }
+
+    $(function () {
+     $('.select2').select2()
+
+     $('.select2bs4').select2({
+      theme: 'bootstrap4'
+    })
+
+     $('#example1').DataTable({
       // "paging": true,
       // "lengthChange": false,
       // "searching": false,
@@ -1322,16 +1035,16 @@
       // "autoWidth": false,
       // "responsive": true,
     });
-      $('#datetimepicker1').datetimepicker({
-        format: 'L'
-      });
+     $('#datetimepicker1').datetimepicker({
+      format: 'L'
+    });
 
-      $('#datetimepicker2').datetimepicker({
-        format: 'L'
-      });
+     $('#datetimepicker2').datetimepicker({
+      format: 'L'
+    });
 
-    })
-  </script>
+   })
+ </script>
 </body>
 </html>
 

@@ -5,29 +5,9 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>AdminLTE 3 | Blank Page</title>
+  <title><?=$title_web?></title>
+  <?php $this->load->view('template/templatecss'); ?>
 
-  <!-- Google Font: Source Sans Pro -->
-   <!-- Google Font: Source Sans Pro -->
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
-  <!-- Font Awesome -->
-  <link rel="stylesheet" href="<?php echo base_url() ?>template/plugins/fontawesome-free/css/all.min.css">
-  <!-- Ionicons -->
-  <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
-  <!-- Tempusdominus Bootstrap 4 -->
-  <link rel="stylesheet" href="<?php echo base_url() ?>template/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css">
-  <!-- iCheck -->
-  <link rel="stylesheet" href="<?php echo base_url() ?>template/plugins/icheck-bootstrap/icheck-bootstrap.min.css">
-  <!-- JQVMap -->
-  <link rel="stylesheet" href="<?php echo base_url() ?>template/plugins/jqvmap/jqvmap.min.css">
-  <!-- Theme style -->
-  <link rel="stylesheet" href="<?php echo base_url() ?>template/dist/css/adminlte.min.css">
-  <!-- overlayScrollbars -->
-  <link rel="stylesheet" href="<?php echo base_url() ?>template/plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
-  <!-- Daterange picker -->
-  <link rel="stylesheet" href="<?php echo base_url() ?>template/plugins/daterangepicker/daterangepicker.css">
-  <!-- summernote -->
-  <link rel="stylesheet" href="<?php echo base_url() ?>template/plugins/summernote/summernote-bs4.min.css">
 </head>
 <body class="hold-transition sidebar-mini">
 <!-- Site wrapper -->
@@ -62,71 +42,101 @@
       <div class="container-fluid">
         <!-- Small boxes (Stat box) -->
         <div class="row">
-          <div class="col-lg-3 col-6">
+          <div class="col-lg-4 col-6">
             <!-- small box -->
             <div class="small-box bg-info">
               <div class="inner">
                 <h3>150</h3>
 
-                <p>Hari ini</p>
+                <p>Laki-laki</p>
               </div>
               <div class="icon">
-                <i class="ion ion-bag"></i>
+                <i class="ion ion-man"></i>
               </div>
               <!-- <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a> -->
             </div>
           </div>
           <!-- ./col -->
-          <div class="col-lg-3 col-6">
+          <div class="col-lg-4 col-6">
             <!-- small box -->
             <div class="small-box bg-success">
               <div class="inner">
                 <h3>53</h3>
 
-                <p>Minggu ini</p>
+                <p>Perempuan</p>
               </div>
               <div class="icon">
-                <i class="ion ion-stats-bars"></i>
+                <i class="ion ion-woman"></i>
               </div>
               <!-- <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a> -->
             </div>
           </div>
           <!-- ./col -->
-          <div class="col-lg-3 col-6">
+          <div class="col-lg-4 col-6">
             <!-- small box -->
             <div class="small-box bg-warning">
               <div class="inner">
                 <h3>44</h3>
 
-                <p>Bulan ini</p>
+                <p>Jumlah KK</p>
               </div>
               <div class="icon">
-                <i class="ion ion-person-add"></i>
+                <i class="ion ion-person"></i>
               </div>
               <!-- <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a> -->
             </div>
           </div>
           <!-- ./col -->
-          <div class="col-lg-3 col-6">
-            <!-- small box -->
-            <div class="small-box bg-danger">
-              <div class="inner">
-                <h3>65</h3>
+          
+          <!-- ./col -->
+        </div>
+        <div class="row">
+          <div class="col-md-6">
+             <div class="card card-danger">
+              <div class="card-header">
+                <h3 class="card-title">Dounut Chart</h3>
 
-                <p>Tahun ini</p>
+                <div class="card-tools">
+                  <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                    <i class="fas fa-minus"></i>
+                  </button>
+                  <button type="button" class="btn btn-tool" data-card-widget="remove">
+                    <i class="fas fa-times"></i>
+                  </button>
+                </div>
               </div>
-              <div class="icon">
-                <i class="ion ion-pie-graph"></i>
+              <div class="card-body">
+                <canvas id="donutChart" style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%;"></canvas>
               </div>
-              <!-- <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a> -->
             </div>
           </div>
-          <!-- ./col -->
+          <div class="col-md-6">
+              <div class="card card-success">
+              <div class="card-header">
+                <h3 class="card-title">10 Pekerjaan Terbanyak</h3>
+
+                <div class="card-tools">
+                  <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                    <i class="fas fa-minus"></i>
+                  </button>
+                  <button type="button" class="btn btn-tool" data-card-widget="remove">
+                    <i class="fas fa-times"></i>
+                  </button>
+                </div>
+              </div>
+              <div class="card-body">
+                <div class="chart">
+                  <canvas id="horizontalBarChartCanvas" style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%;"></canvas>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
   
         <!-- /.row (main row) -->
       </div><!-- /.container-fluid -->
     </section>
+
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
@@ -145,28 +155,8 @@
   <!-- /.control-sidebar -->
 </div>
 <!-- ./wrapper -->
+<?php $this->load->view('template/templatejs'); ?>
 
-<!-- jQuery -->
-<script src="<?php echo base_url() ?>template/plugins/jquery/jquery.min.js"></script>
-<!-- Bootstrap 4 -->
-<script src="<?php echo base_url() ?>template/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-<!-- AdminLTE App -->
-<script src="<?php echo base_url() ?>template/dist/js/adminlte.min.js"></script>
-<!-- AdminLTE for demo purposes -->
-<script src="<?php echo base_url() ?>template/dist/js/demo.js"></script>
-
-<script src="<?php echo base_url() ?>template/plugins/datatables/jquery.dataTables.min.js"></script>
-<script src="<?php echo base_url() ?>template/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
-<script src="<?php echo base_url() ?>template/plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
-<script src="<?php echo base_url() ?>template/plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
-<script src="<?php echo base_url() ?>template/plugins/datatables-buttons/js/dataTables.buttons.min.js"></script>
-<script src="<?php echo base_url() ?>template/plugins/datatables-buttons/js/buttons.bootstrap4.min.js"></script>
-<script src="<?php echo base_url() ?>template/plugins/jszip/jszip.min.js"></script>
-<script src="<?php echo base_url() ?>template/plugins/pdfmake/pdfmake.min.js"></script>
-<script src="<?php echo base_url() ?>template/plugins/pdfmake/vfs_fonts.js"></script>
-<script src="<?php echo base_url() ?>template/plugins/datatables-buttons/js/buttons.html5.min.js"></script>
-<script src="<?php echo base_url() ?>template/plugins/datatables-buttons/js/buttons.print.min.js"></script>
-<script src="<?php echo base_url() ?>template/plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
 <script>
   $(function () {
     // $("#example1").DataTable({
@@ -182,7 +172,111 @@
       // "autoWidth": false,
       // "responsive": true,
     });
+
+      var donutChartCanvas = $('#donutChart').get(0).getContext('2d')
+    var donutData        = {
+      labels: [
+          'Chrome',
+          'IE',
+          'FireFox',
+          'Safari',
+          'Opera',
+          'Navigator',
+      ],
+      datasets: [
+        {
+          data: [700,500,400,600,300,100],
+          backgroundColor : ['#f56954', '#00a65a', '#f39c12', '#00c0ef', '#3c8dbc', '#d2d6de'],
+        }
+      ]
+    }
+    var donutOptions     = {
+      maintainAspectRatio : false,
+      responsive : true,
+    }
+    //Create pie or douhnut chart
+    // You can switch between pie and douhnut using the method below.
+    new Chart(donutChartCanvas, {
+      type: 'doughnut',
+      data: donutData,
+      options: donutOptions
+    })
   });
+
+Chart.defaults.global.defaultFontFamily = "Lato";
+
+var horizontalBarChart = new Chart(horizontalBarChartCanvas, {
+   type: 'horizontalBar',
+   data: {
+      labels: ["Label 1", "Label 2", "Label 3", "Label 4", "Label 5", "Label 6", "Label 7", "Label 8", "Label 9", "Label 10"],
+      datasets: [{
+         data: [2000, 4000, 6000, 8000, 10000, 12000, 14000, 14000, 14000, 14000],
+         backgroundColor: ["#73BFB8", "#73BFB8", "#73BFB8", "#73BFB8", "#73BFB8", "#73BFB8", "#73BFB8", "#73BFB8", "#73BFB8", "#73BFB8"], 
+      }]
+   },
+   options: {
+      tooltips: {
+        enabled: false
+      },
+      responsive: true,
+      legend: {
+         display: false,
+         position: 'bottom',
+         fullWidth: true,
+         labels: {
+           boxWidth: 10,
+           padding: 50
+         }
+      },
+      scales: {
+         yAxes: [{
+           barPercentage: 0.75,
+           gridLines: {
+             display: true,
+             drawTicks: true,
+             drawOnChartArea: false
+           },
+           ticks: {
+             fontColor: '#555759',
+             fontFamily: 'Lato',
+             fontSize: 11
+           }
+            
+         }],
+         xAxes: [{
+             gridLines: {
+               display: true,
+               drawTicks: false,
+               tickMarkLength: 5,
+               drawBorder: false
+             },
+           ticks: {
+             padding: 5,
+             beginAtZero: true,
+             fontColor: '#555759',
+             fontFamily: 'Lato',
+             fontSize: 11,
+             callback: function(label, index, labels) {
+              return label/1000;
+             }
+               
+           },
+            scaleLabel: {
+              display: true,
+              padding: 10,
+              fontFamily: 'Lato',
+              fontColor: '#555759',
+              fontSize: 16,
+              fontStyle: 700,
+              labelString: 'Scale Label'
+            },
+           
+         }]
+      }
+   }
+});
+
+
 </script>
 </body>
 </html>

@@ -24,7 +24,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 |
 */
 // $config['base_url'] = 'http://localhost/sistem-desa';
-	$config['base_url'] = 'http://fc5a-114-5-215-153.ngrok.io/sistem-desa';
+	$config['base_url'] = 'http://2476-36-90-199-119.ngrok.io/sistem-desa';
 
 /*
 |--------------------------------------------------------------------------

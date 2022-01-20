@@ -13,9 +13,9 @@ class Penduduk extends CI_Controller {
 		// $this->load->model('M_anggota');
 		// $this->load->model('M_data');
 		// $this->load->library(array('cart'));
-		if($this->session->userdata('email') != true){
+		if($this->session->userdata('nama') != true){
 			// var_dump($this->session->userdata('login') );
-			redirect('auth');
+			redirect('penduduk/auth');
 		}
 
 	}
@@ -23,7 +23,7 @@ class Penduduk extends CI_Controller {
 	{
 		// die('xx');
 		
-
-		$this->load->view('penduduk/index.php');
+		$this->data['title_web'] = 'Dashboard';
+		$this->load->view('penduduk/index.php',$this->data);
 	}
 }

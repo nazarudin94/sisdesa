@@ -30,13 +30,13 @@
           <h1 ><b>Login</b>Page</h1>
       </div>
       <div class="card-body">
-          <p class="login-box-msg">Sign in to start your session</p>
+          <p class="login-box-msg">Silahkan Login</p>
           <?= $this->session->flashdata('message');?>
           <form method="POST" action="<?=base_url('penduduk/auth');?>">
             <div class="input-group mb-3">
              <input type="text" class="form-control "
-             id="email" name="email" 
-             placeholder="Email" value="<?= set_value('email'); ?>">
+             id="nama" name="nama" 
+             placeholder="username" value="<?= set_value('nama'); ?>">
              <?= form_error('email','<small class="text-danger pl-3">','</small>');?>
              <div class="input-group-append">
                 <div class="input-group-text">
