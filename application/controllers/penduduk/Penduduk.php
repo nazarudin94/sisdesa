@@ -26,4 +26,12 @@ class Penduduk extends CI_Controller {
 		$this->data['title_web'] = 'Dashboard';
 		$this->load->view('penduduk/index.php',$this->data);
 	}
+
+	public function detail()
+	{
+		// die('xx');
+		
+		$this->data['title_web'] = 'Detail Penduduk';
+		$this->load->view('penduduk/datapenduduk/v_detailpenduduk.php',$this->data);
+	}
 }
