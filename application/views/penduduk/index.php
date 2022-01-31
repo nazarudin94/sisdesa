@@ -1,8 +1,5 @@
 
-
-  <?php $this->load->view('template/templatecss'); ?>
-
-
+<?php $this->load->view('template/templatecss'); ?>
 <body class="hold-transition sidebar-mini">
 <!-- Site wrapper -->
 <div class="wrapper">
@@ -30,7 +27,6 @@
         </div>
       </div><!-- /.container-fluid -->
     </section>
-
     <!-- Main content -->
    <section class="content">
       <div class="container-fluid">
@@ -126,15 +122,12 @@
             </div>
           </div>
         </div>
-  
         <!-- /.row (main row) -->
       </div><!-- /.container-fluid -->
     </section>
-
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
-
   <footer class="main-footer">
     <div class="float-right d-none d-sm-block">
       <b>Version</b> 3.2.0-rc

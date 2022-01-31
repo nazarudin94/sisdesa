@@ -1,6 +1,5 @@
  
- <?php $this->load->view('template/templatecss'); ?>
-
+<?php $this->load->view('template/templatecss'); ?>
 
 <body class="hold-transition sidebar-mini">
   <!-- Site wrapper -->
@@ -37,41 +36,35 @@
        <div class="container-fluid">
         <div class="row "> 
           <div class="col-md-12 d-flex justify-content-end">
-            <button type="button" class="btn btn-sm  btn-primary" data-toggle="modal" data-target="#exampleModal"> Tambah Data</button>
+            <a href="<?php echo base_url() ?>penduduk/datapenduduk/exportall" class="btn btn-sm  btn-success">Export all to excel</a>
+            <button type="button" class="btn btn-sm  btn-primary" data-toggle="modal" data-target="#exampleModal"> Tambah Data</button> 
           </div> </div> <!-- Modal -->
-           <div class="card mt-2">
-          <div class="card-body">
-            <table id="example1" class="table table-bordered table-striped">
-              <thead>
-                <tr>
-                  <th>Nama Kepala Keluarga</th>
-                  <th>Nomor KK</th>
-                  <th>NIK</th>
-                  <th>Action</th>
-                </tr>
-              </thead>
-              <tbody>
+          <div class="card mt-2">
+            <div class="card-body">
+              <table id="example1" class="table table-bordered table-striped">
+                <thead>
+                  <tr>
+                    <th>Nama Kepala Keluarga</th>
+                    <th>Nomor KK</th>
+                    <th>NIK</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
                   <?php foreach ($penduduk as $key => $value) {?>
-                <tr>
-                    <td><?= $value['nama_kepala_keluarga']?></td>
-                    <td><?= $value['kk']?></td>
-                    <td><?= $value['nik']?></td>
+                    <tr>
+                      <td><?= $value['nama_kepala_keluarga']?></td>
+                      <td><?= $value['kk']?></td>
+                      <td><?= $value['nik']?></td>
 
-                  <td><a href="<?php echo base_url()?>penduduk/penduduk/detail" class="btn btn-sm btn-success" target="_blank">Detail</a> <a href="#" class="btn btn-sm btn-warning">Edit</a> </td>
-                </tr>
-                <?php  } ?>
-                  
-                 
+                      <td><a href="<?php echo base_url()?>penduduk/penduduk/detail" class="btn btn-sm btn-success" target="_blank">Detail</a> <a href="#" class="btn btn-sm btn-warning">Edit</a> </td>
+                    </tr>
+                  <?php  } ?>
+                </tbody>
+              </table>
+            </div>
 
-                
-               
-              
-             
-              </tbody>
-            </table>
           </div>
-             
-           </div>
 
 
 
@@ -120,9 +113,9 @@
                       </div>
                       <div class="col-sm-6">
                         <div class="form-group ">
-                         <label>Tnggal Lahir</label>
+                         <label>Tanggal Lahir</label>
                          <div class="input-group date  " id="datetimepicker1" data-target-input="nearest">
-                          <input type="text" class="form-control-sm form-control datetimepicker-input" placeholder="dd/mm/yyyy" data-target="#datetimepicker1"/>
+                          <input type="text" id="tanggal" class="form-control-sm form-control datetimepicker-input" placeholder="dd/mm/yyyy" data-target="#datetimepicker1"/>
                           <div class="input-group-append" data-target="#datetimepicker1" data-toggle="datetimepicker">
                             <div class="input-group-text"><i class="fa fa-calendar"></i></div>
                           </div>
@@ -141,13 +134,13 @@
                     <div class="col-sm-2">
                       <div class=" form-group ">
                         <label>RT</label>
-                        <input type="text" id="rt" class="form-control-sm form-control" placeholder="Contoh : 06" name="RT">
+                        <input type="text" id="rt" class="form-control-sm form-control" placeholder="Contoh : 06" name="rt">
                       </div>
                     </div>
                     <div class="col-sm-2">
                       <div class=" form-group ">
                         <label>RW</label>
-                        <input type="text" id="rw" class="form-control-sm form-control" placeholder="Contoh : 03" name="RW">
+                        <input type="text" id="rw" class="form-control-sm form-control" placeholder="Contoh : 03" name="rw">
                       </div>
                     </div>
                     <div class="col-sm-3">
@@ -536,64 +529,64 @@
   </div>
 </div>
 <div class="tab">
-   <label>Jenis Lahan</label>
+ <label>Jenis Lahan</label>
  <div class="row">
- <div class="col-sm-3">
-  <div class="form-group">
-    <label>Sawah</label>
-    <input type="text" class="form-control-sm form-control" placeholder="Contoh : " name="sawah">
+   <div class="col-sm-3">
+    <div class="form-group">
+      <label>Sawah</label>
+      <input type="text" class="form-control-sm form-control" placeholder="Contoh : " name="sawah">
+    </div>
+  </div>
+  <div class="col-sm-3">
+    <div class="form-group">
+      <label>Ladang</label>
+      <input type="text" class="form-control-sm form-control" placeholder="Contoh : " >
+    </div>
+  </div>
+  <div class="col-sm-3">
+    <div class="form-group">
+      <label>Tegalan</label>
+      <input type="text" class="form-control-sm form-control" placeholder="Contoh : " >
+    </div>
+  </div>
+  <div class="col-sm-3">
+    <div class="form-group">
+      <label>Kolam Ikan</label>
+      <input type="text" class="form-control-sm form-control" placeholder="Contoh : " >
+    </div>
   </div>
 </div>
- <div class="col-sm-3">
-  <div class="form-group">
-    <label>Ladang</label>
-    <input type="text" class="form-control-sm form-control" placeholder="Contoh : " >
-  </div>
-</div>
- <div class="col-sm-3">
-  <div class="form-group">
-    <label>Tegalan</label>
-    <input type="text" class="form-control-sm form-control" placeholder="Contoh : " >
-  </div>
-</div>
-    <div class="col-sm-3">
-  <div class="form-group">
-    <label>Kolam Ikan</label>
-    <input type="text" class="form-control-sm form-control" placeholder="Contoh : " >
-  </div>
-</div>
- </div>
- <div class="row">
-   
-      <div class="col-sm-4">
-        <div class="form-group">
-          <label>Jenis Tanaman yang dibudidayakan</label>
-          <input type="text" class="form-control-sm form-control" placeholder="Contoh : Ubi" >
-        </div>
-      </div>
-      <div class="col-sm-4">
-        <div class="form-group">
-          <label>Jenis Ternak yang dibudidayakan</label>
-          <input type="text" class="form-control-sm form-control" placeholder="Contoh : Kambing" >
-        </div>
-      </div>
- </div>
+<div class="row">
 
-      <label>Data UMKM/Industri Kreatif</label>
-      <div class="row">
-        <div class="col-sm-3">
-          <div class="form-group">
-            <label>UMKM/Industri Kreatif</label>
-            <select class="form-control-sm form-control" onchange="toko()" id="tokoid">
-              <option >Pilih..</option>
-              <option value="ada">Ada</option>
-              <option value="tidak">Tidak</option>
-            </select>
-          </div>
-        </div>
-        <div class="row" id="idjenistoko">
+  <div class="col-sm-4">
+    <div class="form-group">
+      <label>Jenis Tanaman yang dibudidayakan</label>
+      <input type="text" class="form-control-sm form-control" placeholder="Contoh : Ubi" >
+    </div>
+  </div>
+  <div class="col-sm-4">
+    <div class="form-group">
+      <label>Jenis Ternak yang dibudidayakan</label>
+      <input type="text" class="form-control-sm form-control" placeholder="Contoh : Kambing" >
+    </div>
+  </div>
+</div>
 
-        </div>
+<label>Data UMKM/Industri Kreatif</label>
+<div class="row">
+  <div class="col-sm-3">
+    <div class="form-group">
+      <label>UMKM/Industri Kreatif</label>
+      <select class="form-control-sm form-control" onchange="toko()" id="tokoid">
+        <option >Pilih..</option>
+        <option value="ada">Ada</option>
+        <option value="tidak">Tidak</option>
+      </select>
+    </div>
+  </div>
+  <div class="row" id="idjenistoko">
+
+  </div>
 
     <!--   <div class="col-sm-3">
         <div class="form-group">
@@ -620,7 +613,7 @@
     <div style="float:right; margin-top: 5px;">
       <button type="button" class="previous">Kembali</button>
       <button type="button" class="next">Selanjutnya</button>
-      <button type="button" class="submit">Selesai</button>
+      <button type="button"  class="submit toastrDefaultSuccess">Selesai</button>
     </div>
   </div>
   <!-- Circles which indicates the steps of the form: -->
@@ -662,11 +655,11 @@
 
 <script type="text/javascript">
   $(document).ready(function(){
-$(":input").inputmask();
-$("#nik").inputmask({"mask": "9999 9999 9999 9999"});
-$("#phone").inputmask({"mask": "9999 99 999 999"});
-$("#rt").inputmask({"mask": "99"});
-$("#rw").inputmask({"mask": "99"});
+    $(":input").inputmask();
+    $("#nik").inputmask({"mask": "9999 9999 9999 9999"});
+    $("#phone").inputmask({"mask": "9999 99 999 999"});
+    $("#rt").inputmask({"mask": "99"});
+    $("#rw").inputmask({"mask": "99"});
 
     $.validator.addMethod('date', function(value, element, param) {
       return (value != 0) && (value <= 31) && (value == parseInt(value, 10));
@@ -685,21 +678,24 @@ $("#rw").inputmask({"mask": "99"});
     var val = {
           // Specify validation rules
           rules: {
-            // namakk: "required",
-            // nokk: "required",
-            // tempatlahir:"required",
-            // tanggal:"required",
-            // alamatkel:"required",
-            // goldarah:"required",
-            // pendterakhir:"required",
-            // pekerjaan:"required",
-            // tlp:{
-            //    required:true,
-            // },
-            // nik:{
-            //   required:true,
+            namakk: "required",
+            nokk: "required",
+            tempatlahir:"required",
+            tanggal:"required",
+            alamatkel:"required",
+            goldarah:"required",
+            pendterakhir:"required",
+            pekerjaan:"required",
+            rt:"required",
+            rw:"required",
+            agama:"required",
+            tlp:{
+               required:true,
+            },
+            nik:{
+              required:true,
 
-            // },
+            },
             email: {
               required: true,
               email: true
@@ -755,6 +751,9 @@ $("#rw").inputmask({"mask": "99"});
             goldarah:"Wajib di isi !",
             pendterakhir:"Wajib di isi !",
             pekerjaan:"Wajib di isi !",
+            rt:"Wajib di isi !",
+            rw:"Wajib di isi !",
+            agama:"Wajib di isi !",
             
             nik:{
               required:   "Wajib diisi!",
@@ -931,6 +930,19 @@ $("#rw").inputmask({"mask": "99"});
     }
 
     $(function () {
+
+     var Toast = Swal.mixin({
+      toast: true,
+      position: 'top-end',
+      showConfirmButton: false,
+      timer: 3000
+    });
+
+     $('.toastrDefaultSuccess').click(function() {
+      toastr.success('Lorem ipsum dolor sit amet, consetetur sadipscing elitr.')
+    });
+
+
      $('.select2').select2()
 
      $('.select2bs4').select2({

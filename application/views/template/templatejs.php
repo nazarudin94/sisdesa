@@ -7,7 +7,7 @@
 <!-- AdminLTE for demo purposes -->
 <!-- <script src="<?php echo base_url() ?>template/dist/js/demo.js"></script> -->
 <!-- Tempusdominus Bootstrap 4 -->
-<script src="<?php echo base_url() ?>template/plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js"></script>
+<!-- <script src="<?php echo base_url() ?>template/plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js"></script> -->
 <script src="<?php echo base_url() ?>template/plugins/inputmask/jquery.inputmask.min.js"></script>
 <script src="<?php echo base_url() ?>template/plugins/moment/moment.min.js"></script>
 <script src="<?php echo base_url() ?>template/plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js"></script>
@@ -35,3 +35,7 @@
 <script src="<?php echo base_url() ?>template/plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
 <script type="text/javascript" src="<?php echo base_url() ?>assets/js/multi-form.js?v2"></script>
 <script src="<?php echo base_url()?>assets/js/jquery.validate.min.js"></script>	
+
+<script src="<?php echo base_url()?>template/plugins/sweetalert2/sweetalert2.min.js"></script>
+<!-- Toastr -->
+<script src="<?php echo base_url()?>template/plugins/toastr/toastr.min.js"></script>

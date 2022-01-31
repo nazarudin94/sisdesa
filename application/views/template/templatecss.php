@@ -1,7 +1,6 @@
 
 <!DOCTYPE html>
-<html lang="en">
-<head>
+<html lang="en"><head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title><?=$title_web?></title>  <!-- Google Font: Source Sans Pro -->
@@ -32,4 +31,9 @@
   <link rel="stylesheet" href="<?php echo base_url() ?>template/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css">
 
     <link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>assets/css/multi-form.css?v2">
+
+      <link rel="stylesheet" href="<?php echo base_url()?>template/plugins/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css">
+  <!-- Toastr -->
+  <link rel="stylesheet" href="<?php echo base_url()?>template/plugins/toastr/toastr.min.css">
+  
 </head>
