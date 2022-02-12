@@ -15,20 +15,23 @@ class M_penduduk extends CI_Model {
 
 	}
 
-	function get_detail_penduduk(){
+	function get_detail_penduduk($param){
 		$sql="select
 		*
 		from
 		penduduk p
 		where
-		p.kk = '1234567812345678'";
+		p.kk = '$param'";
+		// var_dump($sql);die();
 
 		$result =  $this->db->query($sql);
 		return $result->result_array();
 
 	}
 
-	function get_detail_lain(){
+	
+
+	function get_detail_lain($param){
 		$sql="	select
 		*
 		from
@@ -36,15 +39,15 @@ class M_penduduk extends CI_Model {
 		inner join KONSUMSI K2 on
 		KL.KK = K2.KK
 		where
-		kl.kk = '1234567812345678'";
+		kl.kk = '$param'";
 
 		$result =  $this->db->query($sql);
 		return $result->result_array();
 
 	}
 
-	function get_detail_hubungan(){
-		$sql="select nama,jenis_hub,nik,tempat_lahir,tanggal_lahir,gol_darah,agama,telp,pend_terakhir,pekerjaan,agama,telp,akta_kelahiran from hubungan_kel_tes hkt where kk = '1234567812345678'";
+	function get_detail_hubungan($param){
+		$sql="select nama,jenis_hub,nik,tempat_lahir,tanggal_lahir,gol_darah,agama,telp,pend_terakhir,pekerjaan,agama,telp,akta_kelahiran from hubungan_kel_tes hkt where kk = '$param'";
 
 		$result =  $this->db->query($sql);
 		return $result->result_array();

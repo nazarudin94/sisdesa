@@ -36,9 +36,10 @@
        <div class="container-fluid">
         <div class="row "> 
           <div class="col-md-12 d-flex justify-content-end">
-            <a href="<?php echo base_url() ?>penduduk/datapenduduk/exportall" class="btn btn-sm  btn-success">Export all to excel</a>
+            <!-- <a href="<?php echo base_url() ?>penduduk/datapenduduk/exportall" class="btn btn-sm  btn-success">Export all to excel</a> -->
             <button type="button" class="btn btn-sm  btn-primary" data-toggle="modal" data-target="#exampleModal"> Tambah Data</button> 
-          </div> </div> <!-- Modal -->
+          </div>
+           </div> <!-- Modal -->
           <div class="card mt-2">
             <div class="card-body">
               <table id="example1" class="table table-bordered table-striped">
@@ -57,7 +58,7 @@
                       <td><?= $value['kk']?></td>
                       <td><?= $value['nik']?></td>
 
-                      <td><a href="<?php echo base_url()?>penduduk/penduduk/detail" class="btn btn-sm btn-success" target="_blank">Detail</a> <a href="#" class="btn btn-sm btn-warning">Edit</a> </td>
+                      <td><a href="<?php echo base_url().'penduduk/penduduk/detail/'.$value['kk'];?>" class="btn btn-sm btn-success" target="_blank">Detail</a> <a href="<?php echo base_url().'penduduk/penduduk/edit/'.$value['kk']; ?>" class="btn btn-sm btn-warning">Edit</a> </td>
                     </tr>
                   <?php  } ?>
                 </tbody>

@@ -33,7 +33,27 @@ class Datapenduduk extends CI_Controller {
 		$data['hubungan_kel']=$this->M_penduduk->get_detail_hubunganall();
 		$data['lain']=$this->M_penduduk->get_detail_lainall();
 
+
+		//gabungkan semua data ke dalam 1 array berdasar id_penduduk
+		$data_penduduk = array();
+		$data_pendudukx = array();
+		foreach ($data['penduduk'] as $key => $value) {
+			$data_penduduk[$value['kk']]['nama_kepala_keluarga'] = $value;
+		}
+		foreach ($data['hubungan_kel'] as $key => $value) {
+			$data_pendudukx[$value['kk']]['jenis_hub'] = $value;
+		}
+
+		foreach ($data['lain'] as $key => $value) {
+			$data_penduduk[$value['kk']]['lain'] = $value;
+		}
+
+		echo"<pre>";print_r($data_pendudukx);
 		
+
+		
+
+
 		
 
 
@@ -117,16 +137,15 @@ class Datapenduduk extends CI_Controller {
 		$html .= '</tr>';
 		$html .= '</thead>';
 		$html .= '<tbody>';
-		$arr3 = [];
+	
 		foreach ($data['penduduk'] as $k0 => $row) {
 			
-			$arr3[$k0] = $row;
-			foreach ($data['hubungan_kel'] as $k1 => $row1) {
-				$arr3[$k1] = $row1;
-			}
-			$html .= '</tr>';
+		
 		}
-		echo"<pre>";print_r($arr3);
+			foreach ($data['hubungan_kel'] as $k1 => $row1) {
+			
+			}
+		echo"<pre>";print_r();
 		
 
 		// foreach ($data['penduduk'] as $k0 => $row) {

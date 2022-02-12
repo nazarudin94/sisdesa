@@ -28,16 +28,30 @@ class Penduduk extends CI_Controller {
 		$this->load->view('penduduk/index.php',$this->data);
 	}
 
-	public function detail()
+	public function detail($param)
 	{
 		// die('xx');
 		
 		$this->data['title_web'] = 'Detail Penduduk';
-		$this->data['data_penduduk']=$this->M_penduduk->get_detail_penduduk();
-		$this->data['data_lain']=$this->M_penduduk->get_detail_lain();
-		$this->data['data_hubungan']=$this->M_penduduk->get_detail_hubungan();
+		$this->data['data_penduduk']=$this->M_penduduk->get_detail_penduduk($param);
+		$this->data['data_lain']=$this->M_penduduk->get_detail_lain($param);
+		$this->data['data_hubungan']=$this->M_penduduk->get_detail_hubungan($param);
 		// echo "<pre>";print_r($data['data']);die();
 		$this->load->view('penduduk/datapenduduk/v_detailpenduduk.php',$this->data);
+	}
+
+	public function edit($param)
+	{
+		
+		$this->data['title_web'] = 'Edit Data Penduduk';
+		$this->data['data_penduduk']=$this->M_penduduk->get_detail_penduduk($param);
+		$this->data['data_lain']=$this->M_penduduk->get_detail_lain($param);
+		$this->data['data_hubungan']=$this->M_penduduk->get_detail_hubungan($param);
+		// var_dump($this->data);
+		// $this->data['data_lain']=$this->M_penduduk->get_detail_lain();
+		// $this->data['data_hubungan']=$this->M_penduduk->get_detail_hubungan();
+		// echo "<pre>";print_r($this->data);die();
+		$this->load->view('penduduk/datapenduduk/v_editpenduduk.php',$this->data);
 	}
 
 	public function pdf(){
