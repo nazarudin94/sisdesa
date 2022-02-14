@@ -137,14 +137,14 @@ class Datapenduduk extends CI_Controller {
 		$html .= '</tr>';
 		$html .= '</thead>';
 		$html .= '<tbody>';
-	
+
 		foreach ($data['penduduk'] as $k0 => $row) {
 			
-		
+
 		}
-			foreach ($data['hubungan_kel'] as $k1 => $row1) {
+		foreach ($data['hubungan_kel'] as $k1 => $row1) {
 			
-			}
+		}
 		echo"<pre>";print_r();
 		
 
@@ -224,5 +224,67 @@ class Datapenduduk extends CI_Controller {
 		// header("Expires: 0");
 		echo $html;
 		die();
+	}
+
+	public function simpanData()
+	{
+		// die('xx');
+		$data_kepla = [
+			'kk'=>$_POST['kk'],
+			'nama_kepala_keluarga'=>$_POST['nama_kepala_keluarga'],
+			'nik'=>$_POST['nik'],
+			'tempat_lahir'=>$_POST['tempat_lahir'],
+			'tanggal_lahir'=>$_POST['tanggal_lahir'],
+			'alamat'=>$_POST['alamat'],
+			'rt'=>$_POST['rt'],
+			'rw'=>$_POST['rw'],
+			'gol_darah'=>$_POST['gol_darah'],
+			'agama'=>$_POST['agama'],
+			'telp'=>$_POST['telp'],
+			'pendidikan_terakhir'=>$_POST['pendidikan_terakhir'],
+			'pekerjaan'=>$_POST['pekerjaan']
+			// 'jenis_hub_hk'=>$_POST['jenis_hub_hk']
+		];
+
+		// echo"<pre>";print_r($data_kepla);die();
+		$datalain =[
+			'kk'=>$_POST['kk'],
+			'beras'=>$_POST['beras'],
+			'stok_beras'=>$_POST['stok_beras'],
+			'minyak'=>$_POST['minyak'],
+			'jenis_minyak'=>$_POST['jenis_minyak'],
+			'gula'=>$_POST['gula'],
+			'stok_gula'=>$_POST['stok_gula'],
+			'telur'=>$_POST['telur'],
+			'stok_telur'=>$_POST['stok_telur'],
+			'daging'=>$_POST['daging'],
+			'stok_daging'=>$_POST['stok_daging'],
+			'sawah'=>$_POST['sawah']
+		];
+
+		$datahubungan =[
+			'kk'=>$_POST['kk'],
+			'jenis_hub_hk'=>$_POST['jenis_hub_hk'],
+			'nama_hk'=>$_POST['nama_hk'],
+			'nik_hk'=>$_POST['nik_hk'],
+			'tempat_lahir_hk'=>$_POST['tempat_lahir_hk'],
+			'tanggal_lahir_hk'=>$_POST['tanggal_lahir_hk'],
+			'gol_darah_hk'=>$_POST['gol_darah_hk'],
+			'pend_terakhir_hk'=>$_POST['pend_terakhir_hk'],
+			'agama_hk'=>$_POST['agama_hk'],
+			'pekerjaan_hk'=>$_POST['pekerjaan_hk'],
+			'telp_hk'=>$_POST['telp_hk'],
+			'akta_kelahiran_hk'=>$_POST['akta_kelahiran_hk'],
+		];
+		
+		// echo"<pre>";print_r(count($jmldta));die();
+		// echo"<pre>";print_r($_POST);die();
+		$data['title_web'] = 'INPUT DATA PENDUDUK';
+		
+		// echo"<pre>";print_r($result);
+		// die();
+		$data['penduduk']=$this->M_penduduk->insert_penduduk($data_kepla,$datahubungan,$datalain);
+
+		$this->load->view('penduduk/datapenduduk/v_input_penduduk',$data);
 	}
 }
