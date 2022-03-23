@@ -23,8 +23,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | a PHP script and you can easily do that on your own.
 |
 */
-$config['base_url'] = 'http://localhost/sistem-desa';
-	// $config['base_url'] = 'http://7745-114-122-73-104.ngrok.io/sistem-desa';
+// $config['base_url'] = 'http://localhost/sistem-desa';
+	$config['base_url'] = 'http://27c9-36-90-198-194.ngrok.io/sistem-desa';
 
 /*
 |--------------------------------------------------------------------------
@@ -137,7 +137,8 @@ $config['subclass_prefix'] = 'MY_';
 | Note: This will NOT disable or override the CodeIgniter-specific
 |	autoloading (application/config/autoload.php)
 */
-$config['composer_autoload'] = FALSE;
+$config['composer_autoload'] =  FCPATH . 'vendor/autoload.php';
+
 
 /*
 |--------------------------------------------------------------------------

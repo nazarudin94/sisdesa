@@ -91,7 +91,7 @@
             <td><strong>RT/RW</strong></td>
             <td>:</td>
             <td ng-show="resume.pendaftaran.lokasiTest != null" >
-              <?= $value['rt_rw']  ?>
+              <?= $value['rt'] .'/'.$value['rw']  ?>
             </td>
           </tr>
         </tbody></table>
@@ -133,7 +133,10 @@
 </div>
 
 <div class="row">
-  <?php foreach ($data_hubungan as $key => $row) {?>
+  <?php foreach ($data_hubungan as $key => $row) {
+
+
+    ?>
 
     <div class="col-md-6">
      <table>
@@ -206,7 +209,7 @@
       <tr>
         <td><strong>Jenis Bantuan</strong></td>
         <td>:</td>
-        <td>PKH</td>
+        <td><?= $value['jenis_bantuan'] ?></td>
         <td></td>
       </tr>
       <tr>
@@ -241,7 +244,7 @@
         <td><strong>Tanaman di pekarangan</strong></td>
         <td>:</td>
         <td ng-show="resume.pendaftaran.dapodik.kodeBidangStudiSertifikasi != null " class="ng-binding ng-hide">
-         <?= $value['tanaman_pekaranngan'] ?>
+         <?= $value['tanaman_pekarangan'] ?>
        </td>
 
      </tr>
@@ -270,7 +273,7 @@
     <tr>
       <td><strong>Kuota/Pulsa Keluarga /Bulan</strong></td>
       <td>:</td>
-      <td >Rp.<?= $value['pulsa_keluarga'] ?></td>
+      <td >Rp.<?= $value['kuotapulsa'] ?></td>
       <td></td>
     </tr>
     <tr>
@@ -282,7 +285,7 @@
     <tr>
       <td><strong>Bayar PDAM/Bulan</strong></td>
       <td>:</td>
-      <td >Rp.<?= $value['biaya_air'] ?></td>
+      <td >Rp.<?= $value['bayarpdam'] ?></td>
       <td></td>
     </tr>
 
@@ -296,31 +299,31 @@
    <tr>
     <td><strong>Konsumsi Beras /Bulan</strong></td>
     <td>:</td>
-    <td ><?=$value['beras']?>, <strong>Stok Beras</strong> <?=$value['stok_beras']?></td>
+    <td ><?=$value['beras']?></td>
     <td></td>
   </tr	>
   <tr>
     <td><strong>Konsumsi Minyak Goreng /Bulan</strong></td>
     <td>:</td>
-    <td ><?=$value['minyak_goreng']?>, <strong>Stok Minyak</strong> <?=$value['stok_minyak']?></td>
+    <td ><?=$value['minyak_goreng']?></td>
     <td></td>
   </tr>
   <tr>
     <td><strong>Konsumsi Gula Pasir /Bulan</strong></td>
     <td>:</td>
-    <td ><?=$value['gula_pasir']?>, <strong>Stok Gula</strong> <?=$value['stok_gula']?></td>
+    <td ><?=$value['gula_pasir']?></td>
     <td></td>
   </tr>
   <tr>
     <td><strong>Konsumsi Telur /Bulan</strong></td>
     <td>:</td>
-    <td ><?=$value['telur']?>, <strong>Stok Telur</strong> <?=$value['stok_telur']?></td>
+    <td ><?=$value['telur']?></td>
     <td></td>
   </tr>
   <tr>
     <td><strong>Konsumsi Daging /Bulan</strong></td>
     <td>:</td>
-    <td ><?=$value['daging_ayam']?>, <strong>Stok Daging</strong> <?=$value['stok_daging']?></td>
+    <td ><?=$value['daging_ayam']?></td>
     <td></td>
   </tr>
   <tr ng-show="resume.pendaftaran.lokasiKerja.keteranganPendidikan != null" class="ng-hide">
@@ -387,7 +390,7 @@
 <input name="status" value="sudah_diakhiri" type="hidden" autocomplete="off">
 </div>
 <hr>
-<a href="<?php echo base_url() ?>penduduk/penduduk/pdf" class="btn btn-sm btn-primary">Export PDF</a>
+<!-- <a href="<?php echo base_url() ?>penduduk/penduduk/pdf" class="btn btn-sm btn-primary">Export PDF</a> -->
 <!-- <a href="#" class="btn btn-sm btn-warning">Edit</a> -->
 </div>
 </div>

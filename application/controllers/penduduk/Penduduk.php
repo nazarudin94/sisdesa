@@ -9,7 +9,7 @@ class Penduduk extends CI_Controller {
 		// $this->load->database();
 		// $this->data['CI'] =& get_instance();
 		// $this->load->helper(array('form', 'url'));
-		// $this->load->library('form_validation');
+		$this->load->library('form_validation');
 		// $this->load->model('M_anggota');
 		// $this->load->model('M_data');
 		$this->load->model('M_penduduk');
@@ -25,6 +25,14 @@ class Penduduk extends CI_Controller {
 		// die('xx');
 		
 		$this->data['title_web'] = 'Dashboard';
+		$this->data['penduduk']=$this->M_penduduk->get_penduduk();
+		$this->data['count_kk']=$this->M_penduduk->count_kk_penduduk();
+		$this->data['jk']=$this->M_penduduk->count_jk_penduduk();
+		$data1 = $this->data['jk']['data1'][0]['jk'];
+		$data2 = $this->data['jk']['data2'][0]['jk'];
+	
+		$this->data['count_jk'] =$data1 + $data2;
+		// echo"<pre>";print_r($this->data['count_kk']);die();
 		$this->load->view('penduduk/index.php',$this->data);
 	}
 
@@ -36,7 +44,7 @@ class Penduduk extends CI_Controller {
 		$this->data['data_penduduk']=$this->M_penduduk->get_detail_penduduk($param);
 		$this->data['data_lain']=$this->M_penduduk->get_detail_lain($param);
 		$this->data['data_hubungan']=$this->M_penduduk->get_detail_hubungan($param);
-		// echo "<pre>";print_r($data['data']);die();
+		// echo "<pre>";print_r($this->data);die();
 		$this->load->view('penduduk/datapenduduk/v_detailpenduduk.php',$this->data);
 	}
 

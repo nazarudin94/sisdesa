@@ -31,649 +31,475 @@
       </section>
 
       <!-- <div class="content-wrapper"> -->
-
-
-
        <div class="container-fluid">
-        <div class="row "> 
-          <div class="col-md-12 d-flex justify-content-end">
-            <button type="button" class="btn btn-sm  btn-primary" data-toggle="modal" data-target="#exampleModal"> Tambah Data</button>
-          </div> </div> <!-- Modal -->
-          <div class="card mt-2">
-            <div class="card-body">
-              <table id="example1" class="table table-bordered table-striped">
-                <thead>
-                  <tr>
-                    <th>Nama Kepala Keluarga</th>
-                    <th>Nomor KK</th>
-                    <th>NIK</th>
-                    <th>Action</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <?php foreach ($penduduk as $key => $value) {?>
-                    <tr>
-                      <td><?= $value['nama_kepala_keluarga']?></td>
-                      <td><?= $value['kk']?></td>
-                      <td><?= $value['nik']?></td>
 
-                      <td><a href="<?php echo base_url().'penduduk/penduduk/detail/'.$value['kk'];?>" class="btn btn-sm btn-success">Detail</a> <a href="<?php echo base_url().'penduduk/penduduk/edit/'.$value['kk']; ?>" class="btn btn-sm btn-warning">Edit</a> </td>
-                    </tr>
-                  <?php  } ?>
-                </tbody>
+
+        <div class="flash-data" data-flashdata="<?= $this->session->flashdata('message');?>"></div>
+        <div class="card mt-2">
+          <div class="card-body">
+            <div class="row" style="margin-top: 30px;">
+              <form method="post" action="<?php base_url() ?>ImportController/export" enctype="multipart/form-data">
+                <div class="form-group">
+                  <input type="file" name="upload_file" class="form-control" id="upload_file">
+                </div>
+                <div class="form-group">
+                  <input type="submit" name="submit" class="btn btn-primary">
+                </div>
+              </form>
+              <form action="<?php echo base_url().'penduduk/datapenduduk/simpanData'; ?>" method="POST" id="myForm">
+               <div class="row">
+                <div class="col-md-6">
+                  <table>
+                   <tr>
+
+                    <td><strong>Kepala Keluarga</strong></td>
+                    <td>:</td>
+                    <td > <input type="text" class="form-control-sm form-control" placeholder="Nama Kepala Keluarga" name="namakk" value="<?= set_value('namakk'); ?>"><?= form_error('namakk','<small class="text-danger pl-3">','</small>');?>
+                  </td>
+                </tr>
+                <tr>
+                  <td><strong>No.Kartu Keluarga</strong></td>
+                  <td>:</td>
+                  <td ><input type="text" id="kk" class="form-control-sm form-control kk" placeholder="No Kartu Keluarga"  value="<?= set_value('nokk'); ?>" name="nokk" data-inputmask="'mask': '9999 9999 9999 9999'" ><?= form_error('nokk','<small class="text-danger pl-3">','</small>');?></td>
+
+                </tr>
+                <tr>
+                  <td><strong>NIK</strong></td>
+                  <td>:</td>
+                  <td > <input type="text" id="nik" class="form-control-sm form-control nik" placeholder="No Induk Kependudukan" value="<?= set_value('nik'); ?>" name="nik" value=""><?= form_error('nik','<small class="text-danger pl-3">','</small>');?></td>
+                  <td></td>
+                </tr>
+                <tr ng-show="resume.pendaftaran.bisaPilih" class="">
+                  <td><strong>Tempat Lahir</strong></td>
+                  <td>:</td>
+                  <td ><input type="text" class="form-control-sm form-control" placeholder="Contoh : Garut" value="<?= set_value('tempatlahir'); ?>" name="tempatlahir" value="">
+                    <?= form_error('tempatlahir','<small class="text-danger pl-3">','</small>');?>
+                  </td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td><strong>Tanggal Lahir</strong></td>
+                  <td>:</td>
+                  <td ><input value="<?= set_value('tanggal_lahir'); ?>" name="tanggal_lahir" type="text" id="tgl" class="form-control-sm form-control tgl" placeholder="dd/mm/yyyy" /> <?= form_error('tanggal_lahir','<small class="text-danger pl-3">','</small>');?></td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td><strong>Alamat Keluarga</strong></td>
+                  <td>:</td>
+                  <td  >
+                   <input type="text" class="form-control-sm form-control" placeholder="Contoh : Kp.Situgitrang" value="<?= set_value('alamatkel'); ?>" name="alamatkel" value="">
+                   <?= form_error('alamatkel','<small class="text-danger pl-3">','</small>');?></td>
+                 </tr>
+                 <tr>
+                  <td><strong>Agama</strong></td>
+                  <td>:</td>
+                  <td>
+                    <select class=" form-control-sm form-control" value="<?= set_value('agama'); ?>" name="agama">
+                      <option value="">Pilih</option>
+                      <option value="Islam">Islam</option>
+                      <option value="Protestan">Protestan</option>
+                      <option value="Katolik">Katolik</option>
+                      <option value="Hindu">Hindu</option>
+                      <option value="Buddha">Buddha</option>
+                      <option value="Konghucu">Konghucu</option>
+                    </select>
+
+                    <?= form_error('agama','<small class="text-danger pl-3">','</small>');?>
+                  </td>
+                </tr>
+
               </table>
             </div>
-            
-          </div>
-          <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <h5 class="modal-title" id="exampleModalLabel">Silahkan Isi Data</h5> <button type="button" class="close" data-dismiss="modal" aria-label="Close"> <span aria-hidden="true">&times;</span> </button>
-                </div>
-                <div class="modal-body">
+            <div class="col-md-6">
+             <table>
+               <tr>
+                <td><strong>RT</strong></td>
+                <td>:</td>
+                <td  >
+                 <input type="text" id="rt" class="form-control-sm form-control rt" placeholder="Contoh : 06" value="<?= set_value('rt'); ?>" name="rt">
+                 <?= form_error('rt','<small class="text-danger pl-3">','</small>');?>
+               </td>
+             </tr>
+             <tr>
+              <td><strong>RW</strong></td>
+              <td>:</td>
+              <td  >
+               <input type="text" id="rw" class="form-control-sm form-control rw" placeholder="Contoh : 06" value="<?= set_value('rw'); ?>" name="rw">
+               <?= form_error('rw','<small class="text-danger pl-3">','</small>');?>
+             </td>
+           </tr>
+           <tr>
+            <td><strong>Golongan Darah</strong></td>
+            <td>:</td>
+            <td><select class=" form-control-sm form-control" value="<?= set_value('goldarah'); ?>" name="goldarah">
+              <option value="">Pilih</option>
+              <option value="A">A</option>
+              <option value="B">B</option>
+              <option value="O">O</option>
+              <option value="AB">AB</option>
+              <option value="Tidak Tahu">Tidak Tahu</option>
+            </select>  <?= form_error('goldarah','<small class="text-danger pl-3">','</small>');?></td>
 
-                  <form id="myForm" action="<?php echo base_url().'penduduk/datapenduduk/simpanData'; ?>" method="POST">
-                    <!-- <h1>Registration Form</h1> -->
-                    <!-- One "tab" for each step in the form: -->
-                    <div class="tab">
-                     <div class="row">
-                      <div class="col-sm-6">
-                        <!-- text input -->
-                        <div class="form-group">
-                          <label>Nama Kepala Keluarga</label>
-                          <input type="text" class="form-control-sm form-control" placeholder="Nama Kepala Keluarga" name="nama_kepala_keluarga">
-                        </div>
-                      </div>
-                      <div class="col-sm-3">
-                        <div class="form-group">
-                          <label>No.KK</label>
-                          <input type="text" class="form-control-sm form-control" placeholder="No Kartu Keluarga"  name="kk" data-inputmask="'mask': '9999 9999 9999 9999'">
-                        </div>
-                      </div>
-                      <div class="col-sm-3">
-                        <div class="form-group">
-                          <label>NIK</label>
-                          <input type="text" id="nik" class="form-control-sm form-control" placeholder="No Induk Kependudukan" name="nik" >
-                        </div>
-                      </div>
-                    </div>
-                    <div class="row">
-                      <div class="col-sm-6">
-                        <!-- text input -->
-                        <div class="form-group">
-                          <label>Tempat Lahir</label>
-                          <input type="text" class="form-control-sm form-control" placeholder="Contoh : Garut" name="tempat_lahir">
-                        </div>
-                      </div>
-                      <div class="col-sm-6">
-                        <div class="form-group ">
-                         <label>Tanggal Lahir</label>
-                         <div class="input-group date  " id="datetimepicker1" data-target-input="nearest">
-                          <input type="text" class="form-control-sm form-control datetimepicker-input" name="tanggal_lahir" placeholder="dd/mm/yyyy" data-target="#datetimepicker1"/>
-                          <div class="input-group-append" data-target="#datetimepicker1" data-toggle="datetimepicker">
-                            <div class="input-group-text"><i class="fa fa-calendar"></i></div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    
-                  </div>
-                  <div class="row">
-                    <div class="col-sm-5">
-                      <div class=" form-group ">
-                        <label>Alamat Keluarga</label>
-                        <input type="text" class="form-control-sm form-control" placeholder="Contoh : Kp.Situgitrang" name="alamat">
-                      </div>
-                    </div>
-                    <div class="col-sm-2">
-                      <div class=" form-group ">
-                        <label>RT</label>
-                        <input type="text" id="rt" class="form-control-sm form-control" placeholder="Contoh : 06" name="rt">
-                      </div>
-                    </div>
-                    <div class="col-sm-2">
-                      <div class=" form-group ">
-                        <label>RW</label>
-                        <input type="text" id="rw" class="form-control-sm form-control" placeholder="Contoh : 03" name="rw">
-                      </div>
-                    </div>
-                    <div class="col-sm-3">
-                      <div class=" form-group ">
-                        <label>Golongan Darah</label>
-                        <select class=" form-control-sm form-control" name="gol_darah">
-                          <option>Pilih Golongan Darah</option>
-                          <option value="A">A</option>
-                          <option value="B">B</option>
-                          <option value="O">O</option>
-                          <option value="AB">AB</option>
-                        </select>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="row">
-                   <div class="col-sm-4">
-                    <!-- text input -->
-                    <div class="form-group">
-                      <label>Pendidikan Terakhir</label>
-                      <select class=" form-control-sm form-control" name="pendidikan_terakhir" id="pendidikan_terakhir">
-                        <option>Pilih..</option>
-                        <option value="Tidak Sekolah">Tidak Sekolah</option>
-                        <option value="SD">SD</option>
-                        <option value="SMP/Sederajat">SMP/Sederajat</option>
-                        <option value="SMA/Sederajat">SMA/Sederajat</option>
-                        <option value="D1">D1</option>
-                        <option value="D2">D2</option>
-                        <option value="D3">D3</option>
-                        <option value="S1">S1</option>
-                        <option value="S2">S2</option>
-                        <option value="S3">S3</option>
-                      </select>
-                    </div>
-                  </div>
-                  <div class="col-sm-2">
-                    <div class=" form-group ">
-                      <label>Agama</label>
-                      <input type="text" class="form-control-sm form-control" placeholder="Contoh : Islam" name="agama">
-                    </div>
-                  </div>
-                  <div class="col-sm-3">
-                    <div class="form-group" >
-                      <label>Pekerjaan</label>
-                      <select class=" form-control-sm form-control" name="pekerjaan" id="pekerjaan" onchange="funcpekerjaan()" >
-                        <option>Pilih..</option>
-                        <option value="Tidak Bekerja">Tidak Bekerja</option>
-                        <option value="PNS">PNS</option>
-                        <option value="TNI/POLRI">TNI/POLRI</option>
-                        <option value="Pensiunan">Pensiunan</option>
-                        <option value="Karyawan Swasta">Karyawan Swasta</option>
-                        <option value="Wiraswasta">Wiraswasta</option>
-                        <option value="Petani">Petani</option>
-                        <option value="Sopir">Sopir</option>
-                        <option value="Buruh Harian Lepas">Buruh Harian Lepas</option>
-                        <option value="Buruh Tani">Buruh Tani</option>
-                        <option value="Tukang Banguna">Tukang Banguna</option>
-                        <option value="Pedagang">Pedagang</option>
-                        <option value="Pelajar">Pelajar</option>
-                        <option value="Ibu Rumah tangga">Ibu Rumah tangga</option>
-                        <option value="Lain-lain">Lain-lain</option>
-                      </select>
-                    </div>
-                  </div>
-                  <div class="col-sm-3 d-none" id="idjenispekerjaan">
-
-                  </div>
-                  <div class="col-sm-3">
-                    <div class="form-group">
-                      <label>Tlp.WA</label>
-                      <input type="text" id="phone" class="form-control-sm form-control "  placeholder="Contoh : 081224207149" name="telp">
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="tab">
-                <div class="row"> 
-                  <div class="col-md-12 d-flex justify-content-end">
-                    <div class="btn-group btn-warning mb-2">
-                      <button type="button" class="btn btn-sm btn-warning dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                        Tambah Data Hub. Keluarga
-                      </button>
-                      <div class="dropdown-menu dropdown-menu-right" id="dropdownJenHubKel">
-                        <button class="dropdown-item btn-sm" type="button" id="addDataIstri">Istri</button>
-                        <button class="dropdown-item btn-sm" type="button" id="addDataAnak">Anak</button>
-                        <button class="dropdown-item btn-sm" type="button" id="addDataKl">Keluarga Lain</button>
-                      </div>
-                    </div>
-                  </div> 
-                </div>
-                <div id="formHubKel">
-                  <input type="text" class="form-control-sm form-control" name="jenis_hub_hk[]" value="Istri" hidden>
-                  <div class="row">
-                    <div class="col-sm-6">
-                      <!-- text input -->
-                      <div class="form-group">
-                        <label>Nama Istri</label>
-                        <input type="text" class="form-control-sm form-control" name="nama_hk[]" placeholder="Nama Istri">
-                      </div>
-                    </div>
-                    <div class="col-sm-6">
-                      <div class="form-group">
-                        <label>NIK</label>
-                        <input type="text" class="form-control-sm form-control" name="nik_hk[]" placeholder="No Induk Kependudukan">
-                      </div>
-                    </div>
-                  </div>
-                  <div class="row">
-                    <div class="col-sm-6">
-                      <!-- text input -->
-                      <div class="form-group">
-                        <label>Tempat Lahir</label>
-                        <input type="text" class="form-control-sm form-control" name="tempat_lahir_hk[]" placeholder="Contoh : Garut">
-                      </div>
-                    </div>
-                    <div class="col-sm-3">
-                      <label>Tanggal Lahir</label>
-                      <div class="form-group ">
-                        <div class="input-group date datetimepicker3" id="datetimepicker3" data-target-input="nearest">
-                          <input type="text" class="form-control-sm form-control datetimepicker-input" name="tanggal_lahir_hk[]" placeholder="dd/mm/yyyy" data-target=".datetimepicker3"/>
-                          <div class="input-group-append" data-target="#datetimepicker2" data-toggle="datetimepicker">
-                            <div class="input-group-text"><i class="fa fa-calendar"></i></div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="col-sm-3">
-                      <div class="form-group ">
-                        <label>Golongan Darah</label>
-                        <select class="form-control-sm form-control" name="gol_darah_hk[]">
-                          <option>Pilih Golongan Darah</option>
-                          <option value="A">A</option>
-                          <option value="B">B</option>
-                          <option value="O">O</option>
-                          <option value="AB">AB</option>
-                        </select>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="row">
-                    <div class="col-sm-3">
-                      <!-- text input -->
-                      <div class="form-group">
-                        <label>Pendidikan Terakhir</label>
-                        <!-- <input type="text" class="form-control-sm form-control" name="pend_terakhir_hk[]" placeholder="Enter ..."> -->
-                        <select class=" form-control-sm form-control" name="pend_terakhir_hk[]" >
-                          <option>Pilih..</option>
-                          <option value="Tidak Sekolah">Tidak Sekolah</option>
-                          <option value="SD">SD</option>
-                          <option value="SMP/Sederajat">SMP/Sederajat</option>
-                          <option value="SMA/Sederajat">SMA/Sederajat</option>
-                          <option value="D1">D1</option>
-                          <option value="D2">D2</option>
-                          <option value="D3">D3</option>
-                          <option value="S1">S1</option>
-                          <option value="S2">S2</option>
-                          <option value="S3">S3</option>
-                        </select>
-                      </div>
-                    </div>
-                    <div class="col-sm-3">
-                      <div class=" form-group ">
-                        <label>Agama</label>
-                        <input type="text" class="form-control-sm form-control" placeholder="Contoh : Islam" name="agama_hk[]">
-                      </div>
-                    </div>
-                    <div class="col-sm-3">
-                      <div class="form-group">
-                        <label>Pekerjaan</label>
-                        <select class=" form-control-sm form-control" name="pekerjaan_hk[]" id="pekerjaan" >
-                          <option>Pilih..</option>
-                          <option value="Tidak Bekerja">Tidak Bekerja</option>
-                          <option value="PNS">PNS</option>
-                          <option value="TNI/POLRI">TNI/POLRI</option>
-                          <option value="Pensiunan">Pensiunan</option>
-                          <option value="Karyawan Swasta">Karyawan Swasta</option>
-                          <option value="Wiraswasta">Wiraswasta</option>
-                          <option value="Petani">Petani</option>
-                          <option value="Sopir">Sopir</option>
-                          <option value="Buruh Harian Lepas">Buruh Harian Lepas</option>
-                          <option value="Buruh Tani">Buruh Tani</option>
-                          <option value="Tukang Banguna">Tukang Banguna</option>
-                          <option value="Pedagang">Pedagang</option>
-                          <option value="Pelajar">Pelajar</option>
-                          <option value="Ibu Rumah tangga">Ibu Rumah tangga</option>
-                          <option value="Lain-lain">Lain-lain</option>
-                        </select>
-                      </div>
-                    </div>
-                    <div class="col-sm-3">
-                      <div class="form-group">
-                        <label>Telp. (Whatsapp)</label>
-                        <input type="text" inputmode="text" class="form-control-sm form-control" name="telp_hk[]" placeholder="Contoh : 081224207149">
-                      </div>
-                    </div>
-                    <div class="col-sm-3" hidden>
-                      <div class="form-group">
-                        <label>Akta kelahiran</label>
-                        <input type="text" class="form-control-sm form-control" name="akta_kelahiran_hk[]">
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="tab"> <!-- Slide 3 -->
-                <div class="row">
-                 <div class="col-sm-3">
-                  <div class="form-group">
-                    <label>Jenis Bantuan</label>
-                    <select class="select2" multiple="multiple" data-placeholder="Pilih.." style="width: 100%;">
-                      <option value="Tidak Ada Bantuan">Tidak Ada Bantuan</option>
-                      <option value="PKH">PKH</option>
-                      <option value="BPNT">BPNT</option>
-                      <option value="BLTDD">BLTDD</option>
-                    </select>
-                  </div>
-                </div>
-                <div class="col-sm-3">
-                  <!-- text input -->
-                  <div class="form-group">
-                    <label>Kepemilikan Rumah</label>
-                    <select class="form-control-sm form-control">
-                      <option>Pilih..</option>
-                      <option>Milik Sendiri</option>
-                      <option>Turut Orang Tua</option>
-                      <option>Kontrak/Sewa</option>
-                    </select>
-                  </div>
-                </div>
-                <div class="col-sm-3">
-                  <div class="form-group">
-                    <label>Jenis Rumah</label>
-                    <select class="form-control-sm form-control">
-                      <option>Pilih..</option>
-                      <option>Permanen</option>
-                      <option>Semi permanen</option>
-                      <option>Bilik</option>
-                      <option>Lainnya</option>
-                    </select>
-                  </div>
-                </div>
-                <div class="col-sm-3">
-                  <div class="form-group">
-                    <label>Bukti Kepemilikan</label>
-                    <select class="form-control-sm form-control">
-                     <option >Pilih..</option>
-                     <option value="ada">Sertifikat Rumah</option>
-                     <option value="tidak">Akta Jual Beli</option>
-                     <option value="tidak">Lain-lain</option>
-                   </select>
-                 </div>
-               </div>
-               <div class="col-sm-3">
-                <div class="form-group">
-                  <label>Pekarangan Rumah</label>
-                  <select class="form-control-sm form-control" id="pekarangan">
-                   <option >Pilih..</option>
-                   <option value="ada">Ada</option>
-                   <option value="tidak">Tidak</option>
-                 </select>
-               </div>
-             </div>
-             <div class="col-sm-3 d-none" id="demo">
-
-             </div>
-             <div class="col-sm-3 d-none"  id="demo2">
-             </div>
-             <div class="col-sm-3 d-none" id="jenstnman">
-              <!-- text input -->
-
-            </div>
-          <!--   <div class="col-sm-3">
-              <div class="form-group">
-                <label>Bukti Kepemilikan</label>
-                <select class="form-control-sm form-control">
-                 <option >Pilih..</option>
-                 <option value="ada">Sertifikat Rumah</option>
-                 <option value="tidak">Akta Jual Beli</option>
-                 <option value="tidak">Lain-lain</option>
-               </select>
-             </div>
-           </div> -->
-           <div class="col-sm-3">
-            <div class="form-group">
-              <label>Listrik dan Telepon</label>
-              <select class="form-control-sm form-control">
-               <option >Pilih..</option>
-               <option value="ada">Token</option>
-               <option value="tidak">KWH</option>
-               <option value="tidak">Lain-lain</option>
-             </select>
-           </div>
-         </div>
-         <div class="col-sm-3">
-          <div class="form-group">
-            <label>Besar KWH</label>
-            <select class="form-control-sm form-control">
-             <option >Pilih..</option>
-             <option value="450W">450W</option>
-             <option value="900W">900W</option>
-             <option value="1300W">1300W</option>
-             <option value="2200W">2200W</option>
-           </select>
-         </div>
-       </div>
-       <div class="col-sm-3">
-        <div class="form-group">
-          <label>Biaya Listrik/Bulan</label>
-          <input type="number" class="form-control-sm form-control" placeholder="Contoh : 300000" >
-        </div>
-      </div>
-      <div class="col-sm-3">
-        <div class="form-group">
-          <label><small>Kuota/pulsa keluarga / bulan</small></label>
-          <input type="number" class="form-control-sm form-control" placeholder="Contoh : 500000" >
-        </div>
-      </div>
-      <div class="col-sm-3">
-        <div class="form-group">
-          <label><small>Sumber Air Bersih</small></label>
-          <select class="form-control-sm form-control"  onchange="pdam()" id="pdamid">
-            <option >Pilih..</option>
-            <option value="PDAM">PDAM</option>
-            <option value="Sumur">Sumur</option>
-            <option value="MCK Umum">MCK Umum</option>
-            <option value="Sumber Air Lain">Sumber Air Lain</option>
-          </select>
-        </div>
-      </div>
-      <div class="col-sm-3" id="byarpdam">
-
-      </div>
+            <td></td>
+          </tr>
+          <tr>
+            <td><strong>Pendidikan Terakhir</strong></td>
+            <td>:</td>
+            <td > <select class=" form-control-sm form-control" value="<?= set_value('pendterakhir'); ?>" name="pendterakhir" >
+              <option value="">Pilih</option>
+              <option value="Tidak Sekolah">Tidak Sekolah</option>
+              <option value="SD">SD</option>
+              <option value="SMP/Sederajat">SMP/Sederajat</option>
+              <option value="SMA/Sederajat">SMA/Sederajat</option>
+              <option value="D1">D1</option>
+              <option value="D2">D2</option>
+              <option value="D3">D3</option>
+              <option value="S1">S1</option>
+              <option value="S2">S2</option>
+              <option value="S3">S3</option>
+            </select><?= form_error('pendterakhir','<small class="text-danger pl-3">','</small>');?></td>
+          </tr>
+          <tr >
+            <td><strong>Pekerjaan</strong></td>
+            <td>:</td>
+            <td>  <select class=" form-control-sm form-control" value="<?= set_value('pekerjaan'); ?>" name="pekerjaan" id="pekerjaan" >
+              <option value="">Pilih</option>
+              <option value="Tidak Bekerja">Tidak Bekerja</option>
+              <option value="PNS">PNS</option>
+              <option value="TNI/POLRI">TNI/POLRI</option>
+              <option value="Pensiunan">Pensiunan</option>
+              <option value="Karyawan Swasta">Karyawan Swasta</option>
+              <option value="Wiraswasta">Wiraswasta</option>
+              <option value="Petani">Petani</option>
+              <option value="Sopir">Sopir</option>
+              <option value="Buruh Harian Lepas">Buruh Harian Lepas</option>
+              <option value="Buruh Tani">Buruh Tani</option>
+              <option value="Tukang Banguna">Tukang Banguna</option>
+              <option value="Pedagang">Pedagang</option>
+              <option value="Pelajar">Pelajar</option>
+              <option value="Ibu Rumah tangga">Ibu Rumah tangga</option>
+              <option value="Dosen">Dosen</option>
+              <option value="Guru">Guru</option>
+              <option value="Lain-lain">Lain-lain</option>
+            </select><?= form_error('pekerjaan','<small class="text-danger pl-3">','</small>');?></td>
+          </tr>
+          <tr ng-show="resume.pendaftaran.bisaPilih" class="">
+            <td><strong>Tlp/Wa</strong></td>
+            <td>:</td>
+            <td ><input type="text"id="phone" class="form-control-sm form-control"  placeholder="Contoh : 081224207149" value="<?= set_value('tlp'); ?>" name="tlp"><?= form_error('tlp','<small class="text-danger pl-3">','</small>');?>
+          </td>
+        </tr>
+        <tr>
+          <td><strong>Jenis Kelamin</strong></td>
+          <td>:</td>
+          <td > <select class="form-control-sm form-control" value="<?= set_value('jenis_kelamin'); ?>" name="jenis_kelamin">
+            <option value="">Pilih</option>
+            <option value="L">Laki-laki</option>
+            <option value="P">Perempuan</option>
+          </select> <?= form_error('jenis_kelamin','<small class="text-danger pl-3">','</small>');?></td>
+          <td></td>
+        </tr>
+      </table>
     </div>
+  </div>
+  <hr>
 
-
+  <!-- hubungan keluarga -->
+  <div class="row"> 
+    <div class="col-md-12 d-flex justify-content-end">
+      <div class="btn-group btn-warning mb-2">
+        <button type="button" class="btn btn-sm btn-warning dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+          Tambah Data Hub. Keluarga
+        </button>
+        <div class="dropdown-menu dropdown-menu-right" id="dropdownJenHubKel">
+          <button class="dropdown-item btn-sm" type="button" id="addDataIstri">Istri</button>
+          <button class="dropdown-item btn-sm" type="button" id="addDataAnak">Anak</button>
+          <button class="dropdown-item btn-sm" type="button" id="addDataKl">Keluarga Lain</button>
+        </div>
+      </div>
+    </div> 
+  </div>
+  <div class="row" id="formHubKel">
 
   </div>
-  <div class="tab">
-   <div class="row">
-    <div class="col-sm-6">
-      <!-- text input -->
-      <div class="form-group">
-        <label>Rata-rata Konsumsi Beras / Bulan</label>
-        <input type="number" class="form-control-sm form-control" placeholder="Contoh : 20" name="beras">
-      </div>
-    </div>
-    <div class="col-sm-6">
-      <div class="form-group">
-        <label>Stok Beras</label>
-        <select class="form-control-sm form-control" name="stok_beras">
-          <option >Pilih..</option>
-          <option value="ada">Ada</option>
-          <option value="tidak">Tidak</option>
-        </select>
-      </div>
-    </div>
-
-  </div>
+  <hr>
   <div class="row">
-   <div class="col-sm-6">
-    <div class="form-group">
-      <label>Rata-rata Minyak Goreng / Bulan</label>
-      <input type="number" class="form-control-sm form-control" placeholder="Contoh : 30" name="minyak" >
-    </div>
-  </div>
-  <div class="col-sm-6">
-    <!-- text input -->
-    <div class="form-group">
-      <label>Jenis Minyak</label>
-      <select class="form-control-sm form-control" name="jenis_minyak">
-        <option >Pilih..</option>
-        <option value="kemasan">Kemasan</option>
-        <option value="curah">Curah</option>
-      </select>
-    </div>
-  </div>
-</div>
-<div class="row">
-  <div class="col-sm-6">
-    <div class="form-group">
-      <label>Rata-rata Gula Pasir / Bulan</label>
-      <input type="number" class="form-control-sm form-control" placeholder="Contoh : 4" name="gula" >
-    </div>
-  </div>
-  <div class="col-sm-6">
-    <div class="form-group">
-      <label>Stok Gula</label>
-      <select class="form-control-sm form-control" name="stok_gula">
-        <option >Pilih..</option>
-        <option value="ada">Ada</option>
-        <option value="tidak">Tidak</option>
-      </select>
-    </div>
-  </div>
-</div>
-<div class="row">
-  <div class="col-sm-6">
-    <div class="form-group">
-      <label>Rata-rata Telur / Bulan</label>
-      <input type="number" class="form-control-sm form-control" placeholder="Contoh : 5" name="telur" >
-    </div>
-  </div>
-  <div class="col-sm-6">
-    <div class="form-group" name>
-      <label>Stok Gula</label>
-      <select class="form-control-sm form-control" name="stok_telur">
-        <option >Pilih..</option>
-        <option value="ada">Ada</option>
-        <option value="tidak">Tidak</option>
-      </select>
-    </div>
-  </div>
-</div>
-<div class="row">
-  <div class="col-sm-6">
-    <div class="form-group">
-      <label>Rata-rata Daging/ Bulan</label>
-      <input type="number" class="form-control-sm form-control" placeholder="Contoh : 6" name="daging" >
-    </div>
-  </div>
-  <div class="col-sm-6">
-    <div class="form-group">
-      <label>Stok Daging<small></label>
-        <select class="form-control-sm form-control" name="stok_daging">
-          <option >Pilih..</option>
-          <option value="ada">Ada</option>
-          <option value="tidak">Tidak</option>
-        </select>
-      </div>
-    </div>
+    <div class="col-md-5">
+      <table id="example1">
+        <tr>
+          <td><strong>Jenis Bantuan</strong></td>
+          <td>:</td>
+          <td>
+           <select class="form-control-sm form-control select2" multiple="multiple" value="<?= set_value('jenisbntuan'); ?>" name="jenisbntuan">
+            <option value="BLT">BLT</option>
+            <option value="BPNT">BPNT</option>
+            <option value="PKH">PKH</option>
+            <option value="KIS">KIS</option>
+            <option value="KIP">KIP</option>
+            <option value="Tidak Ada">Tidak Ada</option>
+          </select>  <?= form_error('jenisbntuan','<small class="text-danger pl-3">','</small>');?></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td><strong>Kepemilikan Rumah</strong></td>
+          <td>:</td>
+          <td > <select class="form-control-sm form-control" value="<?= set_value('kepemilikanrumah'); ?>" name="kepemilikanrumah">
+            <option value="">Pilih</option>
+            <option value="Milik Sendiri">Milik Sendiri</option>
+            <option value="Turut Orang Tua">Turut Orang Tua</option>
+            <option value="Kontrak/Sewa">Kontrak/Sewa</option>
+          </select> <?= form_error('kepemilikanrumah','<small class="text-danger pl-3">','</small>');?></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td><strong>Jenis Rumah</strong></td>
+          <td>:</td>
+          <td >  <select class="form-control-sm form-control" value="<?= set_value('jenisrumah'); ?>" name="jenisrumah">
+            <option value="">Pilih</option>
+            <option value="Permanen">Permanen</option>
+            <option value="Semi permanen">Semi permanen</option>
+            <option value="Bilik">Bilik</option>
+            <option value="Lainnya">Lainnya</option>
+          </select> <?= form_error('jenisrumah','<small class="text-danger pl-3">','</small>');?></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td><strong>Bukti Kepemilikan</strong></td>
+          <td>:</td>
+          <td > <select class="form-control-sm form-control" value="<?= set_value('buktikepemilikanrumah'); ?>" name="buktikepemilikanrumah">
+           <option value="" >Pilih</option>
+           <option value="Sertifikat Rumah">Sertifikat Rumah</option>
+           <option value="Akta Jual Beli">Akta Jual Beli</option>
+           <option value="Tidak ada">Tidak Ada</option>
+           <option value="Lain-lain">Lain-lain</option>
+         </select> <?= form_error('buktikepemilikanrumah','<small class="text-danger pl-3">','</small>');?></td>
+         <td></td>
+       </tr>
+       <tr>
+        <td><strong>Pekarangan Ruman</strong></td>
+        <td>:</td>
+        <td > <select class="form-control-sm form-control" value="<?= set_value('pekaranganrumah'); ?>" name="pekaranganrumah" id="pekarangan">
+         <option value="">Pilih</option>
+         <option value="ada">Ada</option>
+         <option value="tidak">Tidak</option>
+       </select> <?= form_error('pekaranganrumah','<small class="text-danger pl-3">','</small>');?></td>
+     </tr>
+     <tr id="pkrngn"></tr>
+     <tr id="pkrngn2"></tr>
+     <tr id="pkrngn3">
+     
+    </tr>
+    <tr>
+      <td><strong>Listrik</strong></td>
+      <td>:</td>
+      <td ><select class="form-control-sm form-control" value="<?= set_value('listrik'); ?>" name="listrik">
+       <option value="" >Pilih</option>
+       <option value="Token">Token</option>
+       <option value="KWH">KWH</option>
+       <option value="Lain-lain">Lain-lain</option>
+     </select> <?= form_error('listrik','<small class="text-danger pl-3">','</small>');?> </td>
+   </tr>
+   <tr>
+    <td><strong>Besar KWH</strong></td>
+    <td>:</td>
+    <td ><select class="form-control-sm form-control" value="<?= set_value('besar_kwh'); ?>" name="besar_kwh">
+     <option value="" >Pilih</option>
+     <option value="450W">450W</option>
+     <option value="900W">900W</option>
+     <option value="1300W">1300W</option>
+     <option value="2200W">2200W</option>
+   </select> <?= form_error('besar_kwh','<small class="text-danger pl-3">','</small>');?></td>
+   <td></td>
+ </tr>
+ <tr>
+  <td><strong>Biaya Listrik</strong></td>
+  <td>:</td>
+  <td ><input type="number" class="form-control-sm form-control" placeholder="Contoh : 300000" value="<?= set_value('biayalistrik'); ?>" name="biayalistrik"> <?= form_error('biayalistrik','<small class="text-danger pl-3">','</small>');?></td>
+  <td></td>
+</tr>
+<tr>
+  <td><strong>Kuota/Pulsa Keluarga /Bulan</strong></td>
+  <td>:</td>
+  <td > <input type="number" class="form-control-sm form-control" placeholder="Contoh : 500000" value="<?= set_value('kuotapulsa'); ?>" name="kuotapulsa"> <?= form_error('kuotapulsa','<small class="text-danger pl-3">','</small>');?></td>
+  <td></td>
+</tr>
+<tr>
+  <td><strong>Sumber Air</strong></td>
+  <td>:</td>
+  <td ><select class="form-control-sm form-control"  id="pdamid" value="<?= set_value('sumber_air'); ?>" name="sumber_air">
+    <option value="">Pilih</option>
+    <option value="PDAM">PDAM</option>
+    <option value="Sumur">Sumur</option>
+    <option value="MCK Umum">MCK Umum</option>
+    <option value="Sumber Air Lain">Sumber Air Lain</option>
+  </select> <?= form_error('sumber_air','<small class="text-danger pl-3">','</small>');?></td>
+  <td></td>
+</tr>
+<tr id="bayarpdam">
 
-  </div>
+
+</tr> 
+
+</table>
 </div>
-<div class="tab">
- <label>Jenis Lahan</label>
- <div class="row">
-   <div class="col-sm-3">
-    <div class="form-group">
-      <label>Sawah</label>
-      <input type="text" class="form-control-sm form-control" placeholder="Contoh : " name="sawah">
-    </div>
-  </div>
-  <div class="col-sm-3">
-    <div class="form-group">
-      <label>Ladang</label>
-      <input type="text" class="form-control-sm form-control" placeholder="Contoh : " >
-    </div>
-  </div>
-  <div class="col-sm-3">
-    <div class="form-group">
-      <label>Tegalan</label>
-      <input type="text" class="form-control-sm form-control" placeholder="Contoh : " >
-    </div>
-  </div>
-  <div class="col-sm-3">
-    <div class="form-group">
-      <label>Kolam Ikan</label>
-      <input type="text" class="form-control-sm form-control" placeholder="Contoh : " >
-    </div>
-  </div>
+<div class="col-md-7">
+ <table>
+   <tr>
+    <td><strong>Konsumsi Beras /Bulan</strong></td>
+    <td>:</td>
+
+    <td ><input type="number" class="form-control-sm form-control" placeholder="Contoh : 20" value="<?= set_value('beras'); ?>" name="beras" > <?= form_error('beras','<small class="text-danger pl-3">','</small>');?>
+  </td>
+  <!-- <td><small>Stok Beras</small></td>
+  <td>:</td>
+  <td><select class="form-control-sm form-control" value="<?= set_value('stok_beras'); ?>" name="stok_beras">
+   <option value="">Pilih</option>
+   <option value="ada">Ada</option>
+   <option value="tidak">Tidak</option>
+ </select> <?= form_error('stok_beras','<small class="text-danger pl-3">','</small>');?></td> -->
+</tr>
+<tr>
+  <td><strong>Konsumsi Minyak Goreng /Bulan</strong></td>
+  <td>:</td>
+  <td ><input type="number" class="form-control-sm form-control" placeholder="Contoh : 30" value="<?= set_value('minyak'); ?>" name="minyak" > <?= form_error('minyak','<small class="text-danger pl-3">','</small>');?></td>
+  <!-- <td> <small>Stok Minyak</small></td>
+  <td>:</td>
+  <td><select class="form-control-sm form-control" value="<?= set_value('stok_minyak'); ?>" name="stok_minyak">
+   <option value="">Pilih</option>
+   <option value="ada">Ada</option>
+   <option value="tidak">Tidak</option>
+ </select> <?= form_error('stok_minyak','<small class="text-danger pl-3">','</small>');?></td> -->
+</tr>
+<tr>
+  <td><strong>Konsumsi Gula Pasir /Bulan</strong></td>
+  <td>:</td>
+  <td ><input type="number" class="form-control-sm form-control" placeholder="Contoh : 4" value="<?= set_value('gula'); ?>" name="gula"> <?= form_error('gula','<small class="text-danger pl-3">','</small>');?> </td>
+  <!-- <td> <small>Stok Gula</small></td>
+  <td>:</td>
+  <td> <select class="form-control-sm form-control" value="<?= set_value('stok_gula'); ?>" name="stok_gula">
+   <option value="">Pilih</option>
+   <option value="ada">Ada</option>
+   <option value="tidak">Tidak</option>
+ </select> <?= form_error('stok_gula','<small class="text-danger pl-3">','</small>');?></td> -->
+</tr>
+<tr>
+  <td><strong>Konsumsi Gas /Bulan</strong></td>
+  <td>:</td>
+  <td ><input type="number" class="form-control-sm form-control" placeholder="Contoh : 4" value="<?= set_value('gas'); ?>" name="gas"> <?= form_error('gas','<small class="text-danger pl-3">','</small>');?> </td>
+
+  
+</tr>
+<tr>
+  <td><strong>Konsumsi Telur /Bulan</strong></td>
+  <td>:</td>
+  <td ><input type="number" class="form-control-sm form-control" placeholder="Contoh : 5" value="<?= set_value('telur'); ?>" name="telur" > <?= form_error('telur','<small class="text-danger pl-3">','</small>');?></td>
+  <!-- <td><small>Stok Telur</small></td>
+  <td>:</td>
+  <td> <select class="form-control-sm form-control" value="<?= set_value('stok_telur'); ?>" name="stok_telur">
+    <option value="" >Pilih</option>
+    <option value="ada">Ada</option>
+    <option value="tidak">Tidak</option>
+  </select> <?= form_error('stok_telur','<small class="text-danger pl-3">','</small>');?></td> -->
+</tr>
+<tr>
+  <td><strong>Konsumsi Daging /Bulan</strong></td>
+  <td>:</td>
+  <td ><input type="number" class="form-control-sm form-control" placeholder="Contoh : 6" value="<?= set_value('daging'); ?>" name="daging"> <?= form_error('daging','<small class="text-danger pl-3">','</small>');?>
+  <!-- <td>
+    <small>Stok Daging</small>
+  </td> 
+  <td>:</td>
+
+  <td> <select class="form-control-sm form-control" value="<?= set_value('stok_daging'); ?>" name="stok_daging">
+    <option value="">Pilih</option>
+    <option value="ada">Ada</option>
+    <option value="tidak">Tidak</option>
+  </select> <?= form_error('stok_daging','<small class="text-danger pl-3">','</small>');?></td> -->
+</tr>
+<tr >
+  <td><strong>Sawah/Tumbak</strong></td>
+  <td>:</td>
+  <td > <input type="text" class="form-control-sm form-control" placeholder="Contoh : " value="<?= set_value('sawah'); ?>" name="sawah" value=""> <?= form_error('sawah','<small class="text-danger pl-3">','</small>');?></td>
+  <td>
+    <small>jenis budidaya</small>
+  </td> 
+  <td>:</td>
+
+  <td> <input type="text" class="form-control-sm form-control" placeholder="Contoh : Padi"  name="jenis budidaya sawah"> </td>
+</tr>
+<tr >
+  <td><strong>Ladang/Tumbak</strong></td>
+  <td>:</td>
+  <td >
+    <input type="text" class="form-control-sm form-control" placeholder="Contoh : 12" value="<?= set_value('ladang'); ?>" name="ladang"> <?= form_error('ladang','<small class="text-danger pl-3">','</small>');?>
+  </td>
+  <td>
+    <small>jenis budidaya</small>
+  </td> 
+  <td>:</td>
+
+  <td> <input type="text" class="form-control-sm form-control" placeholder="Contoh : Tomat"  name="jenis budi daya ladang"> </td>
+</tr>
+<tr>
+  <td><strong>Tegalan/Tumbak</strong></td>
+  <td>:</td>
+  <td > <input type="text" class="form-control-sm form-control" placeholder="Contoh : 12" value="<?= set_value('tegalan'); ?>" name="tegalan"> <?= form_error('tegalan','<small class="text-danger pl-3">','</small>');?></td>
+  <td>
+    <small>jenis budidaya</small>
+  </td> 
+  <td>:</td>
+
+  <td> <input type="text" class="form-control-sm form-control" placeholder="Contoh : Kayu"  name="jenis budi daya tegalan"> </td>
+</tr>
+<tr>
+  <td><strong>Kolam Ikan</strong></td>
+  <td>:</td>
+  <td ><input type="text" class="form-control-sm form-control" placeholder="Contoh : 12" value="<?= set_value('kolamikan'); ?>" name="kolamikan"> <?= form_error('kolamikan','<small class="text-danger pl-3">','</small>');?></td>
+  <td></td>
+</tr>
+<!-- <tr>
+  <td><strong>Jenis Tanaman yang dibudidayakan</strong></td>
+  <td>:</td>
+  <td ><input type="text" class="form-control-sm form-control" placeholder="Contoh : Ubi" value="<?= set_value('jenis_tanaman_budidaya'); ?>" name="jenis_tanaman_budidaya"> <?= form_error('jenis_tanaman_budidaya','<small class="text-danger pl-3">','</small>');?></td>
+  <td></td>
+</tr> -->
+<tr>
+  <td><strong>Jenis Ternak yang dibudidayakan</strong></td>
+  <td>:</td>
+  <td ><input type="text" class="form-control-sm form-control" placeholder="Contoh : Kambing" value="<?= set_value('jenis_ternak_budidaya'); ?>" name="jenis_ternak_budidaya"> <?= form_error('jenis_ternak_budidaya','<small class="text-danger pl-3">','</small>');?></td>
+  <td></td>
+</tr> 
+<tr>
+  <td><strong>UMKM/Industri Kreatif</strong></td>
+  <td>:</td>
+  <td > <select class="form-control-sm form-control" id="tokoid" value="<?= set_value('umkm'); ?>" name="umkm">
+    <option value="">Pilih</option>
+    <option value="ada">Ada</option>
+    <option value="tidak">Tidak</option>
+    </select> <?= form_error('umkm','<small class="text-danger pl-3">','</small>');?>
+  </td>
+</tr>
+<tr id="umkm">
+
+</tr>
+<tr id="umkm1">
+
+</tr>  
+</table>
+</div> 
 </div>
-<div class="row">
- 
-  <div class="col-sm-4">
-    <div class="form-group">
-      <label>Jenis Tanaman yang dibudidayakan</label>
-      <input type="text" class="form-control-sm form-control" placeholder="Contoh : Ubi" >
-    </div>
-  </div>
-  <div class="col-sm-4">
-    <div class="form-group">
-      <label>Jenis Ternak yang dibudidayakan</label>
-      <input type="text" class="form-control-sm form-control" placeholder="Contoh : Kambing" >
-    </div>
-  </div>
-</div>
+<button type="submit">Tambah</button>
 
-<label>Data UMKM/Industri Kreatif</label>
-<div class="row">
-  <div class="col-sm-3">
-    <div class="form-group">
-      <label>UMKM/Industri Kreatif</label>
-      <select class="form-control-sm form-control" onchange="toko()" id="tokoid">
-        <option >Pilih..</option>
-        <option value="ada">Ada</option>
-        <option value="tidak">Tidak</option>
-      </select>
-    </div>
-  </div>
-  <div class="row" id="idjenistoko">
-
-  </div>
-
-    <!--   <div class="col-sm-3">
-        <div class="form-group">
-          <label>Jenis Produksi Rumahan</label>
-          <input type="text" class="form-control-sm form-control" placeholder="Enter ..." >
-        </div>
-      </div>
-      <div class="col-sm-3">
-        <div class="form-group">
-          <label>Omset Produksi</label>
-          <input type="text" class="form-control-sm form-control" placeholder="Enter ..." >
-        </div>
-      </div>
-
-      <div class="col-sm-3">
-        <div class="form-group">
-          <label>Bahan Baku Produksi</label>
-          <input type="text" class="form-control-sm form-control" placeholder="Enter ..." >
-        </div>
-      </div> -->
-    </div>
-  </div>
-  <div style="overflow:auto;">
-    <div style="float:right; margin-top: 5px;">
-      <button type="button" class="previous">Kembali</button>
-      <button type="button" class="next">Selanjutnya</button>
-      <button type="button" class="submit">Selesai</button>
-    </div>
-  </div>
-  <!-- Circles which indicates the steps of the form: -->
-  <div style="text-align:center;margin-top:40px;">
-    <span class="step">1</span>
-    <span class="step">2</span>
-    <span class="step">3</span>
-    <span class="step">4</span>
-    <span class="step">5</span>
-  </div>
 </form>
 </div>
+
+</div>
+
 </div>
 </div>
-</div>
-</div>
-<!-- </div> -->
-</div>
-<!-- /.content-wrapper -->
+
+
+
 
 <footer class="main-footer">
   <div class="float-right d-none d-sm-block">
@@ -695,155 +521,37 @@
 
 
 <script type="text/javascript">
+
   $(document).ready(function(){
     $(":input").inputmask();
-    $("#nik").inputmask({"mask": "9999 9999 9999 9999"});
-    $("#phone").inputmask({"mask": "9999 99 999 999"});
-    $("#rt").inputmask({"mask": "99"});
-    $("#rw").inputmask({"mask": "99"});
+    $("#kk").inputmask({"mask": "9999 9999 9999 9999"});
+    $(".nik").inputmask({"mask": "9999 9999 9999 9999"});
+    $(".phone").inputmask({"mask": "9999 99 999 999"});
+    $(".rt").inputmask({"mask": "99"});
+    $(".rw").inputmask({"mask": "99"});
+    $(".tgl").inputmask({"mask": "99-99-9999"});
 
-    $.validator.addMethod('date', function(value, element, param) {
-      return (value != 0) && (value <= 31) && (value == parseInt(value, 10));
-    }, 'Please enter a valid date!');
-    $.validator.addMethod('month', function(value, element, param) {
-      return (value != 0) && (value <= 12) && (value == parseInt(value, 10));
-    }, 'Please enter a valid month!');
-    $.validator.addMethod('year', function(value, element, param) {
-      return (value != 0) && (value >= 1900) && (value == parseInt(value, 10));
-    }, 'Please enter a valid year not less than 1900!');
-    $.validator.addMethod('username', function(value, element, param) {
-      var nameRegex = /^[a-zA-Z0-9]+$/;
-      return value.match(nameRegex);
-    }, 'Only a-z, A-Z, 0-9 characters are allowed');
-
-    var val = {
-          // Specify validation rules
-          rules: {
-            // namakk: "required",
-            // nokk: "required",
-            // tempatlahir:"required",
-            // tanggal:"required",
-            // alamatkel:"required",
-            // goldarah:"required",
-            // pendterakhir:"required",
-            // pekerjaan:"required",
-            // tlp:{
-            //    required:true,
-            // },
-            // nik:{
-            //   required:true,
-
-            // },
-            email: {
-              required: true,
-              email: true
-            },
-            phone: {
-              required:true,
-              minlength:12,
-              maxlength:12,
-              digits:true
-            },
-            date:{
-              date:true,
-              required:true,
-              minlength:2,
-              maxlength:2,
-              digits:true
-            },
-            month:{
-              month:true,
-              required:true,
-              minlength:2,
-              maxlength:2,
-              digits:true
-            },
-            year:{
-              year:true,
-              required:true,
-              minlength:4,
-              maxlength:4,
-              digits:true
-            },
-            username:{
-              username:true,
-              required:true,
-              minlength:4,
-              maxlength:16,
-            },
-            password:{
-              required:true,
-              minlength:8,
-              maxlength:16,
-            }
-          },
-
-
-          // Specify validation error messages
-          messages: {
-            namakk:    "Wajib di isi !",
-            nokk:    "Wajib di isi !",
-            tempatlahir:"Wajib di isi !",
-            tanggal:"Wajib di isi !",
-            alamatkel:"Wajib di isi !",
-            goldarah:"Wajib di isi !",
-            pendterakhir:"Wajib di isi !",
-            pekerjaan:"Wajib di isi !",
-            
-            nik:{
-              required:   "Wajib diisi!",
-              minlength:  "masukan minimal 16 nomor",
-              maxlength:  "masukan maks 16 nomor",
-              digits:   "hanya masukan nomor"
-            },
-            tlp:{
-              required:   "Wajib diisi!",
-              // minlength:  "masukan maks 12 nomor",
-              // maxlength:  "masukan maks 12 nomor",
-              // digits:   "Only numbers are allowed in this field"
-            },
-            date:{
-              required:   "Date is required",
-              minlength:  "Date should be a 2 digit number, e.i., 01 or 20",
-              maxlength:  "Date should be a 2 digit number, e.i., 01 or 20",
-              digits:   "Date should be a number"
-            },
-            month:{
-              required:   "Month is required",
-              minlength:  "Month should be a 2 digit number, e.i., 01 or 12",
-              maxlength:  "Month should be a 2 digit number, e.i., 01 or 12",
-              digits:   "Only numbers are allowed in this field"
-            },
-            year:{
-              required:   "Year is required",
-              minlength:  "Year should be a 4 digit number, e.i., 2018 or 1990",
-              maxlength:  "Year should be a 4 digit number, e.i., 2018 or 1990",
-              digits:   "Only numbers are allowed in this field"
-            },
-            username:{
-              required:   "Username is required",
-              minlength:  "Username should be minimum 4 characters",
-              maxlength:  "Username should be maximum 16 characters",
-            },
-            password:{
-              required:   "Password is required",
-              minlength:  "Password should be minimum 8 characters",
-              maxlength:  "Password should be maximum 16 characters",
-            }
-          }
-        }
-
-        $("#myForm").multiStepForm(
-        {
-        // defaultStep:0,
-        beforeSubmit : function(form, submit){
-          console.log("called before submiting the form");
-          console.log(form);
-          console.log(submit);
-        },
-        validations:val,
+    var confirmed = false;
+    $(".swa-confirm").on("submit", function(e) {
+      var $this = $(this);
+      if (!confirmed) {
+        e.preventDefault();
+        swal({
+          title: $(this).data("swa-title"),
+          text: $(this).data("swa-text"),
+          type: "warning",
+          showCancelButton: true,
+          confirmButtonColor: "#cc3f44",
+          confirmButtonText: $(this).data("swa-btn-txt"),
+          closeOnConfirm: true,
+          html: false
+        }, function() {
+          confirmed = true;
+          $this.submit();
+        });
       }
-      ).navigateTo(0);
+    });
+
 
       // slide 2
 
@@ -854,23 +562,130 @@
       var maksFormAnak = 4;
 
       btndataistri = document.getElementById('dropdownJenHubKel').addEventListener('click', function (event) {
-        var labelIstri = '<input type="text" class="form-control-sm form-control" id="jenis_hub_hk" name="jenis_hub_hk[]" value="Istri" hidden></div><hr><div class="row"><div class="col-sm-6"><!-- text input --><div class="form-group"><label>Nama Istri</label><input type="text" class="form-control-sm form-control" placeholder="Nama Istri" name="nama_hk[]"></div>';
-        var labelAnak = '<input type="text" class="form-control-sm form-control" id="jenis_hub_hk" name="jenis_hub_hk[]" value="Anak" hidden></div><hr><div class="row"><div class="col-sm-6"><!-- text input --><div class="form-group"><label>Nama Anak</label><input type="text" class="form-control-sm form-control" placeholder="Nama Anak" name="nama_hk[]"></div>';
-        var labelKl = '<input type="text" class="form-control-sm form-control" id="jenis_hub_hk" name="jenis_hub_hk[]" value="Keluarga Lain" hidden></div><hr><div class="row"><div class="col-sm-6"><!-- text input --><div class="form-group"><label>Nama Keluarga Lain</label><input type="text" class="form-control-sm form-control" placeholder="Nama Keluarga Lain" name="nama_hk[]"></div>';
-        var form1 = '</div><div class="col-sm-6"><div class="form-group"><label>NIK</label><input type="text" class="form-control-sm form-control" placeholder="No Induk Kependudukan" name="nik_hk[]" data-inputmask="\'mask\': \'9999 9999 9999 9999\'"></div></div><div class="col-sm-3"></div></div><div class="row"><div class="col-sm-6"><!-- text input --><div class="form-group"><label>Tempat Lahir</label><input type="text" class="form-control-sm form-control" name="tempat_lahir_hk[]" placeholder="Contoh: Garut"></div></div><div class="col-sm-3"><label>Tanggal Lahir</label><div class="form-group">';
-        var form2 = '<div class="input-group date datetimepicker3" id="datetimepicker3" data-target-input="nearest"><input type="text" class="form-control-sm form-control datetimepicker-input" name="tanggal_lahir_hk[]" placeholder="dd/mm/yyyy" data-inputmask="\'alias\': \'datetime\'" data-target=".datetimepicker3"/><div class="input-group-append" data-target="#datetimepicker3" data-toggle="datetimepicker"><div class="input-group-text"><i class="fa fa-calendar"></i></div></div></div></div></div><div class="col-sm-3"><div class="form-group "><label>Golongan Darah</label><select class="form-control-sm form-control" name="gol_darah_hk[]"><option>Pilih Golongan Darah</option><option>A</option><option>B</option><option>O</option><option>AB</option></select></div></div></div>';
-        var form3 = '<div class="row"><div class="col-sm-3"><!-- text input --><div class="form-group"><label>Pendidikan Terakhir</label><select class=" form-control-sm form-control" name="pend_terakhir_hk[]" ><option>Pilih..</option><option value="Tidak Sekolah">Tidak Sekolah</option><option value="SD">SD</option><option value="SMP/Sederajat">SMP/Sederajat</option><option value="SMA/Sederajat">SMA/Sederajat</option><option value="D1">D1</option><option value="D2">D2</option><option value="D3">D3</option><option value="S1">S1</option><option value="S2">S2</option><option value="S3">S3</option></select></div></div><div class="col-sm-3"><div class="form-group"><label>Pekerjaan</label><select class=" form-control-sm form-control" name="pekerjaan_hk[]" id="pekerjaan" ><option>Pilih..</option><option value="Tidak Bekerja">Tidak Bekerja</option><option value="PNS">PNS</option><option value="TNI/POLRI">TNI/POLRI</option><option value="Pensiunan">Pensiunan</option>';
-        var form4 = '<option value="Karyawan Swasta">Karyawan Swasta</option><option value="Wiraswasta">Wiraswasta</option><option value="Petani">Petani</option><option value="Sopir">Sopir</option><option value="Buruh Harian Lepas">Buruh Harian Lepas</option><option value="Buruh Tani">Buruh Tani</option><option value="Tukang Banguna">Tukang Banguna</option><option value="Pedagang">Pedagang</option><option value="Pelajar">Pelajar</option><option value="Ibu Rumah tangga">Ibu Rumah tangga</option><option value="Lain-lain">Lain-lain</option></select></div></div><div class="col-sm-3"><div class="form-group"><label>Telp. (WA)</label><input type="text"  class="form-control-sm form-control" name="telp_hk[]" placeholder="Enter ..." ></div></div><div class="col-sm-3"><div class="form-group"><label>Akta Kelahiran</label><select class="form-control-sm form-control"><option value="ada">Ada</option><option value="tidak">Tidak</option></select></div>';
-        var form3istri = '<div class="row"><div class="col-sm-6"><!-- text input --><div class="form-group"><label>Pendidikan Terakhir</label><select class=" form-control-sm form-control" name="pend_terakhir[]" ><option>Pilih..</option><option value="Tidak Sekolah">Tidak Sekolah</option><option value="SD">SD</option><option value="SMP/Sederajat">SMP/Sederajat</option><option value="SMA/Sederajat">SMA/Sederajat</option><option value="D1">D1</option><option value="D2">D2</option><option value="D3">D3</option><option value="S1">S1</option><option value="S2">S2</option><option value="S3">S3</option></select></div></div><div class="col-sm-3"><div class="form-group"><label>Pekerjaan</label><select class=" form-control-sm form-control" name="pekerjaan_hk[]" id="pekerjaan" ><option>Pilih..</option><option value="Tidak Bekerja">Tidak Bekerja</option><option value="PNS">PNS</option>';
-        var form3istri1 = '<option value="TNI/POLRI">TNI/POLRI</option><option value="Pensiunan">Pensiunan</option><option value="Karyawan Swasta">Karyawan Swasta</option><option value="Wiraswasta">Wiraswasta</option><option value="Petani">Petani</option><option value="Sopir">Sopir</option><option value="Buruh Harian Lepas">Buruh Harian Lepas</option><option value="Buruh Tani">Buruh Tani</option><option value="Tukang Banguna">Tukang Banguna</option><option value="Pedagang">Pedagang</option><option value="Pelajar">Pelajar</option><option value="Ibu Rumah tangga">Ibu Rumah tangga</option><option value="Lain-lain">Lain-lain</option></select></div></div><div class="col-sm-3"><div class="form-group"><label>Telp. WA</label><input type="text" class="form-control-sm form-control" placeholder="Enter ..." ></div></div></div>';
+
+        var labelistri = `<div class="col-md-6"><hr><table id="example1"><input type="text" class="form-control-sm form-control"  value="Istri" placeholder="Nama" name="jenis_hub[]" hidden><tr><td><strong>Nama Istri</strong></td><td>:</td><td > <input type="text" class="form-control-sm form-control"  placeholder="Nama" name="nama_hk[]" value="<?= set_value('nama_hk[]'); ?>"><?= form_error('nama_hk[]','<small class="text-danger pl-3">','</small>');?></td><td></td> </tr>`
+        var labelhublain= `<div class="col-md-6"><hr><table id="example1"><input type="text" class="form-control-sm form-control"  value="hub_lain" placeholder="Nama" name="jenis_hub[]" hidden><tr><td><strong>Nama</strong></td><td>:</td><td > <input type="text" class="form-control-sm form-control"  placeholder="Nama" name="nama_hk[]" value="<?= set_value('nama_hk[]'); ?>"><?= form_error('nama_hk[]','<small class="text-danger pl-3">','</small>');?></td><td></td> </tr>`
+        var labelanak =`<div class="col-md-6"><hr><table id="example1"><input type="text" class="form-control-sm form-control"  value="Anak" hidden name="jenis_hub[]" > <tr> <td><strong>Nama</strong></td><td>:</td> <td > <input type="text" class="form-control-sm form-control"  placeholder="Nama" name="nama_hk[]" value="<?= set_value('nama_hk[]'); ?>"><?= form_error('nama_hk[]','<small class="text-danger pl-3">','</small>');?></td> <td></td></tr>`
+        var formanak =`
+        <tr>
+        <td><strong>Jenis Kelamin</strong></td>
+        <td>:</td>
+        <td >    <select class=" form-control-sm form-control" value="<?= set_value('jenis_kelamin_hk[]'); ?>" name="jenis_kelamin_hk[]">
+        <option value="">Pilih</option>
+        <option value="L">Laki-Laki</option>
+        <option value="P">Perempuan</option>
+        </select> <?= form_error('jenis_kelamin_hk[]','<small class="text-danger pl-3">','</small>');?> </td>
+        <td></td>
+        </tr>
+        <tr>
+        <td><strong>Akta Lahir</strong></td>
+        <td>:</td>
+        <td >    <select class=" form-control-sm form-control" value="<?= set_value('akta_lahir[]'); ?>" name="akta_lahir[]">
+        <option value="">Pilih</option>
+        <option value="Ada">Ada</option>
+        <option value="Tidak">Tidak</option>
+        </select> <?= form_error('akta_lahir[]','<small class="text-danger pl-3">','</small>');?> </td>
+        <td></td>
+        </tr>`
+
+        var form = `<tr><td><strong>NIK</strong></td><td>:</td>
+        <td > <input type="text" id="nik" class="form-control-sm form-control nik" placeholder="No Induk Kependudukan" value="<?= set_value('nik_hk[]'); ?>" name="nik_hk[]" value=""><?= form_error('nik_hk[]','<small class="text-danger pl-3">','</small>');?></td>
+        <td></td></tr><tr ng-show="resume.pendaftaran.bisaPilih" class=""><td><strong>Tempat Lahir</strong></td>
+        <td>:</td><td ><input type="text" class="form-control-sm form-control" placeholder="Contoh : Garut" value="<?= set_value('tempat_lahir_hk[]'); ?>" name="tempat_lahir_hk[]" value="">
+        <?= form_error('tempat_lahir_hk[]','<small class="text-danger pl-3">','</small>');?> </td>
+        <td></td></tr><tr><td><strong>Tanggal Lahir</strong></td><td>:</td><td ><input type="text" class="form-control-sm form-control  tgl" placeholder="dd-mm-yyyy"  
+        name="tanggal_lahir_hk[]" value="<?= set_value('tanggal_lahir_hk[]'); ?>" /><?= form_error('tanggal_lahir_hk[]','<small class="text-danger pl-3">','</small>');?></td></tr><tr><td><strong>Agama</strong></td><td>:</td>
+        <td ><select class=" form-control-sm form-control" value="<?= set_value('agama_hk[]'); ?>" name="agama_hk[]">
+        <option value="">Pilih</option>
+        <option value="Islam">Islam</option>
+        <option value="Protestan">Protestan</option>
+        <option value="Katolik">Katolik</option>
+        <option value="Hindu">Hindu</option>
+        <option value="Buddha">Buddha</option>
+        <option value="Konghucu">Konghucu</option>
+        <?= form_error('agama_hk[]','<small class="text-danger pl-3">','</small>');?></td></tr>
+
+        </table>
+        </div> 
+        <div class="col-md-6"><hr>
+        <table>
+        
+        <tr>
+        <td><strong>Golongan Darah</strong></td>
+        <td>:</td>
+        <td >    <select class=" form-control-sm form-control" value="<?= set_value('goldarah_hk[]'); ?>" name="goldarah_hk[]">
+        <option value="">Pilih</option>
+        <option value="A">A</option>
+        <option value="B">B</option>
+        <option value="O">O</option>
+        <option value="AB">AB</option>
+        <option value="Tidak Tahu">Tidak Tahu</option>
+        </select> <?= form_error('goldarah_hk[]','<small class="text-danger pl-3">','</small>');?> </td>
+        <td></td>
+        </tr>
+
+        <tr>
+        <td><strong>Pendidikan Terakhir</strong></td>
+        <td>:</td>
+        <td > <select class=" form-control-sm form-control" value="<?= set_value('pendterakhir_hk[]'); ?>" name="pendterakhir_hk[]" >
+        <option value="">Pilih</option>
+        <option value="Tidak Sekolah">Tidak Sekolah</option>
+        <option value="SD">SD</option>
+        <option value="SMP/Sederajat">SMP/Sederajat</option>
+        <option value="SMA/Sederajat">SMA/Sederajat</option>
+        <option value="D1">D1</option>
+        <option value="D2">D2</option>
+        <option value="D3">D3</option>
+        <option value="S1">S1</option>
+        <option value="S2">S2</option>
+        <option value="S3">S3</option>
+        </select> <?= form_error('pendterakhir_hk[]','<small class="text-danger pl-3">','</small>');?></td>
+        </tr>
+        <tr >
+        <td><strong>Pekerjaan</strong></td>
+        <td>:</td>
+        <td >  <select class=" form-control-sm form-control" value="<?= set_value('pekerjaan_hk[]'); ?>" name="pekerjaan_hk[]" id="pekerjaan" onchange="funcpekerjaan()" >
+        <option value="">Pilih</option>
+        <option value="Tidak Bekerja">Tidak Bekerja</option>
+        <option value="PNS">PNS</option>
+        <option value="TNI/POLRI">TNI/POLRI</option>
+        <option value="Pensiunan">Pensiunan</option>
+        <option value="Karyawan Swasta">Karyawan Swasta</option>
+        <option value="Wiraswasta">Wiraswasta</option>
+        <option value="Petani">Petani</option>
+        <option value="Sopir">Sopir</option>
+        <option value="Buruh Harian Lepas">Buruh Harian Lepas</option>
+        <option value="Buruh Tani">Buruh Tani</option>
+        <option value="Tukang Banguna">Tukang Banguna</option>
+        <option value="Pedagang">Pedagang</option>
+        <option value="Pelajar">Pelajar</option>
+        <option value="Ibu Rumah tangga">Ibu Rumah tangga</option>
+        <option value="Dosen">Dosen</option>
+        <option value="Guru">Guru</option>
+        <option value="Lain-lain">Lain-lain</option>
+        </select> <?= form_error('pekerjaan_hk[]','<small class="text-danger pl-3">','</small>');?></td>
+        </tr>
+        <tr ng-show="resume.pendaftaran.bisaPilih" class="">
+        <td><strong>Tlp/Wa</strong></td>
+        <td>:</td>
+        <td ><input type="text" value="" id="phone" class="form-control-sm form-control phone"  placeholder="Contoh : 081224207149" value="<?= set_value('tlp_hk[]'); ?>" name="tlp_hk[]"> <?= form_error('tlp_hk[]','<small class="text-danger pl-3">','</small>');?>
+        </td>
+        </tr>
+        </table>
+        </div>`
+
+
+
+
         var target = event.target;
         console.log(target.id);
-        
+        var table = `<table>`;
+        var table2 = `</table>`;
         if (target.id === 'addDataIstri') {
           if(x1 < maksFormIstri_Kl){
             x1++;
             // document.getElementById('formHubKel').innerHTML += labelIstri + form1 + form2 + form3istri;</div>
-            $('#formHubKel').append(labelIstri + form1 + form2 + form3istri + form3istri1);
+            $('#formHubKel').append(labelistri + form);
           } else {
             Swal.fire(
               'Perhatian!',
@@ -881,7 +696,7 @@
         } else if (target.id === 'addDataAnak') {
           if(x2 < maksFormAnak){
             x2++;
-            $('#formHubKel').append(labelAnak + form1 + form2 + form3 + form4);
+            $('#formHubKel').append(labelanak + formanak + form);
           } else {
             Swal.fire(
               'Perhatian!',
@@ -892,7 +707,7 @@
         } else {
           if(x3 < maksFormIstri_Kl){
             x3++;
-            $('formHubKel').append(labelKl + form1 + form2 + form3 + form4);
+            $('#formHubKel').append(labelhublain + form);
           } else {
             Swal.fire(
               'Perhatian!',
@@ -905,124 +720,109 @@
 
       // end slide 2
     });
-  </script>
 
-  <script type="text/javascript">
 
-    function tambahform(){
+ const flashdata = $(".flash-data").data('flashdata');
 
+ if (flashdata) {
+  Swal.fire({
+    title: flashdata,
+    icon: 'success',
+    showConfirmButton: true,
+  }).then((result) => {
+    /* Read more about isConfirmed, isDenied below */
+    if (result.isConfirmed) {
+      location.replace("<?= base_url('penduduk/penduduk/index')?>")
     }
+  })
+}
+</script>
 
-    var e = document.getElementById("pekarangan");
-    function show(){
-      var as = document.forms[0].pekarangan.value;
-      var strUser = e.options[e.selectedIndex].value;
-      console.log(strUser);
-      var element = document.getElementById("demo");
-      var element2 = document.getElementById("demo2");
-      if (as=="ada") {
+<script type="text/javascript">
+
+
+  $('#pekarangan').change(function() {
+    let val = $(this).val();
+      // console.log(val);
+      var tes =` <tr><td><strong>Luas Pekarangan</strong></td>
+      <td>:</td>
+      <td ><input type="text" placeholder="Contoh : 40" value="<?= set_value('luaspekrngan'); ?>" name="luaspekrngan" class="form-control-sm form-control"> <?= form_error('luaspekrngan','<small class="text-danger pl-3">','</small>');?></td></tr>`;
+      var tes2 =` <tr>
+      <td><strong>Tanaman di pekarangan</strong></td>
+      <td>:</td>
+      <td>
+      <input type="text" value="<?= set_value('tanmndipekarangan'); ?>" name="tanmndipekarangan" placeholder="Contoh : ada" class="form-control-sm form-control "> <?= form_error('tanmndipekarangan','<small class="text-danger pl-3">','</small>');?>
+      </td>
+
+      </tr>`;
+      var tes3 =` <td><strong>Jenis Tanaman</strong></td>
+      <td>:</td>
+      <td > <input type="text" value="<?= set_value('jenistanaman'); ?>" name="jenistanaman" placeholder="Contoh : Mawar" class="form-control-sm form-control "> <?= form_error('jenistanaman','<small class="text-danger pl-3">','</small>');?></td>`
+      if (val=='ada') {
+        var element = document.getElementById("pkrngn2");
+        var element2 = document.getElementById("pkrngn3");
+        var element1 = document.getElementById("pkrngn");
         element.classList.remove("d-none");
+        element1.classList.remove("d-none");
         element2.classList.remove("d-none");
-        document.getElementById("demo").innerHTML = `<div class="form-group">
-        <label>Luas Pekarangan</label>
-        <input type="text" class="form-control-sm form-control" placeholder="Enter ...">
-        </div>` ;
-        document.getElementById("demo2").innerHTML = `
-        <!-- text input -->
-        <div class="form-group">
-        <label>Tanaman di Pekarangan</label>
-        <select class="form-control-sm form-control" onchange="tanaman()" id="select_id">
-        <option>Pilih..</option>
-        <option value="ada" >Ada</option>
-        <option value="tidak" >Tidak</option>
-        </select>
-        </div>` ;
-      }else if (as=="tidak"){
-
+        document.getElementById("pkrngn").innerHTML =tes
+        document.getElementById("pkrngn2").innerHTML =tes2
+        document.getElementById("pkrngn3").innerHTML =tes3
+      }else{
+        var element = document.getElementById("pkrngn2");
+        var element2 = document.getElementById("pkrngn3");
+        var element1 = document.getElementById("pkrngn");
         element.classList.add("d-none");
+        element1.classList.add("d-none");
         element2.classList.add("d-none");
+
       }
-    }
-    e.onchange=show;
-    show();
+    });
 
 
-    
+  $('#pdamid').change(function() {
+    let val = $(this).val();
+      // console.log(val);
+      var tes =`<td><strong>Bayar PDAM/Bulan</strong></td>
+      <td>:</td>
+      <td ><input type="text" class="form-control-sm form-control" placeholder="Contoh : 20000" value="<?= set_value('bayarpdam'); ?>" name="bayarpdam"> <?= form_error('bayarpdam','<small class="text-danger pl-3">','</small>');?></td>`;
 
-    function tanaman(){
-     let val=document.getElementById('select_id').value;
-     var clas = document.getElementById("jenstnman");
-     if (val == "ada") {
-       clas.classList.remove("d-none");
-       document.getElementById("jenstnman").innerHTML = `
-       <!-- text input -->
-       <div class="form-group">
-       <label>Jenis Tanaman</label>
-       <input type="text" class="form-control-sm form-control" placeholder="Enter ...">
-       </div>` ;
-     }else{
-       clas.classList.add("d-none");
-     }
+        var element = document.getElementById("bayarpdam");
+      if (val=='PDAM') {
+        element.classList.remove("d-none");
+        document.getElementById("bayarpdam").innerHTML =tes
+      }else{
+        element.classList.add("d-none");
 
+      }
+    });
 
+  $('#tokoid').change(function() {
+    let val = $(this).val();
+      // console.log(val);
+      var umkm =` <td><strong>Jenis umkm</strong></td>
+      <td>:</td>
+      <td ><input type="text" class="form-control-sm form-control" placeholder="Contoh : Kambing" value="<?= set_value('jenisumkm'); ?>" name="jenisumkm"> <?= form_error('jenisumkm','<small class="text-danger pl-3">','</small>');?></td></td>
+      <td></td>`;
+      var umkm1 =`  <td><strong>Omset Perbulan</strong></td>
+      <td>:</td>
+      <td ><input type="text" class="form-control-sm form-control" placeholder="Contoh : 2000000" value="<?= set_value('omset'); ?>" name="omset"> <?= form_error('omset','<small class="text-danger pl-3">','</small>');?></td>`;
+      if (val=='ada') {
+        var element = document.getElementById("umkm");
+        var element1 = document.getElementById("umkm1");
+        element.classList.remove("d-none");
+        element1.classList.remove("d-none");
+        document.getElementById("umkm").innerHTML =umkm;
+        document.getElementById("umkm1").innerHTML =umkm1;
+      }else{
+        var element = document.getElementById("umkm");
+        var element1 = document.getElementById("umkm1");
+        element.classList.add("d-none");
+        element1.classList.add("d-none");
 
-   }
+      }
+    });
 
-   function pdam(){
-    let idpdam =document.getElementById('pdamid').value;
-    var xx = document.getElementById("byarpdam");
-    if (idpdam =="PDAM") {
-      xx.classList.remove("d-none");
-      document.getElementById("byarpdam").innerHTML = ` <div class="form-group">
-      <label><small>Bayar PDAM/Bulan</small></label>
-      <input type="text" class="form-control-sm form-control" placeholder="Enter ..." >
-      </div>` ;
-    }else if(idpdam != "PDAM"){
-      xx.classList.add("d-none");
-    }
-
-    console.log(idpdam);
-  }
-
-  function toko(){
-    let idtoko =document.getElementById('tokoid').value;
-    var xxs = document.getElementById("idjenistoko");
-    if (idtoko =="ada") {
-      xxs.classList.remove("d-none");
-      document.getElementById("idjenistoko").innerHTML = `  <div class="col-sm-6"> <div class="form-group">
-      <label>Jenis</label>
-      <input type="text" class="form-control-sm form-control" placeholder="Contoh : Rajut" >
-      </div>
-      </div>
-      <div class="col-sm-6">
-      <div class="form-group">
-      <label>Omset Perbulan</label>
-      <input type="text" class="form-control-sm form-control" placeholder="Contoh : 10000000" >
-      </div>
-      </div>` ;
-    }else if(idtoko != "PDAM"){
-      xxs.classList.add("d-none");
-    }
-
-    console.log(idtoko);
-  }
-
-
-  function funcpekerjaan(){
-    let idpekerjaan =document.getElementById('pekerjaan').value;
-    var xxs = document.getElementById("idjenispekerjaan");
-    if (idpekerjaan =="Lain-lain") {
-      xxs.classList.remove("d-none");
-      document.getElementById("idjenispekerjaan").innerHTML = ` <div class="form-group">
-      <label><small>Masukan Nama Pekerjaan Anda</small></label>
-      <input type="text" class="form-control-sm form-control Phone"  placeholder="Contoh : Supir Angkot" name="pekerjaan">
-      </div>` ;
-    }else if(idpekerjaan != "Lain-lain"){
-      xxs.classList.add("d-none");
-    }
-
-    console.log(idpekerjaan);
-  }
 
   $(function () {
    $('.select2').select2()
@@ -1031,15 +831,7 @@
     theme: 'bootstrap4'
   })
 
-   $('#example1').DataTable({
-      // "paging": true,
-      // "lengthChange": false,
-      // "searching": false,
-      // "ordering": true,
-      // "info": true,
-      // "autoWidth": false,
-      // "responsive": true,
-    });
+
    $('#datetimepicker1').datetimepicker({
     format: 'L'
   });

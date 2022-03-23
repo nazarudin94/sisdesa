@@ -62,394 +62,400 @@
                     <tr >
                       <td><strong>NIK</strong></td>
                       <td>:</td>
-                      <td > <input type="text" id="nik" class="form-control-sm form-control" placeholder="No Induk Kependudukan" name="nik" value="<?= $value['nik']  ?>"></td>
+                      <td > <input type="text" id="nik" class="form-control-sm form-control" placeholder="No Induk Kependudukan" name="nik" value="<?= $value['nik']  ?>" disabled></td>
                       <td></td>
                     </tr>
                     <tr ng-show="resume.pendaftaran.bisaPilih" class="">
                       <td><strong>Tempat Lahir</strong></td>
                       <td>:</td>
                       <td ><input type="text" class="form-control-sm form-control" placeholder="Contoh : Garut" name="tempatlahir" value="<?= $value['tempat_lahir']  ?>">
-                    </td>
-                    <td></td>
-                  </tr>
-                  <tr ng-show="resume.pendaftaran.bisaPilih" class="">
-                    <td><strong>Tanggal Lahir</strong></td>
-                    <td>:</td>
-                    <td ><input type="text" id="tanggal" class="form-control-sm form-control datetimepicker-input" placeholder="dd/mm/yyyy" data-target="#datetimepicker1" value="<?= $value['tanggal_lahir']  ?>" /></td>
-                    <td></td>
-                  </tr>
-                  <tr ng-show="resume.pendaftaran.bisaPilih" class="">
-                    <td><strong>Alamat Keluarga</strong></td>
+                      </td>
+                      <td></td>
+                    </tr>
+                    <tr ng-show="resume.pendaftaran.bisaPilih" class="">
+                      <td><strong>Tanggal Lahir</strong></td>
+                      <td>:</td>
+                      <td ><input type="text" id="tanggal" class="form-control-sm form-control" placeholder="dd/mm/yyyy" name="tanggal_lahir"  value="<?= $value['tanggal_lahir']  ?>" /></td>
+                      <td></td>
+                    </tr>
+                    <tr>
+                      <td><strong>Alamat Keluarga</strong></td>
+                      <td>:</td>
+                      <td  >
+                       <input type="text" class="form-control-sm form-control" placeholder="Contoh : Kp.Situgitrang" name="alamatkel" value="<?= $value['alamat']  ?>">
+                     </td>
+                   </tr>
+                   <tr>
+                    <td><strong>RT</strong></td>
                     <td>:</td>
                     <td  >
-                     <input type="text" class="form-control-sm form-control" placeholder="Contoh : Kp.Situgitrang" name="alamatkel" value="<?= $value['alamat']  ?>">
+                     <input type="text" id="rt" class="form-control-sm form-control" placeholder="Contoh : 06" name="rtrw" value="<?= $value['rt']  ?>">
                    </td>
                  </tr>
-                 <tr ng-show="resume.pendaftaran.bisaPilih" class="">
-                  <td><strong>RT/RW</strong></td>
-                  <td>:</td>
-                  <td  >
-                     <input type="text" id="rtrw" class="form-control-sm form-control" placeholder="Contoh : 06" name="rtrw" value="<?= $value['rt_rw']  ?>">
-                  </td>
-                </tr>
-              </tbody></table>
-              <br>
+                 <tr>
+                    <td><strong>RW</strong></td>
+                    <td>:</td>
+                    <td  >
+                     <input type="text" id="rW" class="form-control-sm form-control" placeholder="Contoh : 06" name="rw" value="<?= $value['rw']  ?>">
+                   </td>
+                 </tr>
+               </tbody></table>
+               <br>
 
-            </div>
-            <div class="col-md-6" style="border-bottom: 1px">
+             </div>
+             <div class="col-md-6" style="border-bottom: 1px">
               <table>
                <tbody><tr>
                 <td><strong>Golongan Darah</strong></td>
                 <td>:</td>
                 <td >    <select class=" form-control-sm form-control" name="goldarah">
-                          <option value="<?= $value['gol_darah']  ?>"><?= $value['gol_darah']  ?></option>
-                          <option value="A">A</option>
-                          <option value="B">B</option>
-                          <option value="O">O</option>
-                          <option value="AB">AB</option>
-                        </select> </td>
+                  <option value="<?= $value['gol_darah']  ?>"><?= $value['gol_darah']  ?></option>
+                  <option value="A">A</option>
+                  <option value="B">B</option>
+                  <option value="O">O</option>
+                  <option value="AB">AB</option>
+                </select> </td>
                 <td></td>
               </tr>
               <tr>
                 <td><strong>Pendidikan Terakhir</strong></td>
                 <td>:</td>
                 <td > <select class=" form-control-sm form-control" name="pendterakhir" >
-                        <option value="<?= $value['pendidikan_terakhir']  ?>"><?= $value['pendidikan_terakhir']  ?></option>
-                        <option value="Tidak Sekolah">Tidak Sekolah</option>
-                        <option value="SD">SD</option>
-                        <option value="SMP/Sederajat">SMP/Sederajat</option>
-                        <option value="SMA/Sederajat">SMA/Sederajat</option>
-                        <option value="D1">D1</option>
-                        <option value="D2">D2</option>
-                        <option value="D3">D3</option>
-                        <option value="S1">S1</option>
-                        <option value="S2">S2</option>
-                        <option value="S3">S3</option>
-                      </select></td>
+                  <option value="<?= $value['pendidikan_terakhir']  ?>"><?= $value['pendidikan_terakhir']  ?></option>
+                  <option value="Tidak Sekolah">Tidak Sekolah</option>
+                  <option value="SD">SD</option>
+                  <option value="SMP/Sederajat">SMP/Sederajat</option>
+                  <option value="SMA/Sederajat">SMA/Sederajat</option>
+                  <option value="D1">D1</option>
+                  <option value="D2">D2</option>
+                  <option value="D3">D3</option>
+                  <option value="S1">S1</option>
+                  <option value="S2">S2</option>
+                  <option value="S3">S3</option>
+                </select></td>
               </tr>
               <tr >
                 <td><strong>Pekerjaan</strong></td>
                 <td>:</td>
                 <td >  <select class=" form-control-sm form-control" name="pekerjaan" id="pekerjaan" onchange="funcpekerjaan()" >
-                        <option value="<?= $value['pekerjaan']  ?>"><?= $value['pekerjaan']  ?></option>
-                        <option value="Tidak Bekerja">Tidak Bekerja</option>
-                        <option value="PNS">PNS</option>
-                        <option value="TNI/POLRI">TNI/POLRI</option>
-                        <option value="Pensiunan">Pensiunan</option>
-                        <option value="Karyawan Swasta">Karyawan Swasta</option>
-                        <option value="Wiraswasta">Wiraswasta</option>
-                        <option value="Petani">Petani</option>
-                        <option value="Sopir">Sopir</option>
-                        <option value="Buruh Harian Lepas">Buruh Harian Lepas</option>
-                        <option value="Buruh Tani">Buruh Tani</option>
-                        <option value="Tukang Banguna">Tukang Banguna</option>
-                        <option value="Pedagang">Pedagang</option>
-                        <option value="Pelajar">Pelajar</option>
-                        <option value="Ibu Rumah tangga">Ibu Rumah tangga</option>
-                        <option value="Lain-lain">Lain-lain</option>
-                      </select></td>
+                  <option value="<?= $value['pekerjaan']  ?>"><?= $value['pekerjaan']  ?></option>
+                  <option value="Tidak Bekerja">Tidak Bekerja</option>
+                  <option value="PNS">PNS</option>
+                  <option value="TNI/POLRI">TNI/POLRI</option>
+                  <option value="Pensiunan">Pensiunan</option>
+                  <option value="Karyawan Swasta">Karyawan Swasta</option>
+                  <option value="Wiraswasta">Wiraswasta</option>
+                  <option value="Petani">Petani</option>
+                  <option value="Sopir">Sopir</option>
+                  <option value="Buruh Harian Lepas">Buruh Harian Lepas</option>
+                  <option value="Buruh Tani">Buruh Tani</option>
+                  <option value="Tukang Banguna">Tukang Banguna</option>
+                  <option value="Pedagang">Pedagang</option>
+                  <option value="Pelajar">Pelajar</option>
+                  <option value="Ibu Rumah tangga">Ibu Rumah tangga</option>
+                  <option value="Lain-lain">Lain-lain</option>
+                </select></td>
               </tr>
               <tr ng-show="resume.pendaftaran.bisaPilih" class="">
                 <td><strong>Tlp/Wa</strong></td>
                 <td>:</td>
                 <td ><input type="text" value="<?= $value['telp']  ?>" id="phone" class="form-control-sm form-control "  placeholder="Contoh : 081224207149" name="tlp">
-              </td>
-            </tr>
-          <?php } ?>
-        </tbody>
-      </table>
-      <br>
+                </td>
+              </tr>
+            <?php } ?>
+          </tbody>
+        </table>
+        <br>
 
+      </div>
     </div>
-  </div>
 
-  <div class="row">
-    <?php foreach ($data_hubungan as $key => $row) {?>
+    <div class="row">
+      <?php foreach ($data_hubungan as $key => $row) {
+  // echo"<pre>";print_r($row);
+        ?>
 
-      <div class="col-md-6">
-       <table>
-        <tbody>
+        <div class="col-md-6">
+         <table>
+          <tbody>
 
-         <tr>
-          <td><strong>Nama</strong></td>
-          <td>:</td>
-          <td> <input type="text" class="form-control-sm form-control" value="<?= $row['nama'] ?>"></td>
+           <tr>
+            <td><strong>Nama</strong></td>
+            <td>:</td>
+            <td> <input type="text" class="form-control-sm form-control" value="<?= $row['nama'] ?>"></td>
+          </tr>
+          <tr>
+            <td><strong>NIK</strong></td>
+            <td>:</td>
+            <td > <input type="text" class="form-control-sm form-control" placeholder="No Induk Kependudukan" name="nik_hk[]" value="<?= $row['nik'] ?>" disabled></td>
+          </tr>
+          <tr>
+            <td><strong>Hubungan Keluarga</strong></td>
+            <td>:</td>
+            <td > <input type="text" class="form-control-sm form-control" placeholder="Enter ..." name="hubngankel[]" value="<?= $row['jenis_hub'] ?>"></td>
+          </tr>
+          <tr>
+            <td><strong>Tempat Lahir</strong></td>
+            <td>:</td>
+            <td><input type="text" class="form-control-sm form-control" placeholder="Enter ..." name="tempat_lahir_hk[]" value="<?= $row['tempat_lahir'] ?>"></td>
+          </tr>
+          <tr>
+            <td><strong>Tanggal Lahir</strong></td>
+            <td>:</td>
+            <td > <input type="text" class="form-control-sm form-control  tgl" placeholder="dd-mm-yyyy" data-target="#datetimepicker1" name="tanggal_lahir_hk[]" value="<?=$row['tanggal_lahir']?>" /> </td>
+          </tr>
+          <tr>
+            <td><strong>Golongan Darah</strong></td>
+            <td>:</td>
+            <td > <select class="form-control-sm form-control">
+              <option value="<?= $row['gol_darah'] ?>"><?= $row['gol_darah'] ?></option>
+              <option>A</option>
+              <option>B</option>
+              <option>O</option>
+              <option>AB</option>
+            </select></td>
+          </tr>
+          <tr ng-show="state.pendidikanKuliah==true &amp;&amp; resume.pendaftaran.jenisPengadaan.id == '2'" class="">
+            <td><strong>Pendidikan Terakhir</strong></td>
+            <td>:</td>
+            <td ><select class=" form-control-sm form-control" name="pendterakhir" >
+              <option value="     <?= $row['pend_terakhir'] ?>">     <?= $row['pend_terakhir'] ?></option>
+              <option value="Tidak Sekolah">Tidak Sekolah</option>
+              <option value="SD">SD</option>
+              <option value="SMP/Sederajat">SMP/Sederajat</option>
+              <option value="SMA/Sederajat">SMA/Sederajat</option>
+              <option value="D1">D1</option>
+              <option value="D2">D2</option>
+              <option value="D3">D3</option>
+              <option value="S1">S1</option>
+              <option value="S2">S2</option>
+              <option value="S3">S3</option>
+            </select>
+
+          </td>
+
         </tr>
         <tr>
-          <td><strong>NIK</strong></td>
+          <td><strong>Pekerjaan</strong></td>
           <td>:</td>
-          <td > <input type="text" class="form-control-sm form-control" placeholder="Enter ..." value="<?= $row['nik'] ?>" disabled></td>
-        </tr>
-        <tr>
-          <td><strong>Hubungan Keluarga</strong></td>
-          <td>:</td>
-          <td > <input type="text" class="form-control-sm form-control" placeholder="Enter ..." value="<?= $row['jenis_hub'] ?>"></td>
-        </tr>
-        <tr>
-          <td><strong>Tempat Lahir</strong></td>
-          <td>:</td>
-          <td><input type="text" class="form-control-sm form-control" placeholder="Enter ..." value="<?= $row['tempat_lahir'] ?>"></td>
-        </tr>
-        <tr>
-          <td><strong>Tanggal Lahir</strong></td>
-          <td>:</td>
-          <td >  <div class="input-group date datetimepicker2" id="datetimepicker2" data-target-input="nearest">
-                      <input type="text" class="form-control-sm form-control datetimepicker-input" data-inputmask="'alias': 'datetime'" data-target=".datetimepicker2" value="<?= $row['tanggal_lahir'] ?>" />
-                      <div class="input-group-append" data-target="#datetimepicker2" data-toggle="datetimepicker">
-                        <div class="input-group-text"><i class="fa fa-calendar"></i></div>
-                      </div>
-                    </div></td>
-        </tr>
-        <tr>
-          <td><strong>Golongan Darah</strong></td>
-          <td>:</td>
-          <td > <select class="form-control-sm form-control">
-                      <option value="<?= $row['gol_darah'] ?>"><?= $row['gol_darah'] ?></option>
-                      <option>A</option>
-                      <option>B</option>
-                      <option>O</option>
-                      <option>AB</option>
-                    </select></td>
+          <td >  <select class=" form-control-sm form-control" name="pekerjaan" id="pekerjaan" onchange="funcpekerjaan()" >
+            <option value="  <?= $row['pekerjaan'] ?>">  <?= $row['pekerjaan'] ?></option>
+            <option value="Tidak Bekerja">Tidak Bekerja</option>
+            <option value="PNS">PNS</option>
+            <option value="TNI/POLRI">TNI/POLRI</option>
+            <option value="Pensiunan">Pensiunan</option>
+            <option value="Karyawan Swasta">Karyawan Swasta</option>
+            <option value="Wiraswasta">Wiraswasta</option>
+            <option value="Petani">Petani</option>
+            <option value="Sopir">Sopir</option>
+            <option value="Buruh Harian Lepas">Buruh Harian Lepas</option>
+            <option value="Buruh Tani">Buruh Tani</option>
+            <option value="Tukang Banguna">Tukang Banguna</option>
+            <option value="Pedagang">Pedagang</option>
+            <option value="Pelajar">Pelajar</option>
+            <option value="Ibu Rumah tangga">Ibu Rumah tangga</option>
+            <option value="Lain-lain">Lain-lain</option>
+          </select></td>
+
         </tr>
         <tr ng-show="state.pendidikanKuliah==true &amp;&amp; resume.pendaftaran.jenisPengadaan.id == '2'" class="">
-          <td><strong>Pendidikan Terakhir</strong></td>
+          <td><strong>Tlp</strong></td>
           <td>:</td>
-          <td ><select class=" form-control-sm form-control" name="pendterakhir" >
-                        <option value="     <?= $row['pend_terakhir'] ?>">     <?= $row['pend_terakhir'] ?></option>
-                        <option value="Tidak Sekolah">Tidak Sekolah</option>
-                        <option value="SD">SD</option>
-                        <option value="SMP/Sederajat">SMP/Sederajat</option>
-                        <option value="SMA/Sederajat">SMA/Sederajat</option>
-                        <option value="D1">D1</option>
-                        <option value="D2">D2</option>
-                        <option value="D3">D3</option>
-                        <option value="S1">S1</option>
-                        <option value="S2">S2</option>
-                        <option value="S3">S3</option>
-                      </select>
-      
-         </td>
-
-       </tr>
-       <tr>
-        <td><strong>Pekerjaan</strong></td>
-        <td>:</td>
-        <td >  <select class=" form-control-sm form-control" name="pekerjaan" id="pekerjaan" onchange="funcpekerjaan()" >
-                        <option value="  <?= $row['pekerjaan'] ?>">  <?= $row['pekerjaan'] ?></option>
-                        <option value="Tidak Bekerja">Tidak Bekerja</option>
-                        <option value="PNS">PNS</option>
-                        <option value="TNI/POLRI">TNI/POLRI</option>
-                        <option value="Pensiunan">Pensiunan</option>
-                        <option value="Karyawan Swasta">Karyawan Swasta</option>
-                        <option value="Wiraswasta">Wiraswasta</option>
-                        <option value="Petani">Petani</option>
-                        <option value="Sopir">Sopir</option>
-                        <option value="Buruh Harian Lepas">Buruh Harian Lepas</option>
-                        <option value="Buruh Tani">Buruh Tani</option>
-                        <option value="Tukang Banguna">Tukang Banguna</option>
-                        <option value="Pedagang">Pedagang</option>
-                        <option value="Pelajar">Pelajar</option>
-                        <option value="Ibu Rumah tangga">Ibu Rumah tangga</option>
-                        <option value="Lain-lain">Lain-lain</option>
-                      </select></td>
-
-      </tr>
-      <tr ng-show="state.pendidikanKuliah==true &amp;&amp; resume.pendaftaran.jenisPengadaan.id == '2'" class="">
-        <td><strong>Tlp</strong></td>
-        <td>:</td>
-        <td ng-show="resume.pendaftaran.akreditasiProdiOtomatis != null" class="ng-binding ng-hide">
-        <input type="text" value=" <?= $row['telp'] ?>" id="phone" class="form-control-sm form-control "  placeholder="Contoh : 081224207149" name="tlp" >
-       </td>
-       <td></td>
-     </tr>
+          <td ng-show="resume.pendaftaran.akreditasiProdiOtomatis != null" class="ng-binding ng-hide">
+            <input type="text" value=" <?= $row['telp'] ?>" id="phone" class="form-control-sm form-control "  placeholder="Contoh : 081224207149" name="tlp" >
+          </td>
+          <td></td>
+        </tr>
 
 
-   </tbody>
- </table>
-</div>
+      </tbody>
+    </table>
+  </div>
 <?php } ?>
 </div>
 <div class="row">
-  <div class="col-md-5">
+  <div class="col-md-6">
    <table>
     <tbody>
-      <?php foreach ($data_lain as $key => $value) {     ?>
+      <?php foreach ($data_lain as $key => $value) { 
+        // echo"<pre>";print_r($value);
+        ?>
         <tr>
           <td><strong>Jenis Bantuan</strong></td>
           <td>:</td>
-          <td>PKH</td>
+          <td><input type="text"  id="jenisbntuan" class="form-control-sm form-control "  placeholder="Contoh : PKH" name="jenisbntuan" value="<?= $value['jenis_bantuan'] ?>"></td>
           <td></td>
         </tr>
         <tr>
           <td><strong>Kepemilikan Rumah</strong></td>
           <td>:</td>
-          <td > <select class="form-control-sm form-control">
-                  <option value="<?= $value['kepemilikan_rumah'] ?>"><?= $value['kepemilikan_rumah'] ?></option>
-                  <option>Milik Sendiri</option>
-                  <option>Turut Orang Tua</option>
-                  <option>Kontrak/Sewa</option>
-                </select></td>
+          <td > <select class="form-control-sm form-control" name="kepemilikanrumah">
+            <option value="<?= $value['kepemilikan_rumah'] ?>"><?= $value['kepemilikan_rumah'] ?></option>
+            <option value="Milik Sendiri">Milik Sendiri</option>
+            <option value="Turut Orang Tua">Turut Orang Tua</option>
+            <option value="Kontrak/Sewa">Kontrak/Sewa</option>
+          </select></td>
           <td></td>
         </tr>
         <tr>
           <td><strong>Jenis Rumah</strong></td>
           <td>:</td>
-          <td >  <select class="form-control-sm form-control">
-                  <option value="<?= $value['jenis_rumah'] ?>"><?= $value['jenis_rumah'] ?></option>
-                  <option>Permanen</option>
-                  <option>Semi permanen</option>
-                  <option>Bilik</option>
-                  <option>Lainnya</option>
-                </select></td>
+          <td >  <select class="form-control-sm form-control" name="jenisrumah">
+            <option value="<?=$value['jenis_rumah']?>"><?=$value['jenis_rumah']?></option>
+            <option value="Permanen">Permanen</option>
+            <option value="Semi permanen">Semi permanen</option>
+            <option value="Bilik">Bilik</option>
+            <option value="Lainnya">Lainnya</option>
+          </select></td>
           <td></td>
         </tr>
         <tr>
           <td><strong>Bukti Kepemilikan</strong></td>
           <td>:</td>
-          <td > <select class="form-control-sm form-control">
-                 <option value="<?= $value['bukti_kepemilikan_rumah'] ?>" ><?= $value['bukti_kepemilikan_rumah'] ?></option>
-                 <option value="ada">Sertifikat Rumah</option>
-                 <option value="tidak">Akta Jual Beli</option>
-                 <option value="tidak">Lain-lain</option>
-               </select></td>
-          <td></td>
-        </tr>
-        <tr>
-          <td><strong>Pekarangan Ruman</strong></td>
-          <td>:</td>
-          <td > <select class="form-control-sm form-control" id="pekarangan">
-               <option value="<?= $value['pekarangan_rumah'] ?>" ><?= $value['pekarangan_rumah'] ?></option>
-               <option value="ada">Ada</option>
-               <option value="tidak">Tidak</option>
-             </select></td>
-        </tr>
-        <tr ng-show="resume.pendaftaran.lokasiKerja.keteranganPendidikan != null" class="ng-hide">
-          <td><strong>Luas Pekarangan</strong></td>
-          <td>:</td>
-          <td ><input type="text" name=""class="form-control-sm form-control " value="<?= $value['luas_pekarangan'] ?>"></td>
-        </tr>
-        <tr ng-show="resume.pendaftaran.jenisPengadaan.id == '1'" class="ng-hide">
-          <td><strong>Tanaman di pekarangan</strong></td>
-          <td>:</td>
-          <td ng-show="resume.pendaftaran.dapodik.kodeBidangStudiSertifikasi != null " class="ng-binding ng-hide">
-          <input type="text" name="" class="form-control-sm form-control "value=" <?= $value['tanaman_pekaranngan'] ?>">
-         </td>
-
+          <td > <select class="form-control-sm form-control" name="kepemilikan_rumah">
+           <option value="<?=$value['kepemilikan_rumah']?>" ><?=$value['kepemilikan_rumah']?></option>
+           <option value="Sertifikat Rumah">Sertifikat Rumah</option>
+           <option value="Akta Jual Beli">Akta Jual Beli</option>
+           <option value="Lain-lain">Lain-lain</option>
+         </select></td>
+         <td></td>
        </tr>
        <tr>
-        <td><strong>Jenis Tanaman</strong></td>
+        <td><strong>Pekarangan Ruman</strong></td>
         <td>:</td>
-        <td > <input type="text" name="" class="form-control-sm form-control "value="<?= $value['jenis_tanaman'] ?>"></td>
-      </tr>
-      <tr>
-        <td><strong>Listrik</strong></td>
-        <td>:</td>
-        <td ><select class="form-control-sm form-control">
-               <option value="<?= $value['listrik'] ?>" ><?= $value['listrik'] ?></option>
-               <option value="ada">Token</option>
-               <option value="tidak">KWH</option>
-               <option value="tidak">Lain-lain</option>
-             </select> </td>
-      </tr>
-      <tr>
-        <td><strong>Besar KWH</strong></td>
-        <td>:</td>
-        <td ><select class="form-control-sm form-control">
-             <option value="<?= $value['besar_kwh'] ?>" ><?= $value['besar_kwh'] ?></option>
-             <option value="450W">450W</option>
-             <option value="900W">900W</option>
-             <option value="1300W">1300W</option>
-             <option value="2200W">2200W</option>
-           </select></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><strong>Biaya Listrik</strong></td>
-        <td>:</td>
-        <td ><input type="number" class="form-control-sm form-control" placeholder="Contoh : 300000" value="<?= $value['biaya_listrik'] ?>"></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><strong>Kuota/Pulsa Keluarga /Bulan</strong></td>
-        <td>:</td>
-        <td > <input type="number" class="form-control-sm form-control" placeholder="Contoh : 500000" value="<?= $value['pulsa_keluarga'] ?>"></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><strong>Sumber Air</strong></td>
-        <td>:</td>
-        <td ><select class="form-control-sm form-control"  onchange="pdam()" id="pdamid">
-            <option value=" <?= $value['sumber_air'] ?>"> <?= $value['sumber_air'] ?></option>
-            <option value="PDAM">PDAM</option>
-            <option value="Sumur">Sumur</option>
-            <option value="MCK Umum">MCK Umum</option>
-            <option value="Sumber Air Lain">Sumber Air Lain</option>
-          </select></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><strong>Bayar PDAM/Bulan</strong></td>
-        <td>:</td>
-        <td ><input type="text" class="form-control-sm form-control" placeholder="Enter ..." value="<?= $value['biaya_air'] ?>"></td>
-        <td></td>
-      </tr>
+        <td > <select class="form-control-sm form-control" name="pekaranganrumah" id="pekarangan">
+         <option value="<?=$value['pekarangan_rumah']?>"><?=$value['pekarangan_rumah']?></option>
+         <option value="ada">Ada</option>
+         <option value="tidak">Tidak</option>
+       </select></td>
+     </tr>
+     <tr>
+      <td><strong>Luas Pekarangan</strong></td>
+      <td>:</td>
+      <td ><input type="text" placeholder="Contoh : 40" name="luas_pekarangan" class="form-control-sm form-control" value="<?=$value['luas_pekarangan']?>"></td>
+    </tr>
+    <tr>
+      <td><strong>Tanaman di pekarangan</strong></td>
+      <td>:</td>
+      <td>
+        <input type="text" name="tanmndipekarangan" placeholder="Contoh : ada" class="form-control-sm form-control " value="<?=$value['tanaman_pekarangan']?>"> 
+      </td>
+
+    </tr>
+    <tr>
+      <td><strong>Jenis Tanaman</strong></td>
+      <td>:</td>
+      <td > <input type="text" name="jenis_tanaman" placeholder="Contoh : Mawar" class="form-control-sm form-control " value="<?=$value['jenis_tanaman']?>"></td>
+    </tr>
+    <tr>
+      <td><strong>Listrik</strong></td>
+      <td>:</td>
+      <td ><select class="form-control-sm form-control" name="listrik">
+       <option value="<?=$value['listrik']?>" ><?=$value['listrik']?></option>
+       <option value="ada">Token</option>
+       <option value="tidak">KWH</option>
+       <option value="tidak">Lain-lain</option>
+     </select> </td>
+   </tr>
+   <tr>
+    <td><strong>Besar KWH</strong></td>
+    <td>:</td>
+    <td ><select class="form-control-sm form-control" name="besar_kwh">
+     <option value="<?=$value['besar_kwh']?>" ><?=$value['besar_kwh']?></option>
+     <option value="450W">450W</option>
+     <option value="900W">900W</option>
+     <option value="1300W">1300W</option>
+     <option value="2200W">2200W</option>
+   </select></td>
+   <td></td>
+ </tr>
+ <tr>
+  <td><strong>Biaya Listrik</strong></td>
+  <td>:</td>
+  <td ><input type="number" class="form-control-sm form-control" placeholder="Contoh : 300000" name="biaya_listrik" value="<?=$value['biaya_listrik']?>"></td>
+  <td></td>
+</tr>
+<tr>
+  <td><strong>Kuota/Pulsa Keluarga /Bulan</strong></td>
+  <td>:</td>
+  <td > <input type="number" class="form-control-sm form-control" placeholder="Contoh : 500000" name="kuotapulsa" value="<?=$value['kuotapulsa']?>"></td>
+  <td></td>
+</tr>
+<tr>
+  <td><strong>Sumber Air</strong></td>
+  <td>:</td>
+  <td ><select class="form-control-sm form-control"  id="pdamid" name="sumber_air">
+    <option value="<?=$value['sumber_air'] ?>"><?=$value['sumber_air'] ?></option>
+    <option value="PDAM">PDAM</option>
+    <option value="Sumur">Sumur</option>
+    <option value="MCK Umum">MCK Umum</option>
+    <option value="Sumber Air Lain">Sumber Air Lain</option>
+  </select></td>
+  <td></td>
+</tr>
+<tr>
+  <td><strong>Bayar PDAM/Bulan</strong></td>
+  <td>:</td>
+  <td ><input type="text" class="form-control-sm form-control" placeholder="Contoh : 20000" name="bayarpdam" value="<?=$value['bayarpdam'] ?>"></td>
+  <td></td>
+</tr>
 
 
-    </tbody>
-  </table>
+</tbody>
+</table>
 </div>
-<div class="col-md-7">
+<div class="col-md-6">
  <table>
   <tbody>
-   <tr>
+    <tr>
     <td><strong>Konsumsi Beras /Bulan</strong></td>
     <td>:</td>
-   
+
     <td ><input type="number" class="form-control-sm form-control" placeholder="Contoh : 20" name="beras" value="<?=$value['beras']?>">
-      </td>
-      <td><small>Stok Beras</small></td>
-       <td>:</td>
-      <td><select class="form-control-sm form-control" name="stok_beras">
-          <option value="<?=$value['stok_beras']?>"><?=$value['stok_beras']?></option>
-          <option value="PDAM">Ada</option>
-          <option value="Sumur">Tidak</option>
-        </select></td>
+    </td>
+    <td><small>Stok Beras</small></td>
+    <td>:</td>
+    <td><select class="form-control-sm form-control" name="stok_beras">
+      <option value="<?=$value['stok_beras']?>"><?=$value['stok_beras']?></option>
+      <option value="ada">Ada</option>
+      <option value="tidak">Tidak</option>
+    </select></td>
   </tr>
   <tr>
     <td><strong>Konsumsi Minyak Goreng /Bulan</strong></td>
     <td>:</td>
-    <td ><input type="number" class="form-control-sm form-control" placeholder="Contoh : 30" name="minyak"  value="<?=$value['minyak_goreng']?>"></td>
+    <td ><input type="number" class="form-control-sm form-control" placeholder="Contoh : 30" name="minyak"value="<?=$value['minyak_goreng']?>"></td>
     <td> <small>Stok Minyak</small></td>
-     <td>:</td>
+    <td>:</td>
     <td><select class="form-control-sm form-control" name="stok_minyak">
-          <option value=" <?=$value['stok_minyak']?>"> <?=$value['stok_minyak']?></option>
-          <option value="PDAM">Ada</option>
-          <option value="Sumur">Tidak</option>
-        </select></td>
+       <option value="<?=$value['stok_minyak']?>"><?=$value['stok_minyak']?></option>
+      <option value="ada">Ada</option>
+      <option value="tidak">Tidak</option>
+    </select></td>
   </tr>
   <tr>
     <td><strong>Konsumsi Gula Pasir /Bulan</strong></td>
     <td>:</td>
     <td ><input type="number" class="form-control-sm form-control" placeholder="Contoh : 4" name="gula" value="<?=$value['gula_pasir']?>"> </td>
     <td> <small>Stok Gula</small></td>
-     <td>:</td>
+    <td>:</td>
     <td> <select class="form-control-sm form-control" name="stok_gula">
-        <option value="<?=$value['stok_gula']?>" ><?=$value['stok_gula']?></option>
-        <option value="PDAM">Ada</option>
-        <option value="Sumur">Tidak</option>
-      </select></td>
+      <option value="<?=$value['stok_gula']?>"><?=$value['stok_gula']?></option>
+      <option value="ada">Ada</option>
+      <option value="tidak">Tidak</option>
+    </select></td>
   </tr>
   <tr>
     <td><strong>Konsumsi Telur /Bulan</strong></td>
     <td>:</td>
-    <td ><input type="number" class="form-control-sm form-control" placeholder="Contoh : 5" name="telur" value="<?=$value['telur']?>">, </td>
+    <td ><input type="number" class="form-control-sm form-control" placeholder="Contoh : 5" name="telur" value="<?=$value['telur']?>"> </td>
     <td><small>Stok Telur</small></td>
     <td>:</td>
     <td> <select class="form-control-sm form-control" name="stok_telur">
         <option value="<?=$value['stok_telur']?>"><?=$value['stok_telur']?></option>
-        <option value="PDAM">Ada</option>
-        <option value="Sumur">Tidak</option>
-      </select></td>
+      <option value="ada">Ada</option>
+      <option value="tidak">Tidak</option>
+    </select></td>
   </tr>
   <tr>
     <td><strong>Konsumsi Daging /Bulan</strong></td>
@@ -460,71 +466,71 @@
     <td>:</td>
 
     <td> <select class="form-control-sm form-control" name="stok_daging">
-          <option value="  <?=$value['stok_daging']?>">  <?=$value['stok_daging']?></option>
-          <option value="PDAM">Ada</option>
-          <option value="Sumur">Tidak</option>
-        </select></td>
+       <option value="<?=$value['stok_daging']?>"><?=$value['stok_daging']?></option>
+      <option value="ada">Ada</option>
+      <option value="tidak">Tidak</option>
+    </select></td>
   </tr>
-  <tr ng-show="resume.pendaftaran.lokasiKerja.keteranganPendidikan != null" class="ng-hide">
+  <tr >
     <td><strong>Sawah</strong></td>
     <td>:</td>
     <td > <input type="text" class="form-control-sm form-control" placeholder="Contoh : " name="sawah" value="<?=$value['sawah']?>"></td>
     <td></td>
   </tr>
-  <tr ng-show="resume.pendaftaran.jenisPengadaan.id == '1'" class="ng-hide">
+  <tr >
     <td><strong>Ladang</strong></td>
     <td>:</td>
-    <td ng-show="resume.pendaftaran.dapodik.kodeBidangStudiSertifikasi != null " class="ng-binding ng-hide">
-      <input type="text" class="form-control-sm form-control" placeholder="Contoh : " value="<?=$value['ladang']?>">
-   </td>
+    <td >
+      <input type="text" class="form-control-sm form-control" placeholder="Contoh : 12" name="Ladang" value="<?=$value['ladang']?>">
+    </td>
 
- </tr>
- <tr>
-  <td><strong>Tegalan</strong></td>
-  <td>:</td>
-  <td > <input type="text" class="form-control-sm form-control" placeholder="Contoh : " value="<?=$value['tegalan']?>"></td>
-  <td></td>
-</tr>
-<tr>
-  <td><strong>Kolam Ikan</strong></td>
-  <td>:</td>
-  <td ><input type="text" class="form-control-sm form-control" placeholder="Contoh : " value="<?=$value['kolam_ikan']?> "></td>
-  <td></td>
-</tr>
-<tr>
-  <td><strong>Jenis Tanaman yang dibudidayakan</strong></td>
-  <td>:</td>
-  <td ><input type="text" class="form-control-sm form-control" placeholder="Contoh : Ubi" value="<?=$value['tanaman_budidaya']?>"></td>
-  <td></td>
-</tr>
-<tr>
-  <td><strong>Jenis Ternak yang dibudidayakan</strong></td>
-  <td>:</td>
-  <td ><input type="text" class="form-control-sm form-control" placeholder="Contoh : Kambing" value="<?=$value['ternak_budidaya']?>"></td>
-  <td></td>
-</tr>
-<tr>
-  <td><strong>UMKM/Industri Kreatif</strong></td>
-  <td>:</td>
-  <td > <select class="form-control-sm form-control" onchange="toko()" id="tokoid">
-        <option value="<?=$value['umkm']?>"><?=$value['umkm']?></option>
-        <option value="ada">Ada</option>
-        <option value="tidak">Tidak</option>
-      </select></td>
-  <td></td>
-</tr>
-<tr>
-  <td><strong>Jenis</strong></td>
-  <td>:</td>
-  <td ><input type="text" class="form-control-sm form-control" placeholder="Contoh : Kambing" value="<?=$value['jenis_umkm']?>"></td></td>
-  <td></td>
-</tr>
-<tr>
-  <td><strong>Omset Perbulan</strong></td>
-  <td>:</td>
-  <td ><input type="text" class="form-control-sm form-control" placeholder="Contoh : Kambing" value="<?=$value['omset']?>"></td>
-  <td></td>
-</tr>
+  </tr>
+  <tr>
+    <td><strong>Tegalan</strong></td> 
+    <td>:</td>
+    <td > <input type="text" class="form-control-sm form-control" placeholder="Contoh : 12" name="tegalan" value="<?=$value['tegalan']?>"></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td><strong>Kolam Ikan</strong></td>
+    <td>:</td>
+    <td ><input type="text" class="form-control-sm form-control" placeholder="Contoh : 12" name="kolamikan" value="<?=$value['kolam_ikan']?>"></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td><strong>Jenis Tanaman yang dibudidayakan</strong></td>
+    <td>:</td>
+    <td ><input type="text" class="form-control-sm form-control" placeholder="Contoh : Ubi" name="tanaman_budidaya" 
+      value="<?=$value['tanaman_budidaya']?>"></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td><strong>Jenis Ternak yang dibudidayakan</strong></td>
+    <td>:</td>
+    <td ><input type="text" class="form-control-sm form-control" placeholder="Contoh : Kambing" name="ternak_budidaya" value="<?=$value['ternak_budidaya']?>"></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td><strong>UMKM/Industri Kreatif</strong></td>
+    <td>:</td>
+    <td > <select class="form-control-sm form-control" id="tokoid" name="umkm" value="<?=$value['umkm']?>">
+      <option value="ada">Ada</option>
+      <option value="tidak">Tidak</option>
+    </select></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td><strong>Jenis</strong></td>
+    <td>:</td>
+    <td ><input type="text" class="form-control-sm form-control" placeholder="Contoh : Toko" name="jenisumkm" value="<?=$value['jenis_umkm']?>"></td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td><strong>Omset Perbulan</strong></td>
+    <td>:</td>
+    <td ><input type="text" class="form-control-sm form-control" placeholder="Contoh : Kambing" name="omset"  value="<?=$value['omset']?>"></td>
+    <td></td>
+  </tr>
 <?php } ?>
 </tbody>
 </table>

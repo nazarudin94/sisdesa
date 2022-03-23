@@ -28,6 +28,7 @@
       </div><!-- /.container-fluid -->
     </section>
     <!-- Main content -->
+       
    <section class="content">
       <div class="container-fluid">
         <!-- Small boxes (Stat box) -->
@@ -36,7 +37,7 @@
             <!-- small box -->
             <div class="small-box bg-info">
               <div class="inner">
-                <h3>150</h3>
+                <h3><?= $count_jk ?></h3>
 
                 <p>Laki-laki</p>
               </div>
@@ -66,7 +67,7 @@
             <!-- small box -->
             <div class="small-box bg-warning">
               <div class="inner">
-                <h3>44</h3>
+                <h3><?= $count_kk->jk ?></h3>
 
                 <p>Jumlah KK</p>
               </div>
@@ -84,19 +85,30 @@
           <div class="col-md-6">
              <div class="card card-danger">
               <div class="card-header">
-                <h3 class="card-title">Dounut Chart</h3>
-
-                <div class="card-tools">
-                  <button type="button" class="btn btn-tool" data-card-widget="collapse">
-                    <i class="fas fa-minus"></i>
-                  </button>
-                  <button type="button" class="btn btn-tool" data-card-widget="remove">
-                    <i class="fas fa-times"></i>
-                  </button>
-                </div>
+                <h3 class="card-title">Data Penduduk</h3>
               </div>
               <div class="card-body">
-                <canvas id="donutChart" style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%;"></canvas>
+                 <table id="example1" class="table table-bordered table-striped">
+                <thead>
+                  <tr>
+                    <th>Nama Kepala Keluarga</th>
+                    <th>Nomor KK</th>
+                    <!-- <th>NIK</th> -->
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <?php foreach ($penduduk as $key => $value) {?>
+                    <tr>
+                      <td><?= $value['nama_kepala_keluarga']?></td>
+                      <td><?= $value['kk']?></td>
+              <!-- <td><?= $value['nik']?></td> -->
+
+                      <td><a href="<?php echo base_url().'penduduk/penduduk/detail/'.$value['kk'];?>" class="btn btn-sm btn-success">Detail</a> <a href="<?php echo base_url().'penduduk/penduduk/edit/'.$value['kk']; ?>" class="btn btn-sm btn-warning">Edit</a> </td>
+                    </tr>
+                  <?php  } ?>
+                </tbody>
+              </table>
               </div>
             </div>
           </div>
